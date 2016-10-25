@@ -1,4 +1,4 @@
-Here we begin our development our awesome RPG - Tsingtopia!
+Here we begin our development of our awesome RPG - Tsingtopia!
 
 Our team includes following brilliant young men:
 
