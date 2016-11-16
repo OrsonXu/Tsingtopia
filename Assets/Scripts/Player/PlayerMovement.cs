@@ -80,6 +80,12 @@ public class PlayerMovement : MonoBehaviour
     int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
     float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
+    Vector3 moveDirection;
+    bool rightMouseActive;
+    RaycastHit rightMouseRay = new RaycastHit();
+    Vector3 rightMouseTarget;
+    Vector3 playerToMouse;
+
     void Awake()
     {
         // Create a layer mask for the floor layer.
@@ -88,6 +94,8 @@ public class PlayerMovement : MonoBehaviour
         // Set up references.
         anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
+
+        rightMouseTarget = transform.position;
     }
 
 
@@ -97,8 +105,16 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
+
+        rightMouseActive = (bool)Input.GetButton("Fire2");
         // Move the player around the scene.
-        Move(h, v);
+        if(h != 0 || v != 0)
+        {
+            Move(h, v);
+            rightMouseActive = false;
+        }
+
+        //MoveToward();
 
         // Turn the player to face the mouse cursor.
         Turning();
@@ -119,6 +135,28 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody.MovePosition(transform.position + movement);
     }
 
+    
+
+    void MoveToward()
+    {
+        if (rightMouseActive)
+        {
+            if (Input.GetButton("Fire2"))
+            {
+                rightMouseTarget = playerToMouse;
+            }
+           
+        }
+        moveDirection = rightMouseTarget - transform.position;
+        moveDirection.y = 0f;
+        if (moveDirection.magnitude > 10)
+        {
+            moveDirection = moveDirection.normalized;
+            playerRigidbody.MovePosition(transform.position + moveDirection.normalized * speed * Time.deltaTime);
+        }
+
+    }
+
     void Turning()
     {
         // Create a ray from the mouse cursor on screen in the direction of the camera.
@@ -131,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
         {
             // Create a vector from the player to the point on the floor the raycast from the mouse hit.
-            Vector3 playerToMouse = floorHit.point - transform.position;
+            playerToMouse = floorHit.point - transform.position;
 
             // Ensure the vector is entirely along the floor plane.
             playerToMouse.y = 0f;
@@ -145,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
-
+    
     void Animating(float h, float v)
     {
         // Create a boolean that is true if either of the input axes is non-zero.
