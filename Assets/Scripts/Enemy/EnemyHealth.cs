@@ -2,14 +2,15 @@
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
-    public int currentHealth;
-    public float sinkSpeed = 2.5f;
-    public int scoreValue = 10;
-    public AudioClip deathClip;
+    [HideInInspector]
+    public int MaxHealth { get; set; }
+    [HideInInspector]
+    public int CurrentHealth { get; set; }
+    public float SinkSpeed = 2.5f;
+    public int ScoreValue = 10;
+    public AudioClip DeathClip;
+    public AudioClip HurtClip;
 
-
-    Animator anim;
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
     CapsuleCollider capsuleCollider;
@@ -19,12 +20,12 @@ public class EnemyHealth : MonoBehaviour
 
     void Awake ()
     {
-        anim = GetComponent <Animator> ();
-        enemyAudio = GetComponent <AudioSource> ();
+        enemyAudio = GetComponent<AudioSource>();
+        enemyAudio.clip = HurtClip;
+        enemyAudio.volume = 0.1f;
+
         hitParticles = GetComponentInChildren <ParticleSystem> ();
         capsuleCollider = GetComponent <CapsuleCollider> ();
-
-        currentHealth = startingHealth;
     }
 
 
@@ -32,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(isSinking)
         {
-            transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+            transform.Translate (-Vector3.up * SinkSpeed * Time.deltaTime);
         }
     }
 
@@ -44,12 +45,12 @@ public class EnemyHealth : MonoBehaviour
 
         enemyAudio.Play ();
 
-        currentHealth -= amount;
+        CurrentHealth -= amount;
             
         hitParticles.transform.position = hitPoint;
         hitParticles.Play();
 
-        if(currentHealth <= 0)
+        if(CurrentHealth <= 0)
         {
             Death ();
         }
@@ -62,9 +63,8 @@ public class EnemyHealth : MonoBehaviour
 
         capsuleCollider.isTrigger = true;
 
-        anim.SetTrigger ("Dead");
-
-        enemyAudio.clip = deathClip;
+        enemyAudio.clip = DeathClip;
+        enemyAudio.volume = 0.6f;
         enemyAudio.Play ();
     }
 
@@ -74,7 +74,11 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
-        //ScoreManager.score += scoreValue;
         Destroy (gameObject, 2f);
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 }

@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour
     public PlayerHealth playerHealth;
     public GameObject[] enemies;
     public float spawnTime = 3f;
-    public float spawnInterval = 2f;
+    public float spawnInterval = 10f;
     public Transform[] spawnPoints;
 
     void Start ()
@@ -17,13 +17,15 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn ()
     {
-        if(playerHealth.currentHealth <= 0f)
+        if(playerHealth.CurrentHealth <= 0f)
         {
             return;
         }
 
         int enemyIndex = Random.Range(0, enemies.Length);
-        Instantiate(enemies[enemyIndex], spawnPoints[enemyIndex].position, spawnPoints[enemyIndex].rotation);
+        GameObject tmp = Instantiate(enemies[enemyIndex], spawnPoints[enemyIndex].position, spawnPoints[enemyIndex].rotation) as GameObject;
+        EnemyController tmpc = tmp.GetComponent<EnemyController>();
+        tmpc.EnemyPlusInit();
         
     }
 }

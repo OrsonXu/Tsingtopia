@@ -6,32 +6,29 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int startingHealth;
-    public int currentHealth;
-    public Slider healthSlider;
-    public Image damageImage;
-    public AudioClip deathClip;
-    public float flashSpeed = 5f;
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+    [HideInInspector]
+    public int MaxHealth { get; set; }
+    [HideInInspector] 
+    public int CurrentHealth { get; set; }
 
-    Animator anim;
+    public Slider HealthSlider;
+    public Image DamageImage;
+    public AudioClip DeathClip;
+    public AudioClip HurtClip;
+    public float FlashSpeed = 5f;
+    public Color FlashColour = new Color(1f, 0f, 0f, 0.1f);
+
     AudioSource playerAudio;
-    //PlayerMovement playerMovement;
-    //PlayerShooting playerShooting;
-    PlayerController playerController;
     bool isDead;
     bool damaged;
 
 
     void Awake ()
     {
-        anim = GetComponent <Animator> ();
-        playerAudio = GetComponent <AudioSource> ();
-        //playerMovement = GetComponent <PlayerMovement> ();
-        //playerShooting = GetComponentInChildren<PlayerShooting>();
-        playerController = GetComponent<PlayerController>();
-        currentHealth = startingHealth;
+        playerAudio = GetComponent<AudioSource>();
+        playerAudio.clip = HurtClip;
+        playerAudio.volume = 0.1f;
     }
 
 
@@ -39,11 +36,11 @@ public class PlayerHealth : MonoBehaviour
     {
         if(damaged)
         {
-            damageImage.color = flashColour;
+            DamageImage.color = FlashColour;
         }
         else
         {
-            damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+            DamageImage.color = Color.Lerp (DamageImage.color, Color.clear, FlashSpeed * Time.deltaTime);
         }
         damaged = false;
     }
@@ -53,13 +50,13 @@ public class PlayerHealth : MonoBehaviour
     {
         damaged = true;
 
-        currentHealth -= amount;
+        CurrentHealth -= amount;
 
-        healthSlider.value = currentHealth;
+        HealthSlider.value = CurrentHealth;
 
         playerAudio.Play ();
 
-        if(currentHealth <= 0 && !isDead)
+        if (CurrentHealth <= 0 && !isDead)
         {
             Death ();
         }
@@ -70,18 +67,14 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        //playerShooting.DisableEffects();
-
-        anim.SetTrigger ("Die");
-
-        playerAudio.clip = deathClip;
+        playerAudio.clip = DeathClip;
+        playerAudio.volume = 0.8f;
         playerAudio.Play ();
-
-        //playerMovement.enabled = false;
-        //playerShooting.enabled = false;
-        playerController.CurrentStatus = PlayerController.status.Dead;
     }
 
-
+    public bool IsDead()
+    {
+        return isDead;
+    }
 
 }

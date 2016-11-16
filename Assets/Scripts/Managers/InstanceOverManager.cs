@@ -16,7 +16,7 @@ public class InstanceOverManager : MonoBehaviour
 
     void Update()
     {
-        if (playerHealth.currentHealth <= 0)
+        if (playerHealth.CurrentHealth <= 0)
         {
             anim.SetTrigger("InstanceOver");
         }

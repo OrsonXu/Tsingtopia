@@ -6,18 +6,13 @@ public class InstanceManager : MonoBehaviour {
 
     [SerializeField] PlayerController player;
     EnemyManager enemyManager;
-    Command moveCommand;
-    Command useSkillCommand;
 
     void Awake()
     {
-
-        player.Initialization(100, 10, new Vector3(0f, 0f, 0f), new Vector3(0f, 90f, 0f));
+        player.Init(new Vector3(0f, 0f, 0f), new Vector3(0f, 90f, 0f));
         player.PlayerPlusInit();
 
-        moveCommand = new MoveCommand();
-        useSkillCommand = new UseSkillCommand();
-
+        InitEnemy();
     }
 
     void InitEnv()
@@ -35,7 +30,10 @@ public class InstanceManager : MonoBehaviour {
     {
         //useSkillCommand.execute(player);
         //moveCommand.execute(player);
-        player.SwitchFSM();
+
+        //player.SwitchFSM();
+
+        player.FSMUpdate();
     }
 
     public void RestartLevel()
