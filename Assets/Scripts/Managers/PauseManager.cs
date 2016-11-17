@@ -26,16 +26,17 @@ public class PauseManager : MonoBehaviour
 
     public void Pause()
     {
+        print("Pause function usable");
         canvas.enabled = !canvas.enabled;
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     }
 
     public void Quit()
     {
-#if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
-#else 
-        Application.Quit();
-#endif
+        #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+        #else 
+            Application.Quit();
+        #endif
     }
 }
