@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerShooting : MonoBehaviour
 {
     public int damagePerShot = 100;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
+    public Slider AmmoSlider;
+    public int maxBullet;
+    private int currentBullet;
 
-
+   
     float timer;
     Ray shootRay;
     RaycastHit shootHit;
@@ -20,11 +25,15 @@ public class PlayerShooting : MonoBehaviour
 
     void Awake ()
     {
+        // Get components from public
         shootableMask = LayerMask.GetMask ("Shootable");
         gunParticles = GetComponent<ParticleSystem> ();
         gunLine = GetComponent <LineRenderer> ();
         gunAudio = GetComponent<AudioSource> ();
         gunLight = GetComponent<Light> ();
+
+        //Initial bullet number
+        currentBullet = maxBullet;
     }
 
 
@@ -53,6 +62,11 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot ()
     {
+        print("CurrentBullet "+currentBullet.ToString());
+        if (currentBullet < 1) return;
+        currentBullet -= 1;
+        AmmoSlider.value = currentBullet;
+
         timer = 0f;
 
         gunAudio.Play ();
