@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
 
-public class ItemBag
+public class ItemBag : MonoBehaviour
 {
 
     public List<Item> ItemList;

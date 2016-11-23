@@ -28,7 +28,7 @@ public class TaskTable : MonoBehaviour {
         }
     }
 
-    public void RemoveItem(string name)
+    public void RemoveTask(string name)
     {
         for (int i = 0; i < TaskList.Count; i++)
         {
