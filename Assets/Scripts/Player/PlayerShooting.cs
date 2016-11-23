@@ -7,10 +7,8 @@ public class PlayerShooting : MonoBehaviour
     public int damagePerShot = 100;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
-    public Slider AmmoSlider;
-    public int maxBullet;
-    private int currentBullet;
-
+    [HideInInspector]
+    public int bulletMagicValue { get; set; }
    
     float timer;
     Ray shootRay;
@@ -21,6 +19,7 @@ public class PlayerShooting : MonoBehaviour
     AudioSource gunAudio;
     Light gunLight;
     float effectsDisplayTime = 0.2f;
+    PlayerMagic playerMagic;
 
 
     void Awake ()
@@ -31,9 +30,8 @@ public class PlayerShooting : MonoBehaviour
         gunLine = GetComponent <LineRenderer> ();
         gunAudio = GetComponent<AudioSource> ();
         gunLight = GetComponent<Light> ();
+        playerMagic = GetComponentInParent<PlayerMagic>();
 
-        //Initial bullet number
-        currentBullet = maxBullet;
     }
 
 
@@ -59,13 +57,9 @@ public class PlayerShooting : MonoBehaviour
         gunLight.enabled = false;
     }
 
-
     void Shoot ()
     {
-        print("CurrentBullet "+currentBullet.ToString());
-        if (currentBullet < 1) return;
-        currentBullet -= 1;
-        AmmoSlider.value = currentBullet;
+        playerMagic.ChangeMagic(-bulletMagicValue);
 
         timer = 0f;
 

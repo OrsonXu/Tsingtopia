@@ -1,18 +1,15 @@
 ﻿using UnityEngine;
 
-public class InstanceOverManager : MonoBehaviour
+public class Fading : MonoBehaviour
 {
     public PlayerHealth playerHealth;
 
-
     Animator anim;
-
 
     void Awake()
     {
         anim = GetComponent<Animator>();
     }
-
 
     void Update()
     {
