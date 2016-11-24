@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
+using Tasks;
 
 public class TaskTable : MonoBehaviour {
 
     public List<Task> TaskList;
 
-    public void AddNewTask(int ID, string name, string description)
+    public void addNewTask(int ID, string name, string description)
     {
         Task task = new Task();
-        task.InitData(ID, name, description);
+        task.initData(ID, name, description);
         TaskList.Add(task);
     }
 
-    public void RemoveTask(int ID)
+    public void removeTask(int ID)
     {
         for (int i = 0; i < TaskList.Count; i++)
         {
@@ -28,7 +29,7 @@ public class TaskTable : MonoBehaviour {
         }
     }
 
-    public void RemoveTask(string name)
+    public void removeTask(string name)
     {
         for (int i = 0; i < TaskList.Count; i++)
         {
@@ -40,7 +41,7 @@ public class TaskTable : MonoBehaviour {
         }
     }
 
-    public void Save(string version)
+    public void save(string version)
     {
         string filePath = Application.persistentDataPath + "\\" + version + "\\TaskTableData.dat";
         BinaryFormatter bf = new BinaryFormatter();
@@ -53,7 +54,7 @@ public class TaskTable : MonoBehaviour {
         file.Close();
     }
 
-    public void Load(string version)
+    public void load(string version)
     {
         string filePath = Application.persistentDataPath + "\\" + version + "\\TaskTableData.dat";
         if (File.Exists(filePath))
