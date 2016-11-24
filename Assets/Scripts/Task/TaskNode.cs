@@ -19,7 +19,7 @@ public class TaskNode : MonoBehaviour {
 
 	// Use this for initialization
 
-    void TaskNode()
+    void Awake()
     {
         status = taskNodeStatus.UNDISCOVERED;
     }
@@ -37,12 +37,12 @@ public class TaskNode : MonoBehaviour {
     }
 
     // Compare status with an input 
-    public void equalStatus(int inStatusId)
+    public bool equalStatus(int inStatusId)
     {
         return status == (taskNodeStatus)inStatusId;
     }
 
-    public void equalStatus(taskNodeStatus inTaskStatus)
+    public bool equalStatus(taskNodeStatus inTaskStatus)
     {
         return status == inTaskStatus;
     }
@@ -76,7 +76,7 @@ public class TaskNode : MonoBehaviour {
         status = taskNodeStatus.COMPLETED;
         for (int i = 0; i < childNode.Count; i++)
         {
-            childNode[i].tryUpdateSelf;
+            childNode[i].tryUpdateSelf();
         }
         callNotifier();
     }

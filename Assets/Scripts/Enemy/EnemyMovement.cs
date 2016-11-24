@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     EnemyHealth enemyHealth;
     NavMeshAgent nav;
     public float Speed { get; set; }
+    
 
     void Awake ()
     {

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public int ScoreValue = 10;
     public AudioClip DeathClip;
     public AudioClip HurtClip;
+    public Sprite icon;
 
     AudioSource enemyAudio;
     ParticleSystem hitParticles;

@@ -6,10 +6,15 @@ public class PlayerShooting : MonoBehaviour
 {
     public int damagePerShot = 100;
     public float timeBetweenBullets = 0.15f;
+    public Image enemyImage;
+    public Slider enemyHealthSlider;
     public float range = 100f;
-    [HideInInspector]
+    
+    
+    //[HideInInspector]
     public int bulletMagicValue { get; set; }
-   
+    private GameObject enemyHealthObject;
+
     float timer;
     Ray shootRay;
     RaycastHit shootHit;
@@ -31,7 +36,10 @@ public class PlayerShooting : MonoBehaviour
         gunAudio = GetComponent<AudioSource> ();
         gunLight = GetComponent<Light> ();
         playerMagic = GetComponentInParent<PlayerMagic>();
-
+        enemyImage.enabled = false;
+        enemyHealthObject = enemyHealthSlider.gameObject;
+        enemyHealthObject.SetActive(false);
+        
     }
 
 
@@ -79,9 +87,18 @@ public class PlayerShooting : MonoBehaviour
         if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
         {
             EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
-            if(enemyHealth != null)
+            if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage (damagePerShot, shootHit.point);
+                enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                enemyImage.enabled = true;
+                enemyImage.sprite = enemyHealth.icon;
+                enemyHealthObject.SetActive(true);
+                enemyHealthSlider.value = enemyHealth.CurrentHealth;
+            }
+            else
+            {
+                enemyImage.enabled = false;
+                enemyHealthObject.SetActive(false);
             }
             gunLine.SetPosition (1, shootHit.point);
         }
