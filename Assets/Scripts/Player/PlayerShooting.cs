@@ -93,7 +93,7 @@ public class PlayerShooting : MonoBehaviour
                 enemyImage.enabled = true;
                 enemyImage.sprite = enemyHealth.icon;
                 enemyHealthObject.SetActive(true);
-                enemyHealthSlider.value = enemyHealth.CurrentHealth;
+                enemyHealthSlider.value = ((float)enemyHealth.CurrentHealth / (float)enemyHealth.MaxHealth) * enemyHealthSlider.maxValue;
             }
             else
             {
