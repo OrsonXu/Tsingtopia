@@ -107,4 +107,9 @@ public class PlayerShooting : MonoBehaviour
             gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
         }
     }
+
+    void OnDisable()
+    {
+        DisableEffects();
+    }
 }

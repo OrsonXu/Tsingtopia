@@ -6,6 +6,7 @@ public class InstanceManager : MonoBehaviour {
 
     [SerializeField] PlayerController player;
     EnemyManager enemyManager;
+    RecoverManager recoverManager;
 
     void Awake()
     {
@@ -14,6 +15,7 @@ public class InstanceManager : MonoBehaviour {
 
         InitEnv();
         InitEnemy();
+        InitRecover();
     }
 
     void InitEnv()
@@ -30,6 +32,12 @@ public class InstanceManager : MonoBehaviour {
     void Update()
     {
         player.FSMUpdate();
+    }
+
+    void InitRecover()
+    {
+        recoverManager = GetComponent<RecoverManager>();
+        recoverManager.enabled = true;
     }
 
     public void RestartLevel()

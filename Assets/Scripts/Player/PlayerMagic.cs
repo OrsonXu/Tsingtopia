@@ -18,6 +18,10 @@ public class PlayerMagic : MonoBehaviour {
     {
         CurrentMagic += value;
         AmmoSlider.value = CurrentMagic;
+        if (CurrentMagic > MaxMagic)
+        {
+            CurrentMagic = MaxMagic;
+        }
     }
 
     public bool CanUseSkill(int value)
