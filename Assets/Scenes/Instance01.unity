@@ -2070,7 +2070,7 @@ Prefab:
     - target: {fileID: 114000013678878002, guid: c23328f61d464e149842ed78bab54fa9,
         type: 2}
       propertyPath: damagePerShot
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 114000013678878002, guid: c23328f61d464e149842ed78bab54fa9,
         type: 2}
@@ -3140,8 +3140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 551600769}
   enemies:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1000013052935972, guid: 286a4a4692589cb448f7ec88d6f18a4a, type: 2}
+  - {fileID: 1000010914987164, guid: 26e26f3bcfe7760418dd0684fa11b6b9, type: 2}
   spawnTime: 1
   spawnInterval: 2
   spawnPoints:
