@@ -6,12 +6,15 @@ public class PlayerShooting : MonoBehaviour
 {
     public int damagePerShot = 100;
     public float timeBetweenBullets = 0.15f;
+    public Image enemyImage;
+    public Slider enemyHealthSlider;
     public float range = 100f;
-    public Slider AmmoSlider;
-    public int maxBullet;
-    private int currentBullet;
+    
+    
+    //[HideInInspector]
+    public int bulletMagicValue { get; set; }
+    private GameObject enemyHealthObject;
 
-   
     float timer;
     Ray shootRay;
     RaycastHit shootHit;
@@ -21,6 +24,7 @@ public class PlayerShooting : MonoBehaviour
     AudioSource gunAudio;
     Light gunLight;
     float effectsDisplayTime = 0.2f;
+    PlayerMagic playerMagic;
 
 
     void Awake ()
@@ -31,9 +35,11 @@ public class PlayerShooting : MonoBehaviour
         gunLine = GetComponent <LineRenderer> ();
         gunAudio = GetComponent<AudioSource> ();
         gunLight = GetComponent<Light> ();
-
-        //Initial bullet number
-        currentBullet = maxBullet;
+        playerMagic = GetComponentInParent<PlayerMagic>();
+        enemyImage.enabled = false;
+        enemyHealthObject = enemyHealthSlider.gameObject;
+        enemyHealthObject.SetActive(false);
+        
     }
 
 
@@ -59,13 +65,9 @@ public class PlayerShooting : MonoBehaviour
         gunLight.enabled = false;
     }
 
-
     void Shoot ()
     {
-        print("CurrentBullet "+currentBullet.ToString());
-        if (currentBullet < 1) return;
-        currentBullet -= 1;
-        AmmoSlider.value = currentBullet;
+        playerMagic.ChangeMagic(-bulletMagicValue);
 
         timer = 0f;
 
@@ -85,9 +87,18 @@ public class PlayerShooting : MonoBehaviour
         if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
         {
             EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
-            if(enemyHealth != null)
+            if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage (damagePerShot, shootHit.point);
+                enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                enemyImage.enabled = true;
+                enemyImage.sprite = enemyHealth.icon;
+                enemyHealthObject.SetActive(true);
+                enemyHealthSlider.value = ((float)enemyHealth.CurrentHealth / (float)enemyHealth.MaxHealth) * enemyHealthSlider.maxValue;
+            }
+            else
+            {
+                enemyImage.enabled = false;
+                enemyHealthObject.SetActive(false);
             }
             gunLine.SetPosition (1, shootHit.point);
         }
@@ -95,5 +106,10 @@ public class PlayerShooting : MonoBehaviour
         {
             gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
         }
+    }
+
+    void OnDisable()
+    {
+        DisableEffects();
     }
 }

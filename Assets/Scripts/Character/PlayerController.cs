@@ -3,9 +3,15 @@ using System.Collections;
 
 public class PlayerController : Character
 {
+    public int Magic = 100;
+    public int SkillMagic = 1;
+    public int HealthRecoverRatePerMin = 10;
+    public int MagicRecoverRatePerMin = 20;
+
     PlayerMovement playerMovement;
     PlayerShooting playerShooting;
     PlayerHealth playerHealth;
+    PlayerMagic playerMagic;
     StateMachine<PlayerController> sm_player;
     Animator anim;
 
@@ -18,10 +24,17 @@ public class PlayerController : Character
         playerMovement.Speed = MoveSpeed;
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
+        playerShooting.bulletMagicValue = SkillMagic;
 
         playerHealth = GetComponent<PlayerHealth>();
         playerHealth.MaxHealth = playerHealth.CurrentHealth = Health;
+        playerHealth.RecoverRate = HealthRecoverRatePerMin;
         playerHealth.enabled = true;
+
+        playerMagic = GetComponent<PlayerMagic>();
+        playerMagic.MaxMagic = playerMagic.CurrentMagic = Magic;
+        playerMagic.RecoverRate = MagicRecoverRatePerMin;
+        playerMagic.enabled = true;
 
         anim = GetComponent<Animator>();
     }
@@ -40,8 +53,16 @@ public class PlayerController : Character
 
     public void UseSkill()
     {
-        if (!playerShooting.enabled)
-            playerShooting.enabled = true;
+        if (playerMagic.CanUseSkill(SkillMagic))
+        {
+            if (!playerShooting.enabled)
+                playerShooting.enabled = true;
+        }
+        else
+        {
+            if (playerShooting.enabled)
+                playerShooting.enabled = false;
+        }
     }
 
     public void Die()
@@ -56,6 +77,12 @@ public class PlayerController : Character
     {
         sm_player.SMUpdate();
     }
+
+    public void Update()
+    {
+        this.FSMUpdate();
+    }
+
     public int ItemChange()
     {
         return 0;
@@ -69,6 +96,11 @@ public class PlayerController : Character
     public bool IsDead()
     {
         return playerHealth.IsDead();
+    }
+
+    public void RecoverAll()
+    {
+        playerHealth.CurrentHealth = playerHealth.MaxHealth;
     }
 
 }
