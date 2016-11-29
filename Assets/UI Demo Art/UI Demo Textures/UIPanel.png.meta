@@ -1,9 +1,11 @@
 fileFormatVersion: 2
 guid: 4d8c57007fb8788479468394f465efc0
-timeCreated: 1479387806
+timeCreated: 1480417764
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: UIPanel_0
+    21300002: UIPanel_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +40,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +53,33 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UIPanel_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 6
+        width: 242
+        height: 243
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 23, y: 17, z: 30, w: 52}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: UIPanel_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 242
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 21, y: 15, z: 32, w: 53}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
