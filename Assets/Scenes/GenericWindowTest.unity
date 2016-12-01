@@ -231,7 +231,7 @@ Prefab:
     - target: {fileID: 224000010005023370, guid: 0092ef9b4c2309144a643bd404986045,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -156
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 224000010005023370, guid: 0092ef9b4c2309144a643bd404986045,
         type: 2}
@@ -241,7 +241,7 @@ Prefab:
     - target: {fileID: 224000010005023370, guid: 0092ef9b4c2309144a643bd404986045,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 156
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 224000010005023370, guid: 0092ef9b4c2309144a643bd404986045,
         type: 2}
@@ -297,6 +297,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012041549572, guid: 0092ef9b4c2309144a643bd404986045,
+        type: 2}
+      propertyPath: m_Text
+      value: Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0092ef9b4c2309144a643bd404986045, type: 2}
@@ -1332,7 +1337,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
 --- !u!114 &1341786335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,7 +1350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
