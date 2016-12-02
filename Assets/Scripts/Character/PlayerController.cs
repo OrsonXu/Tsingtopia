@@ -13,7 +13,10 @@ public class PlayerController : Character
     PlayerHealth playerHealth;
     PlayerMagic playerMagic;
     StateMachine<PlayerController> sm_player;
+    PlayerKillCounter playerKillCounter;
     Animator anim;
+
+    int enemyListSize;
 
     public void PlayerPlusInit()
     {
@@ -37,6 +40,12 @@ public class PlayerController : Character
         playerMagic.enabled = true;
 
         anim = GetComponent<Animator>();
+
+        enemyListSize = GameObject.FindGameObjectWithTag("InstanceManager").GetComponent<EnemyManager>().enemies.Length;
+
+        playerKillCounter = GetComponent<PlayerKillCounter>();
+        playerKillCounter.length = enemyListSize;
+        playerKillCounter.enabled = true;
     }
 
     public override void Idle()
@@ -101,6 +110,11 @@ public class PlayerController : Character
     public void RecoverAll()
     {
         playerHealth.CurrentHealth = playerHealth.MaxHealth;
+    }
+
+    public void AddCount(int EnemyID)
+    {
+        playerKillCounter.AddCount(EnemyID);
     }
 
 }
