@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyController : Character {
 
+    int enemyID;
     EnemyMovement enemyMovement;
     EnemyHealth enemyHealth;
     EnemyAttack enemyAttack;
@@ -15,8 +16,9 @@ public class EnemyController : Character {
     //    EnemyPlusInit();
     //}
 
-    public void EnemyPlusInit()
+    public void EnemyPlusInit(int enemyID)
     {
+        this.enemyID = enemyID;
         sm_enemy = new StateMachine<EnemyController>(this);
         sm_enemy.SetCurrentState(State_Enemy_Move.Instantiate());
 
@@ -72,6 +74,7 @@ public class EnemyController : Character {
         anim.SetTrigger("Die");
         enemyMovement.enabled = false;
         enemyAttack.enabled = false;
+        playerController.AddCount(enemyID);
     }
 
     public bool IsDead()
