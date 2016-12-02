@@ -27,15 +27,17 @@ public class State_Player_Idle : State<PlayerController>
         {
             obj.GetFSM().ChangeState(State_Player_Move.Instantiate());
         }
-
-        if (Input.GetButton("Fire1"))
+        if (!obj.InWorld)
         {
-            obj.GetFSM().ChangeState(State_Player_UseSkill.Instantiate());
-        }
+            if (Input.GetButton("Fire1"))
+            {
+                obj.GetFSM().ChangeState(State_Player_UseSkill.Instantiate());
+            }
 
-        if (obj.IsDead())
-        {
-            obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
+            if (obj.IsDead())
+            {
+                obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
+            }
         }
     }
 
@@ -71,15 +73,17 @@ public class State_Player_Move : State<PlayerController>
         {
             obj.GetFSM().ChangeState(State_Player_Idle.Instantiate());
         }
-
-        if (Input.GetButton("Fire1"))
+        if (!obj.InWorld)
         {
-            obj.GetFSM().ChangeState(State_Player_UseSkill.Instantiate());
-        }
+            if (Input.GetButton("Fire1"))
+            {
+                obj.GetFSM().ChangeState(State_Player_UseSkill.Instantiate());
+            }
 
-        if (obj.IsDead())
-        {
-            obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
+            if (obj.IsDead())
+            {
+                obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
+            }
         }
     }
 
