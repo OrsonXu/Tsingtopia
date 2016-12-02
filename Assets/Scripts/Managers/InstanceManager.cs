@@ -4,18 +4,19 @@ using UnityEngine.SceneManagement;
 
 public class InstanceManager : MonoBehaviour {
 
-    [SerializeField] PlayerController player;
+    [SerializeField] PlayerController playerController;
     EnemyManager enemyManager;
     RecoverManager recoverManager;
 
     void Awake()
     {
-        player.Init(new Vector3(0f, 0f, 0f), new Vector3(0f, 90f, 0f));
-        player.PlayerPlusInit();
-
+        playerController.Init(new Vector3(0f, 0f, 0f), new Vector3(0f, 90f, 0f));
+        playerController.PlayerPlusInit();
+        playerController.InWorld = false;
         InitEnv();
         InitEnemy();
         InitRecover();
+
     }
 
     void InitEnv()
@@ -31,7 +32,7 @@ public class InstanceManager : MonoBehaviour {
 
     void Update()
     {
-        player.FSMUpdate();
+        playerController.FSMUpdate();
     }
 
     void InitRecover()
