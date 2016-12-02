@@ -11,7 +11,7 @@ public class ChangeSceneTest : MonoBehaviour {
         SceneManager.LoadScene("Instance01");
         PlayerPrefs.SetFloat("x", player.transform.position.x);
         PlayerPrefs.SetFloat("z", player.transform.position.z);
-        //Application.LoadLevel("Instance01");
+        SceneManager.LoadScene("Instance01");
     }
 
 }
