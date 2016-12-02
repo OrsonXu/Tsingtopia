@@ -19,8 +19,9 @@ public class ConcaveColliderEditor : Editor
     SerializedProperty PropBackFaceDistanceFactor;
     SerializedProperty PropNormalizeInputMesh;
     SerializedProperty PropForceNoMultithreading;
-    SerializedProperty PropIsTrigger;
-    SerializedProperty PropMaterial;
+	SerializedProperty PropIsTrigger;
+	SerializedProperty PropMaterial;
+	SerializedProperty PropSmoothSphereCollisions;
 
     ConcaveCollider m_concaveCollider = null;
 
@@ -40,9 +41,10 @@ public class ConcaveColliderEditor : Editor
         PropCreateHullMesh         = serializedObject.FindProperty("CreateHullMesh");
         PropCreateMeshAssets       = serializedObject.FindProperty("CreateMeshAssets");
         PropForceNoMultithreading  = serializedObject.FindProperty("ForceNoMultithreading");
-        PropIsTrigger              = serializedObject.FindProperty("IsTrigger");
-        PropMaterial               = serializedObject.FindProperty("PhysMaterial");
-    }
+		PropIsTrigger              = serializedObject.FindProperty("IsTrigger");
+		PropMaterial               = serializedObject.FindProperty("PhysMaterial");
+		PropSmoothSphereCollisions = serializedObject.FindProperty("SmoothSphereCollisions");
+	}
 
     void Log(string message)
     {
@@ -63,7 +65,7 @@ public class ConcaveColliderEditor : Editor
             }
         }
     }
-    
+	
     public override void OnInspectorGUI()
     {
         // Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
@@ -156,9 +158,10 @@ public class ConcaveColliderEditor : Editor
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space();
-        
-        PropIsTrigger.boolValue              = EditorGUILayout.Toggle     (new GUIContent("Is Trigger"),               PropIsTrigger.boolValue);
-        PropMaterial.objectReferenceValue    = EditorGUILayout.ObjectField(new GUIContent("Material"),                 PropMaterial.objectReferenceValue, typeof(PhysicMaterial), false);
+		
+		PropIsTrigger.boolValue              = EditorGUILayout.Toggle     (new GUIContent("Is Trigger"),               PropIsTrigger.boolValue);
+		PropMaterial.objectReferenceValue    = EditorGUILayout.ObjectField(new GUIContent("Material"),                 PropMaterial.objectReferenceValue, typeof(PhysicMaterial), false);
+		PropSmoothSphereCollisions.boolValue = EditorGUILayout.Toggle     (new GUIContent("Smooth Sphere Collisions"), PropSmoothSphereCollisions.boolValue);
 
         // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
 

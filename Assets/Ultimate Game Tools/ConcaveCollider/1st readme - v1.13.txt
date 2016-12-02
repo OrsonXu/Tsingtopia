@@ -1,10 +1,10 @@
 ________________________________________________________________________________________
                                     Concave Collider
-                        Copyright © 2012-2015 Ultimate Game Tools
+                        Copyright © 2012-2013 Ultimate Game Tools
                             http://www.ultimategametools.com
                              contact@ultimategametools.com
 ________________________________________________________________________________________
-Version 1.23
+Version 1.13
 
 
 ________________________________________________________________________________________
@@ -36,7 +36,7 @@ one when targeting a desktop configuration.
 ________________________________________________________________________________________
 Requirements
 
-Unity 3.5/4.x Pro, Unity 5 for Windows or Mac.
+Unity 3.5/4.x Pro for Windows or Mac.
 Products build with it will run on any platform.
 Sample scenes have been created using Unity 3.5.5f3.
 
@@ -63,19 +63,6 @@ Acknowledgements
 
 ________________________________________________________________________________________
 Version history
-
-v1.23 - 04/05/2015
-
-[FIX] Removed the VC 2013 runtime dependency.
-
-v1.22 - 20/04/2015
-
-[NEW] Reuploaded using Unity 5.0.0 to switch the minimum required Unity 5 version from
-      5.0.1 to 5.0.0.
-
-v1.20 - 02/04/2015
-
-[NEW] Added full Unity 5 support by porting the dll to 64 bit platforms (Win & Mac).
 
 v1.13 - 19/11/2013
 
