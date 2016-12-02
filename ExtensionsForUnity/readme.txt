@@ -9,3 +9,7 @@ legacy mode: create many box colliders
 
 Note that the model with a concave collider can not be saved as a prefab. 
 Even if it is saved, the characters of the result of concave collider calculation will lose.
+
+Download:
+URL: https://pan.baidu.com/s/1mi0ivRM 
+Password: bxr4
