@@ -5,14 +5,15 @@ using System.Collections.Generic;
 
 public class TaskNode : MonoBehaviour {
 
-    public enum taskNodeStatus
+    public enum TaskNodeStatus
     {
         UNDISCOVERED,
         DISCOVERED,
         COMPLETED
     };
 
-    private taskNodeStatus status;
+    private TaskNodeStatus status;
+    private TaskManager tskmnger;
     public List<TaskNode> parentNode;
     public List<TaskNode> childNode;
     public Notifier ntf;
@@ -21,17 +22,18 @@ public class TaskNode : MonoBehaviour {
 
     void Awake()
     {
-        status = taskNodeStatus.UNDISCOVERED;
+        status = TaskNodeStatus.UNDISCOVERED;
+        tskmnger = TaskManager.Instance();
     }
 
     // Set task node status 
    
     public void setStatus(int inStatusId)
     {
-        status = (taskNodeStatus)inStatusId;
+        status = (TaskNodeStatus)inStatusId;
     }
 
-    public void setStatus(taskNodeStatus inTaskStatus)
+    public void setStatus(TaskNodeStatus inTaskStatus)
     {
         status = inTaskStatus;
     }
@@ -39,33 +41,31 @@ public class TaskNode : MonoBehaviour {
     // Compare status with an input 
     public bool equalStatus(int inStatusId)
     {
-        return status == (taskNodeStatus)inStatusId;
+        return status == (TaskNodeStatus)inStatusId;
     }
 
-    public bool equalStatus(taskNodeStatus inTaskStatus)
+    public bool equalStatus(TaskNodeStatus inTaskStatus)
     {
         return status == inTaskStatus;
     }
+   
     // Try to update self status, called by listener
-    public void tryUpdateSelf()
+    public void tryUpdate()
     {
         // if status is not undiscovered or have no parent return
-        if((status != taskNodeStatus.UNDISCOVERED) || parentNode.Count == null)
+        if((status != TaskNodeStatus.UNDISCOVERED) || parentNode.Count == null)
             return;
-
         bool uncompletedParent = false;
         for (int i = 0; i < parentNode.Count; i++)
         {
-            if ((taskNodeStatus)parentNode[i].status != taskNodeStatus.COMPLETED)
+            if ((TaskNodeStatus)parentNode[i].status != TaskNodeStatus.COMPLETED)
                 uncompletedParent = true;
         }
-
         // if not all parent completed or have no child, this node will not be discovered
         if (uncompletedParent || (childNode.Count == 0))
             return;
-
-        status = taskNodeStatus.DISCOVERED;
-
+        status = TaskNodeStatus.DISCOVERED;
+        tskmnger.addActiveNode(this);
     }
 
 
@@ -73,12 +73,13 @@ public class TaskNode : MonoBehaviour {
 
     public void finishUpdate()
     {
-        status = taskNodeStatus.COMPLETED;
+        status = TaskNodeStatus.COMPLETED;
         for (int i = 0; i < childNode.Count; i++)
         {
             childNode[i].tryUpdateSelf();
         }
         callNotifier();
+        tskmnger.removeFinishedNode(this);
     }
 
 

@@ -9,6 +9,7 @@ public class Notifier : MonoBehaviour
     ItemBag itemBag;
     TaskTable taskTable;
 
+
     public void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");

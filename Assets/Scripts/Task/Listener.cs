@@ -2,16 +2,26 @@
 using System.Collections;
 
 public class Listener : MonoBehaviour {
+    private TaskManager tskmnger;
+    private TaskNode tsknd;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // get task manager
+    void Awake()
+    {
+        tskmnger = TaskManager.Instance();
+    }
+    // set the bounded tasknode of listener
+    void setTaskNode(TaskNode tn)
+    {
+        tsknd = tn;
+    }
+    // try to update the state of a tasknode
+    void updateTaskNode()
+    {
+        if (tsknd)
+            tskmnger.tryUpdate(tsknd);       
+    }
+    
 }
 
 public class EventListener : Listener
