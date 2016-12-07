@@ -53,7 +53,7 @@ public class PlayerController : Character
 
         playerKillCounter = GetComponent<PlayerKillCounter>();
         playerKillCounter.length = enemyListSize;
-        //playerKillCounter.enabled = true;
+        playerKillCounter.enabled = true;
     }
 
     public override void Idle()
