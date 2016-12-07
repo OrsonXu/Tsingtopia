@@ -30,11 +30,13 @@ public class ConcaveCollider : MonoBehaviour
 
                        public PhysicMaterial   PhysMaterial                = null;
                        public bool             IsTrigger                   = false;
+                       public bool             SmoothSphereCollisions      = false;
 
                        public GameObject[]     m_aGoHulls                  = null;
 
     [SerializeField]   private PhysicMaterial  LastMaterial                = null;
     [SerializeField]   private bool            LastIsTrigger               = false;
+    [SerializeField]   private bool            LastSmoothSphereCollisions  = false;
 
     [SerializeField]   private int             LargestHullVertices         = 0;
     [SerializeField]   private int             LargestHullFaces            = 0;
@@ -83,6 +85,23 @@ public class ConcaveCollider : MonoBehaviour
                     {
                         collider.isTrigger = IsTrigger;
                         LastIsTrigger = IsTrigger;
+                    }
+                }
+            }
+        }
+
+        if(SmoothSphereCollisions != LastSmoothSphereCollisions)
+        {
+            foreach(GameObject hull in m_aGoHulls)
+            {
+                if(hull)
+                {
+                    MeshCollider collider = hull.GetComponent<MeshCollider>();
+
+                    if(collider)
+                    {
+                        collider.smoothSphereCollisions = SmoothSphereCollisions;
+                        LastSmoothSphereCollisions = SmoothSphereCollisions;
                     }
                 }
             }
@@ -139,7 +158,7 @@ public class ConcaveCollider : MonoBehaviour
         }
 
         MeshFilter theMesh = (MeshFilter)gameObject.GetComponent<MeshFilter>();
-        
+		
         bool bForceNoMultithreading = ForceNoMultithreading;
 
         if(Algorithm == EAlgorithm.Legacy)
@@ -170,21 +189,21 @@ public class ConcaveCollider : MonoBehaviour
 
         SConvexDecompositionInfoInOut info = new SConvexDecompositionInfoInOut();
 
-        int nMeshCount = 0;
+		int nMeshCount = 0;
 
         if(theMesh)
         {
             if(theMesh.sharedMesh)
             {
                 info.uMaxHullVertices        = (uint)(Mathf.Max(3, MaxHullVertices));
-                info.uMaxHulls               = (uint)(Mathf.Max(1, MaxHulls));
-                info.fPrecision              = 1.0f - Mathf.Clamp01(Precision);
+	            info.uMaxHulls               = (uint)(Mathf.Max(1, MaxHulls));
+	            info.fPrecision              = 1.0f - Mathf.Clamp01(Precision);
                 info.fBackFaceDistanceFactor = BackFaceDistanceFactor;
                 info.uLegacyDepth            = Algorithm == EAlgorithm.Legacy ? (uint)(Mathf.Max(1, LegacyDepth)) : 0;
                 info.uNormalizeInputMesh     = NormalizeInputMesh == true ? (uint)1 : (uint)0;
                 info.uUseFastVersion         = Algorithm == EAlgorithm.Fast ? (uint)1 : (uint)0;
 
-                info.uTriangleCount          = (uint)theMesh.sharedMesh.triangles.Length / 3;
+	            info.uTriangleCount          = (uint)theMesh.sharedMesh.triangles.Length / 3;
                 info.uVertexCount            = (uint)theMesh.sharedMesh.vertexCount;
 
                 if(DebugLog)
@@ -263,10 +282,10 @@ public class ConcaveCollider : MonoBehaviour
                             m_aGoHulls[nHull].transform.parent   = this.transform;
                             m_aGoHulls[nHull].layer              = this.gameObject.layer;
 
-                            Vector3[] hullVertices = new Vector3[hullInfo.nVertexCount];
+							Vector3[] hullVertices = new Vector3[hullInfo.nVertexCount];
                             int[]     hullIndices  = new int[hullInfo.nTriangleCount * 3];
-                            
-                            float fHullVolume     = -1.0f;
+							
+							float fHullVolume     = -1.0f;
                             float fInvMeshRescale = 1.0f / fMeshRescale;
 
                             FillHullMeshData((uint)nHull, ref fHullVolume, hullIndices, hullVertices);
@@ -292,48 +311,45 @@ public class ConcaveCollider : MonoBehaviour
                             Mesh hullMesh = new Mesh();
                             hullMesh.vertices  = hullVertices;
                             hullMesh.triangles = hullIndices;
-                            
-                            Collider hullCollider = null;
+							
+							Collider hullCollider = null;
 
                             fHullVolume *= Mathf.Pow(fInvMeshRescale, 3.0f);
-                            
-                            if(fHullVolume < MinHullVolume)
-                            {
+							
+							if(fHullVolume < MinHullVolume)
+							{
                                 if(DebugLog)
                                 {
                                     Debug.Log(string.Format("Hull {0} will be approximated as a box collider (volume is {1:F2})", nHull, fHullVolume));
                                 }
-                                
-                                MeshFilter meshf = m_aGoHulls[nHull].AddComponent<MeshFilter>();
-                                meshf.sharedMesh = hullMesh;
+								
+								MeshFilter meshf = m_aGoHulls[nHull].AddComponent<MeshFilter>();
+								meshf.sharedMesh = hullMesh;
 
                                 // Let Unity3D compute the best fitting box (it will use the meshfilter)
-                                hullCollider = m_aGoHulls[nHull].AddComponent<BoxCollider>() as BoxCollider;
-                                BoxCollider boxCollider = hullCollider as BoxCollider;
-                                boxCollider.center = hullMesh.bounds.center;
-                                boxCollider.size = hullMesh.bounds.size;
+								hullCollider = m_aGoHulls[nHull].AddComponent<BoxCollider>() as BoxCollider;
 
-                                if(CreateHullMesh == false)
+								if(CreateHullMesh == false)
                                 {
-                                    if(Application.isEditor && Application.isPlaying == false)
-                                    {
-                                        DestroyImmediate(meshf);
+								    if(Application.isEditor && Application.isPlaying == false)
+            					    {
+									    DestroyImmediate(meshf);
                                         DestroyImmediate(hullMesh);
-                                    }
-                                    else
-                                    {
-                                        Destroy(meshf);
+								    }
+								    else
+								    {
+									    Destroy(meshf);
                                         Destroy(hullMesh);
-                                    }
+								    }
                                 }
                                 else
                                 {
                                     meshf.sharedMesh.RecalculateNormals();
                                     meshf.sharedMesh.uv = new Vector2[hullVertices.Length];
                                 }
-                            }                           
-                            else
-                            {
+							}							
+							else
+							{
                                 if(DebugLog)
                                 {
                                     Debug.Log(string.Format("Hull {0} collider: {1} vertices and {2} triangles. Volume = {3}", nHull, hullMesh.vertexCount, hullMesh.triangles.Length / 3, fHullVolume));
@@ -341,59 +357,60 @@ public class ConcaveCollider : MonoBehaviour
 
                                 MeshCollider meshCollider = m_aGoHulls[nHull].AddComponent<MeshCollider>() as MeshCollider;
 
-                                meshCollider.sharedMesh = hullMesh;
-                                meshCollider.convex     = true;
-                                
-                                hullCollider = meshCollider;
+								meshCollider.sharedMesh = hullMesh;
+								meshCollider.convex     = true;
+								meshCollider.smoothSphereCollisions = SmoothSphereCollisions;
+								
+								hullCollider = meshCollider;
 
                                 if(CreateHullMesh)
                                 {
-                                    MeshFilter meshf = m_aGoHulls[nHull].AddComponent<MeshFilter>();
-                                    meshf.sharedMesh = hullMesh;
+								    MeshFilter meshf = m_aGoHulls[nHull].AddComponent<MeshFilter>();
+								    meshf.sharedMesh = hullMesh;
                                 }
-                                
+								
                                 if(CreateMeshAssets)
                                 {
-                                    if(nMeshCount == 0)
-                                    {
-                                        if(progress != null)
-                                        {
-                                            progress("Creating mesh assets", 0.0f);
-                                        }
+								    if(nMeshCount == 0)
+								    {
+									    if(progress != null)
+									    {
+										    progress("Creating mesh assets", 0.0f);
+									    }
 
                                         // Avoid some shader warnings
                                         hullMesh.RecalculateNormals();
                                         hullMesh.uv = new Vector2[hullVertices.Length];
 
-                                        UnityEditor.AssetDatabase.CreateAsset(hullMesh, strMeshAssetPath);
-                                    }
-                                    else
-                                    {
-                                        if(progress != null)
-                                        {
-                                            progress("Creating mesh assets", info.nHullsOut > 1 ? (nHull / (info.nHullsOut - 1.0f)) * 100.0f : 100.0f);
-                                        }
+									    UnityEditor.AssetDatabase.CreateAsset(hullMesh, strMeshAssetPath);
+								    }
+								    else
+								    {
+									    if(progress != null)
+									    {
+										    progress("Creating mesh assets", info.nHullsOut > 1 ? (nHull / (info.nHullsOut - 1.0f)) * 100.0f : 100.0f);
+									    }
 
                                         // Avoid some shader warnings
                                         hullMesh.RecalculateNormals();
                                         hullMesh.uv = new Vector2[hullVertices.Length];
 
                                         UnityEditor.AssetDatabase.AddObjectToAsset(hullMesh, strMeshAssetPath);
-                                        UnityEditor.AssetDatabase.ImportAsset(UnityEditor.AssetDatabase.GetAssetPath(hullMesh));
-                                    }
+		 							    UnityEditor.AssetDatabase.ImportAsset(UnityEditor.AssetDatabase.GetAssetPath(hullMesh));
+								    }
                                 }
-                                
-                                nMeshCount++;
-                            }
-                            
-                            if(hullCollider)
-                            {
-                                hullCollider.material  = PhysMaterial;
-                                hullCollider.isTrigger = IsTrigger;
+								
+								nMeshCount++;
+							}
+							
+							if(hullCollider)
+							{
+								hullCollider.material  = PhysMaterial;
+                           		hullCollider.isTrigger = IsTrigger;
 
                                 if(hullInfo.nTriangleCount > LargestHullFaces)    LargestHullFaces    = hullInfo.nTriangleCount;
                                 if(hullInfo.nVertexCount   > LargestHullVertices) LargestHullVertices = hullInfo.nVertexCount;
-                            }
+							}
                         }
                     }
 
@@ -418,7 +435,7 @@ public class ConcaveCollider : MonoBehaviour
         }
 
         DllClose();
-    }
+	}
 
 #endif // UNITY_EDITOR
 
@@ -435,9 +452,9 @@ public class ConcaveCollider : MonoBehaviour
     [StructLayout(LayoutKind.Sequential)]
     struct SConvexDecompositionInfoInOut
     {
-        public uint     uMaxHullVertices;
-        public uint     uMaxHulls;
-        public float    fPrecision;
+       	public uint     uMaxHullVertices;
+	    public uint     uMaxHulls;
+	    public float    fPrecision;
         public float    fBackFaceDistanceFactor;
         public uint     uLegacyDepth;
         public uint     uNormalizeInputMesh;
@@ -446,16 +463,16 @@ public class ConcaveCollider : MonoBehaviour
         public uint     uTriangleCount;
         public uint     uVertexCount;
 
-        // Out parameters
+	    // Out parameters
 
-        public int      nHullsOut;
+	    public int      nHullsOut;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     struct SConvexDecompositionHullInfo
     {
-        public int      nVertexCount;
-        public int      nTriangleCount;
+	    public int      nVertexCount;
+	    public int      nTriangleCount;
     };
 
     [DllImport("ConvexDecompositionDll")]

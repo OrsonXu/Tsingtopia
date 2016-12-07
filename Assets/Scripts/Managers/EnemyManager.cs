@@ -3,7 +3,7 @@ using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    public PlayerController playerController;
     public GameObject[] enemies;
     public float spawnTime = 3f;
     public float spawnInterval = 10f;
@@ -17,7 +17,7 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn ()
     {
-        if(playerHealth.CurrentHealth <= 0f)
+        if (playerController.IsDead())
         {
             return;
         }
@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
         int enemyIndex = Random.Range(0, enemies.Length);
         GameObject tmp = Instantiate(enemies[enemyIndex], spawnPoints[enemyIndex].position, spawnPoints[enemyIndex].rotation) as GameObject;
         EnemyController tmpc = tmp.GetComponent<EnemyController>();
-        tmpc.EnemyPlusInit();
+        tmpc.EnemyPlusInit(enemyIndex);
         
     }
 }

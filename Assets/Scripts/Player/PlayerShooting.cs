@@ -27,7 +27,7 @@ public class PlayerShooting : MonoBehaviour
     PlayerMagic playerMagic;
 
 
-    void Awake ()
+    void Start ()
     {
         // Get components from public
         shootableMask = LayerMask.GetMask ("Shootable");
