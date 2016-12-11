@@ -21,6 +21,12 @@ public class State_Player_Idle : State<PlayerController>
 
     public override void Execute(PlayerController obj)
     {
+
+        if (obj.IsDead())
+        {
+            obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
+        }
+
         obj.Idle();
 
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
@@ -34,10 +40,7 @@ public class State_Player_Idle : State<PlayerController>
                 obj.GetFSM().ChangeState(State_Player_UseSkill.Instantiate());
             }
 
-            if (obj.IsDead())
-            {
-                obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
-            }
+
         }
     }
 
@@ -68,6 +71,11 @@ public class State_Player_Move : State<PlayerController>
 
     public override void Execute(PlayerController obj)
     {
+        if (obj.IsDead())
+        {
+            obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
+        }
+
         obj.Move();
         if (Input.GetAxisRaw("Horizontal") == 0 || Input.GetAxisRaw("Vertical") == 0)
         {
@@ -78,11 +86,6 @@ public class State_Player_Move : State<PlayerController>
             if (Input.GetButton("Fire1"))
             {
                 obj.GetFSM().ChangeState(State_Player_UseSkill.Instantiate());
-            }
-
-            if (obj.IsDead())
-            {
-                obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
             }
         }
     }
@@ -114,6 +117,11 @@ public class State_Player_UseSkill : State<PlayerController>
 
     public override void Execute(PlayerController obj)
     {
+        if (obj.IsDead())
+        {
+            obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
+        }
+
         obj.UseSkill();
 
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
@@ -125,10 +133,7 @@ public class State_Player_UseSkill : State<PlayerController>
             obj.GetFSM().ChangeState(State_Player_Idle.Instantiate());
         }
 
-        if (obj.IsDead())
-        {
-            obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
-        }
+        
     }
 
     public override void Exit(PlayerController obj)

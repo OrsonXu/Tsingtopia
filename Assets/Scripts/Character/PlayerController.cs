@@ -32,6 +32,7 @@ public class PlayerController : Character
 
         if (InWorld)
         {
+            Debug.Log("Inworld.");
             return;
         }
 
@@ -42,7 +43,7 @@ public class PlayerController : Character
         playerHealth = GetComponent<PlayerHealth>();
         playerHealth.MaxHealth = playerHealth.CurrentHealth = Health;
         playerHealth.RecoverRate = HealthRecoverRatePerMin;
-        //playerHealth.enabled = true;
+        playerHealth.enabled = true;
 
         playerMagic = GetComponent<PlayerMagic>();
         playerMagic.MaxMagic = playerMagic.CurrentMagic = Magic;
@@ -113,6 +114,7 @@ public class PlayerController : Character
 
     public bool IsDead()
     {
+        if (InWorld) return false;
         return playerHealth.IsDead();
     }
 
