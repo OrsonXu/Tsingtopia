@@ -71,10 +71,9 @@ ModelImporter:
     400064: spine_06
     4300000: droid_box
     7400000: Take 001
-    7400002: death1
+    7400002: run
     7400004: idle1
-    7400006: walk
-    7400008: run
+    7400006: death1
     9500000: //RootNode
     11100000: //RootNode
     13700000: droid_box
@@ -194,17 +193,17 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: death1
+      name: run
       takeName: Take 001
-      firstFrame: 400
-      lastFrame: 460
+      firstFrame: 165
+      lastFrame: 180
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -216,14 +215,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.24630542
-        functionName: StartSinking
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
@@ -305,7 +297,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -389,17 +381,17 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: walk
+      name: death1
       takeName: Take 001
-      firstFrame: 100
-      lastFrame: 130
+      firstFrame: 400
+      lastFrame: 460
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -411,101 +403,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: droid_box
-        weight: 1
-      - path: Root
-        weight: 1
-      - path: Root/spine_01
-        weight: 1
-      - path: Root/spine_01/spine_02
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/connectBone06
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/connectBone06/Bone17
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/connectBone06/Bone17/Bone18
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/left_back_01
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/left_back_01/left_back_02
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/left_back_01/left_back_02/left_back_03
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/left_back_01/left_back_02/left_back_03/left_back_04
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/left_front_01
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/left_front_01/left_front_02
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/left_front_01/left_front_02/left_front_03
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/left_front_01/left_front_02/left_front_03/left_front_04
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/right_back_01
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/right_back_01/right_back_02
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/right_back_01/right_back_02/right_back_03
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/right_back_01/right_back_02/right_back_03/right_back_04
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/right_front_01
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/right_front_01/right_front_02
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/right_front_01/right_front_02/right_front_03
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/Bone19/right_front_01/right_front_02/right_front_03/right_front_04
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/left_hand_01
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/left_hand_01/left_hand_02
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/right_hand_01
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/right_hand_01/right_hand_02
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/spine_04
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05
-        weight: 1
-      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/spine_06
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: run
-      takeName: Take 001
-      firstFrame: 165
-      lastFrame: 180
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
+      events:
+      - time: 0.2437276
+        functionName: StartSinking
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

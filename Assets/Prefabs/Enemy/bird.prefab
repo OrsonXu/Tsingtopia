@@ -1432,9 +1432,9 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 22100000, guid: 935e34293256af1428cc3f3962481ca5, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1489,9 +1489,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SinkSpeed: 2.5
   ScoreValue: 10
-  DeathClip: {fileID: 0}
-  HurtClip: {fileID: 0}
-  icon: {fileID: 0}
+  DeathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
+  HurtClip: {fileID: 8300000, guid: fce027b40770a44298a6f5a4233bfb04, type: 3}
+  icon: {fileID: 21300000, guid: c853db47edf402841b98ab9ea701cdc7, type: 3}
 --- !u!135 &135000012690071804
 SphereCollider:
   m_ObjectHideFlags: 1

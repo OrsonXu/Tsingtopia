@@ -97,10 +97,12 @@ ModelImporter:
     400088: up_right_01
     400090: up_right_02
     400092: up_right_Nub
-    2300000: droid_cylinder
-    3300000: droid_cylinder
     4300000: droid_cylinder
     7400000: Take 001
+    7400002: run
+    7400004: idle1
+    7400006: death1
+    9500000: //RootNode
     11100000: //RootNode
     13700000: droid_cylinder
   materials:
@@ -117,13 +119,508 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 900
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: droid_cylinder
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/back_front_Chain
+        weight: 1
+      - path: Root/left_back_Chain
+        weight: 1
+      - path: 'Root/left_front_Chain '
+        weight: 1
+      - path: Root/right_front_Chain
+        weight: 1
+      - path: Root/spine_01
+        weight: 1
+      - path: Root/spine_01/spine_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03/back_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03/back_front_04/back_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04/Bone06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04/Bone06/Bone07
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05/Bone06(mirrored)
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05/Bone06(mirrored)/Bone07(mirrored)
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03/left_back_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03/left_back_04/left_back_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03/left_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03/left_front_04/left_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03/right_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03/right_front_04/right_front_Nnub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/spine_06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01/up_left_0
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01/up_left_0/up_left_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01/up_right_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01/up_right_02/up_right_Nub
+        weight: 1
+      - path: spine_Chain_01
+        weight: 1
+      - path: spine_Chain_01/spine_Chain_02
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: run
+      takeName: Take 001
+      firstFrame: 165
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: droid_cylinder
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/back_front_Chain
+        weight: 1
+      - path: Root/left_back_Chain
+        weight: 1
+      - path: 'Root/left_front_Chain '
+        weight: 1
+      - path: Root/right_front_Chain
+        weight: 1
+      - path: Root/spine_01
+        weight: 1
+      - path: Root/spine_01/spine_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03/back_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03/back_front_04/back_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04/Bone06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04/Bone06/Bone07
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05/Bone06(mirrored)
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05/Bone06(mirrored)/Bone07(mirrored)
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03/left_back_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03/left_back_04/left_back_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03/left_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03/left_front_04/left_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03/right_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03/right_front_04/right_front_Nnub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/spine_06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01/up_left_0
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01/up_left_0/up_left_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01/up_right_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01/up_right_02/up_right_Nub
+        weight: 1
+      - path: spine_Chain_01
+        weight: 1
+      - path: spine_Chain_01/spine_Chain_02
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idle1
+      takeName: Take 001
+      firstFrame: 525
+      lastFrame: 725
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: droid_cylinder
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/back_front_Chain
+        weight: 1
+      - path: Root/left_back_Chain
+        weight: 1
+      - path: 'Root/left_front_Chain '
+        weight: 1
+      - path: Root/right_front_Chain
+        weight: 1
+      - path: Root/spine_01
+        weight: 1
+      - path: Root/spine_01/spine_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03/back_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03/back_front_04/back_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04/Bone06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04/Bone06/Bone07
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05/Bone06(mirrored)
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05/Bone06(mirrored)/Bone07(mirrored)
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03/left_back_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03/left_back_04/left_back_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03/left_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03/left_front_04/left_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03/right_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03/right_front_04/right_front_Nnub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/spine_06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01/up_left_0
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01/up_left_0/up_left_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01/up_right_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01/up_right_02/up_right_Nub
+        weight: 1
+      - path: spine_Chain_01
+        weight: 1
+      - path: spine_Chain_01/spine_Chain_02
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: death1
+      takeName: Take 001
+      firstFrame: 400
+      lastFrame: 460
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.24731183
+        functionName: StartSinking
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: droid_cylinder
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/back_front_Chain
+        weight: 1
+      - path: Root/left_back_Chain
+        weight: 1
+      - path: 'Root/left_front_Chain '
+        weight: 1
+      - path: Root/right_front_Chain
+        weight: 1
+      - path: Root/spine_01
+        weight: 1
+      - path: Root/spine_01/spine_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03/back_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/back_front_01/back_front_02/back_front_03/back_front_04/back_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04/Bone06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone04/Bone06/Bone07
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05/Bone06(mirrored)
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/connectBone05/Bone06(mirrored)/Bone07(mirrored)
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03/left_back_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_back_01/left_back_02/left_back_03/left_back_04/left_back_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03/left_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/left_front_01/left_front_02/left_front_03/left_front_04/left_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03/right_front_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/right_front_01/right_front_02/right_front_03/right_front_04/right_front_Nnub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/spine_06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01/up_left_0
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_left_01/up_left_0/up_left_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01/up_right_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/up_right_01/up_right_02/up_right_Nub
+        weight: 1
+      - path: spine_Chain_01
+        weight: 1
+      - path: spine_Chain_01/spine_Chain_02
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -158,10 +655,10 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: droid_cylinder
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
