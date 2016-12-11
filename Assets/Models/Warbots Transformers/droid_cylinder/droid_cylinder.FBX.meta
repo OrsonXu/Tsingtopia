@@ -3,7 +3,106 @@ guid: 839b69eb4139aa74489b4d5da1b04267
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
+    100000: back_front_01
+    100002: back_front_02
+    100004: back_front_03
+    100006: back_front_04
+    100008: back_front_Chain
+    100010: back_front_Nub
+    100012: Bone06
+    100014: Bone06(mirrored)
+    100016: Bone07
+    100018: Bone07(mirrored)
+    100020: connectBone04
+    100022: connectBone05
+    100024: //RootNode
+    100026: droid_cylinder
+    100028: left_back_01
+    100030: left_back_02
+    100032: left_back_03
+    100034: left_back_04
+    100036: left_back_Chain
+    100038: left_back_Nub
+    100040: left_front_01
+    100042: left_front_02
+    100044: left_front_03
+    100046: left_front_04
+    100048: 'left_front_Chain '
+    100050: left_front_Nub
+    100052: right_front_01
+    100054: right_front_02
+    100056: right_front_03
+    100058: right_front_04
+    100060: right_front_Chain
+    100062: right_front_Nnub
+    100064: Root
+    100066: spine_01
+    100068: spine_02
+    100070: spine_03
+    100072: spine_04
+    100074: spine_05
+    100076: spine_06
+    100078: spine_Chain_01
+    100080: spine_Chain_02
+    100082: up_left_0
+    100084: up_left_01
+    100086: up_left_Nub
+    100088: up_right_01
+    100090: up_right_02
+    100092: up_right_Nub
+    400000: back_front_01
+    400002: back_front_02
+    400004: back_front_03
+    400006: back_front_04
+    400008: back_front_Chain
+    400010: back_front_Nub
+    400012: Bone06
+    400014: Bone06(mirrored)
+    400016: Bone07
+    400018: Bone07(mirrored)
+    400020: connectBone04
+    400022: connectBone05
+    400024: //RootNode
+    400026: droid_cylinder
+    400028: left_back_01
+    400030: left_back_02
+    400032: left_back_03
+    400034: left_back_04
+    400036: left_back_Chain
+    400038: left_back_Nub
+    400040: left_front_01
+    400042: left_front_02
+    400044: left_front_03
+    400046: left_front_04
+    400048: 'left_front_Chain '
+    400050: left_front_Nub
+    400052: right_front_01
+    400054: right_front_02
+    400056: right_front_03
+    400058: right_front_04
+    400060: right_front_Chain
+    400062: right_front_Nnub
+    400064: Root
+    400066: spine_01
+    400068: spine_02
+    400070: spine_03
+    400072: spine_04
+    400074: spine_05
+    400076: spine_06
+    400078: spine_Chain_01
+    400080: spine_Chain_02
+    400082: up_left_0
+    400084: up_left_01
+    400086: up_left_Nub
+    400088: up_right_01
+    400090: up_right_02
+    400092: up_right_Nub
+    2300000: droid_cylinder
+    3300000: droid_cylinder
     4300000: droid_cylinder
+    7400000: Take 001
+    11100000: //RootNode
+    13700000: droid_cylinder
   materials:
     importMaterials: 1
     materialName: 3
@@ -62,7 +161,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

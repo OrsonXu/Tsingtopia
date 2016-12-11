@@ -3,7 +3,93 @@ guid: 859fdb9a98e04e04b9328610bec2d459
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: droid_sphere
+    100004: left_backt_01
+    100006: left_backt_02
+    100008: left_backt_03
+    100010: left_backt_Chain
+    100012: left_backt_Nub
+    100014: left_front_01
+    100016: left_front_02
+    100018: left_front_03
+    100020: left_front_Chain
+    100022: left_front_Nub
+    100024: left_top_01
+    100026: left_top_02
+    100028: left_top_Nub
+    100030: right_back_01
+    100032: right_back_02
+    100034: right_back_03
+    100036: right_back_Chain
+    100038: right_back_Nub
+    100040: right_front_01
+    100042: right_front_02
+    100044: right_front_03
+    100046: right_front_Chain
+    100048: right_front_Nub
+    100050: right_top_01
+    100052: right_top_02
+    100054: right_top_Nub
+    100056: Root
+    100058: spine_01
+    100060: spine_02
+    100062: spine_03
+    100064: spine_04
+    100066: spine_05
+    100068: spine_06
+    100070: spine_07
+    100072: spine_08
+    100074: spine_09
+    100076: spine_Chain_01
+    100078: spine_Chain_02
+    100080: spine_Nub
+    400000: //RootNode
+    400002: droid_sphere
+    400004: left_backt_01
+    400006: left_backt_02
+    400008: left_backt_03
+    400010: left_backt_Chain
+    400012: left_backt_Nub
+    400014: left_front_01
+    400016: left_front_02
+    400018: left_front_03
+    400020: left_front_Chain
+    400022: left_front_Nub
+    400024: left_top_01
+    400026: left_top_02
+    400028: left_top_Nub
+    400030: right_back_01
+    400032: right_back_02
+    400034: right_back_03
+    400036: right_back_Chain
+    400038: right_back_Nub
+    400040: right_front_01
+    400042: right_front_02
+    400044: right_front_03
+    400046: right_front_Chain
+    400048: right_front_Nub
+    400050: right_top_01
+    400052: right_top_02
+    400054: right_top_Nub
+    400056: Root
+    400058: spine_01
+    400060: spine_02
+    400062: spine_03
+    400064: spine_04
+    400066: spine_05
+    400068: spine_06
+    400070: spine_07
+    400072: spine_08
+    400074: spine_09
+    400076: spine_Chain_01
+    400078: spine_Chain_02
+    400080: spine_Nub
     4300000: droid_sphere
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: droid_sphere
   materials:
     importMaterials: 1
     materialName: 3
@@ -18,7 +104,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -59,10 +145,10 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: droid_sphere
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
