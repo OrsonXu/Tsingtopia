@@ -27,7 +27,7 @@ public class InstanceManager : MonoBehaviour {
     void InitEnemy()
     {
         enemyManager = GetComponent<EnemyManager>();
-        enemyManager.enabled = true;
+        enemyManager.enabled = false;
     }
 
     void Update()
