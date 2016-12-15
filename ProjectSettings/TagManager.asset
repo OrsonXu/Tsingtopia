@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - InstanceManager
+  - Recover
+  - Enemy
   layers:
   - Default
   - TransparentFX

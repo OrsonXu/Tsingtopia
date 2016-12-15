@@ -9,7 +9,7 @@ public class EnemyAttack : MonoBehaviour
     GameObject player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
-    bool playerInRange;
+    bool InRange;
     float timer;
 
 
@@ -23,19 +23,18 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
-        if(other.gameObject == player)
+        if(other.tag == "Player" && !other.isTrigger)
         {
-            playerInRange = true;
+            InRange = true;
         }
     }
 
 
     void OnTriggerExit (Collider other)
     {
-        if(other.gameObject == player)
+        if (other.tag == "Player" && !other.isTrigger)
         {
-            playerInRange = false;
-            
+            InRange = false;
         }
     }
     
@@ -44,7 +43,7 @@ public class EnemyAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.CurrentHealth > 0)
+        if(timer >= timeBetweenAttacks && InRange && enemyHealth.CurrentHealth > 0)
         {
             Attack ();
         }

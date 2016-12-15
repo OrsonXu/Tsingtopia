@@ -76,7 +76,7 @@ GameObject:
   - 82: {fileID: 82000011509206560}
   m_Layer: 9
   m_Name: DroidCylinder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1355,7 +1355,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013218874728}
-  m_LocalRotation: {x: 0.05436172, y: -0.26514262, z: 0.2910448, w: 0.9176258}
+  m_LocalRotation: {x: 0.054361723, y: -0.26514265, z: 0.29104483, w: 0.91762584}
   m_LocalPosition: {x: -0.0023216063, y: 0, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1537,6 +1537,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   MoveSpeed: 3
+  searchingTurnSpeed: 120
+  sightRange: 20
+  MovePoints: []
+  alertThreshold: 2
 --- !u!114 &114000011442200226
 MonoBehaviour:
   m_ObjectHideFlags: 1

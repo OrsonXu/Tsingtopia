@@ -529,7 +529,7 @@ GameObject:
   - 82: {fileID: 82000013840077402}
   m_Layer: 9
   m_Name: DroidBox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1140,6 +1140,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   MoveSpeed: 3
+  searchingTurnSpeed: 120
+  sightRange: 20
+  MovePoints: []
+  alertThreshold: 2
 --- !u!114 &114000012837927240
 MonoBehaviour:
   m_ObjectHideFlags: 1

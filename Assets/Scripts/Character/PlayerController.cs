@@ -128,4 +128,20 @@ public class PlayerController : Character
         playerKillCounter.AddCount(EnemyID);
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemyController>().playerInRange = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemyController>().playerInRange = false;
+        }
+    }
+
 }
