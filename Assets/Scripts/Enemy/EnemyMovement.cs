@@ -8,10 +8,13 @@ public class EnemyMovement : MonoBehaviour
     EnemyHealth enemyHealth;
     NavMeshAgent nav;
     public float Speed { get; set; }
+    
 
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        //playerHealth = player.GetComponent<PlayerHealth>();
+        //enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent <NavMeshAgent> ();
         nav.speed = Speed;
     }
@@ -19,29 +22,22 @@ public class EnemyMovement : MonoBehaviour
     void Update ()
     {
         nav.speed = Speed;
+        //if (enemyHealth.CurrentHealth > 0 && playerHealth.CurrentHealth > 0)
+        //{
+        if (player != null)
+        {
+            nav.SetDestination(player.position);
+            nav.enabled = true;
+        }
+        
+        //}
+        //else
+        //{
+        //    nav.enabled = false;
+        //}
     }
     void OnDisable()
     {
         nav.enabled = false;
-    }
-    void OnEnable()
-    {
-        nav.enabled = true;
-    }
-    public void SetDestination(Vector3 pos)
-    {
-        nav.destination = pos;
-    }
-
-    public bool CloseEnough()
-    {
-        if (nav.remainingDistance < nav.stoppingDistance && !nav.pathPending)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 }

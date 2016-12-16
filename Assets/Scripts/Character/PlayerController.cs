@@ -18,12 +18,14 @@ public class PlayerController : Character
     Animator anim;
 
     int enemyListSize;
-
+	public void Awake(){
+		PlayerPlusInit ();
+	}
     public void PlayerPlusInit()
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerMovement.Speed = MoveSpeed;
-        playerMovement.enabled = false;
+        playerMovement.enabled = true;
 
         sm_player = new StateMachine<PlayerController>(this);
         sm_player.SetCurrentState(State_Player_Idle.Instantiate());
@@ -126,22 +128,6 @@ public class PlayerController : Character
     public void AddCount(int EnemyID)
     {
         playerKillCounter.AddCount(EnemyID);
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Enemy")
-        {
-            other.GetComponent<EnemyController>().playerInRange = true;
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Enemy")
-        {
-            other.GetComponent<EnemyController>().playerInRange = false;
-        }
     }
 
 }
