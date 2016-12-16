@@ -10,19 +10,12 @@ public class Spawner : MonoBehaviour {
 	public float minionOffset = 1;
 	public GameObject minion;
 
-	//  private UnityAction spawnListener;
-	//
-	//  void Awake () {
-	//      spawnListener = new UnityAction (Spawn);
-	//  }
 
 	void OnEnable () {
-		//      MessageManager.StartListening ("Spawn", spawnListener);
 		MessageManager.StartListening ("Spawn", Spawn);
 	}
 
 	void OnDisable () {
-		//      MessageManager.StopListening ("Spawn", spawnListener);
 		MessageManager.StopListening ("Spawn", Spawn);
 	}
 

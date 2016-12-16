@@ -10,17 +10,17 @@ public class SwitchCamera : MonoBehaviour {
 	public KeyCode switchBotton = KeyCode.U;
 	private void Start(){
 		for (int count = 0; count < CameraList.Length; count++) {
-			CameraList [count].enabled = false;
+			CameraList [count].gameObject.SetActive(false);
 		}
-		CameraList [activatedCamera].enabled = true;
+		CameraList [activatedCamera].gameObject.SetActive(true);
 		activatedCamera += 1;
 	}
 	private void Switch(){
 		for (int count = 0; count < CameraList.Length; count++) {
 			if (count == activatedCamera)
-				CameraList [count].enabled = true;
+				CameraList [count].gameObject.SetActive(true);
 			else
-				CameraList [count].enabled = false;	
+				CameraList [count].gameObject.SetActive(false);
 		}
 		activatedCamera += 1;
 		if(activatedCamera >= CameraList.Length)

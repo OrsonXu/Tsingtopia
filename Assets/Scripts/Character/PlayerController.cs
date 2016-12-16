@@ -24,7 +24,7 @@ public class PlayerController : Character
     public void PlayerPlusInit()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        playerMovement.Speed = MoveSpeed;
+        playerMovement.maxSpeed = MoveSpeed;
         playerMovement.enabled = true;
 
         sm_player = new StateMachine<PlayerController>(this);

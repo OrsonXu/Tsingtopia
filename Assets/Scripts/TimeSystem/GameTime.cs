@@ -21,6 +21,18 @@ public class GameTime : MonoBehaviour {
     private float _dayCycleInSeconds;
 	private float _sunBias = 0.0f;
 	private float _moonBias = 180.0f;
+
+	private void OnEnable(){
+		MessageManager.StartListening ("TimeScaleChange", TimeScale);
+	}
+
+	private void OnDisable(){
+		MessageManager.StopListening ("TimeScaleChange", TimeScale);
+	}
+
+	void TimeScale(){
+		Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+	}
     void Start () {
 		_dayCycleInSeconds = dayCycleInMinutes * MINUTE;
         _sunScript = new Sun[sun.Length];

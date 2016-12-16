@@ -24,6 +24,7 @@ public class FreeViewCamera : MonoBehaviour{
 
 
 	private void Update(){
+		
 		if (allowMovement){
 			Move ();
 		}
@@ -41,12 +42,19 @@ public class FreeViewCamera : MonoBehaviour{
 		}
 	}
 	private void OnEnable(){
+		MessageManager.TriggerEvent ("PlayerDisableMovement");
+		Debug.Log ("Free view Camera Enabled");
 		if (cursorToggleAllowed){
 			Screen.lockCursor = true;
 			Cursor.visible = false;
 		}
 	}
-
+	private void OnDisabled(){
+		MessageManager.TriggerEvent ("PlayerEnableMovement");
+		Debug.Log ("Free view Camera Disabled");
+		Screen.lockCursor = false;
+		Cursor.visible = true;
+	}
 	private void Move(){
 		bool lastMoving = moving;
 		Vector3 deltaPosition = Vector3.zero;
