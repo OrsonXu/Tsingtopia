@@ -1442,9 +1442,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SinkSpeed: 2.5
   ScoreValue: 10
-  DeathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
-  HurtClip: {fileID: 8300000, guid: fce027b40770a44298a6f5a4233bfb04, type: 3}
-  icon: {fileID: 21300000, guid: c853db47edf402841b98ab9ea701cdc7, type: 3}
+  DeathClip: {fileID: 8300000, guid: 6e46324558e39f74ea31cb56c18db7f6, type: 3}
+  HurtClip: {fileID: 8300000, guid: 5cfd0fce556c4ce4faa9c8c5baefe033, type: 3}
+  icon: {fileID: 21300000, guid: f10655a9eb7698c4b9cdf0fdc6ffb11d, type: 3}
 --- !u!114 &114000010425030472
 MonoBehaviour:
   m_ObjectHideFlags: 1

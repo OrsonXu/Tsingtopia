@@ -1142,6 +1142,7 @@ MonoBehaviour:
   MoveSpeed: 3
   searchingTurnSpeed: 120
   sightRange: 20
+  ContinueAttackRange: 20
   MovePoints: []
   alertThreshold: 2
 --- !u!114 &114000012837927240
@@ -1170,9 +1171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SinkSpeed: 2.5
   ScoreValue: 10
-  DeathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
-  HurtClip: {fileID: 8300000, guid: fce027b40770a44298a6f5a4233bfb04, type: 3}
-  icon: {fileID: 21300000, guid: c853db47edf402841b98ab9ea701cdc7, type: 3}
+  DeathClip: {fileID: 8300000, guid: dbc1c3ad7b7995045b2fd74389ee4057, type: 3}
+  HurtClip: {fileID: 8300000, guid: d6ba965b660e2eb479a041ac53eab57d, type: 3}
+  icon: {fileID: 21300000, guid: 517b0c0451d069a4c976679e90e86ae7, type: 3}
 --- !u!135 &135000011217612912
 SphereCollider:
   m_ObjectHideFlags: 1
