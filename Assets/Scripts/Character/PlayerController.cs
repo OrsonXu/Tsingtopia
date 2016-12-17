@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+
 
 public class PlayerController : Character
 {
@@ -51,15 +53,16 @@ public class PlayerController : Character
         _playerHealth.enabled = true;
 
         _playerMagic = GetComponent<PlayerMagic>();
+        //_playerMagic = new PlayerMagic();
         _playerMagic.MaxMagic = _playerMagic.CurrentMagic = Magic;
         _playerMagic.RecoverRate = MagicRecoverRatePerMin;
         _playerMagic.enabled = true;
 
         //enemyListSize = GameObject.FindGameObjectWithTag("InstanceManager").GetComponent<EnemyManager>().enemies.Length;
 
-        //playerKillCounter = GetComponent<PlayerKillCounter>();
-        //playerKillCounter.length = enemyListSize;
-        //playerKillCounter.enabled = true;
+        //_playerKillCounter = GetComponent<PlayerKillCounter>();
+        //_playerKillCounter.Length = enemyListSize;
+        //_playerKillCounter.enabled = true;
     }
 
     public void Update()

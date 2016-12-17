@@ -2,20 +2,28 @@
 using System.Collections;
 
 public class PlayerKillCounter : MonoBehaviour {
-    public int length { get; set; }
-    private int[] CountList;
+    public int Length { get; set; }
+    private int[] _countList;
 
+    void OnEnable()
+    {
+        MessageManager.StartListening("EnemyDieWithID", AddCount);
+    }
+    void OnDisable()
+    {
+        MessageManager.StopListening("EnemyDieWithID", AddCount);
+    }
 	// Use this for initialization
 	void Start () {
-        CountList = new int[length];
-        for (int i = 0; i < CountList.Length; i++)
+        _countList = new int[Length];
+        for (int i = 0; i < _countList.Length; i++)
         {
-            CountList[i] = 0;
+            _countList[i] = 0;
         }
 	}
 
     public void AddCount(int EnemyID)
     {
-        CountList[EnemyID]++;
+        _countList[EnemyID]++;
     }
 }

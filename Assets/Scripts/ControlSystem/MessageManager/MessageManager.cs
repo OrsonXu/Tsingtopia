@@ -166,7 +166,7 @@ public class MessageManager : BaseManager {
         if (instance.eventDictionaryParamInt.TryGetValue(eventName, out thisEvent))
         {
             thisEvent.Invoke(value);
-            Debug.Log("MessageManager successfully triggers " + eventName);
+            Debug.Log("MessageManager successfully triggers " + eventName + " with value " + value.ToString());
         }
     }
 
