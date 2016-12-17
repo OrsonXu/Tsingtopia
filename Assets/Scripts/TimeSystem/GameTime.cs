@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
+
+
 
 public class GameTime : MonoBehaviour {
 
@@ -30,9 +32,10 @@ public class GameTime : MonoBehaviour {
 		MessageManager.StopListening ("TimeScaleChange", TimeScale);
 	}
 
-	void TimeScale(){
+	public void TimeScale(){
 		Time.timeScale = Time.timeScale == 0 ? 1 : 0;
 	}
+
     void Start () {
 		_dayCycleInSeconds = dayCycleInMinutes * MINUTE;
         _sunScript = new Sun[sun.Length];

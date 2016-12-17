@@ -1,23 +1,34 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+using System.Collections;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class SettingMenu : MonoBehaviour {
 
-	private Button settingButton;
-	private Canvas settingCanvas;
+	Canvas _settingMenuCanvas;
+
 	// Use this for initialization
 	void Start () {
-		GameObject settingButtonGO = GameObject.FindWithTag ("SettingButton");
-		settingButton = settingButtonGO.GetComponent<Button> ();
-		settingButton.onClick.AddListener (pressedSettingButton);
-		GameObject settingCanvasGO = GameObject.FindWithTag ("SettingPanel");
-		settingCanvas= settingCanvasGO.GetComponent<Canvas> ();
-		}
+		_settingMenuCanvas = GetComponent<Canvas>();
+		_settingMenuCanvas.enabled = false;
+	}
 	
-	void pressedSettingButton(){
+	public void pressedSettingButton(){
 		MessageManager.TriggerEvent ("TimeScaleChange");
-
-		settingCanvas.enabled = !settingCanvas.enabled;
+		_settingMenuCanvas.enabled = !_settingMenuCanvas.enabled;
+	}
+	public void pressedResumeButton(){
+		MessageManager.TriggerEvent ("TimeScaleChange");
+		_settingMenuCanvas.enabled = !_settingMenuCanvas.enabled;
+	}
+	// This function should be moved to Game Controller
+	public void Quit(){
+	#if UNITY_EDITOR
+			EditorApplication.isPlaying = false;
+	#else 
+		Application.Quit();
+	#endif
 	}
 }

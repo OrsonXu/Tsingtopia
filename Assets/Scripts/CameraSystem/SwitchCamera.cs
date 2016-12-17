@@ -5,36 +5,48 @@ public class SwitchCamera : MonoBehaviour {
 
 	public Camera[] CameraList;
 	public bool allowSwitch = true;
-
-	private int activatedCamera = 0;
 	public KeyCode switchBotton = KeyCode.U;
+
+	//private
+	private int _activatedCamera = 0;
+	//private float _lastFrameTime;
+	private float _leastResponseTime = 0.1f;
+	private float _lastResponseTime;
+
 	private void Start(){
+		_lastResponseTime = 0f;
+
 		for (int count = 0; count < CameraList.Length; count++) {
 			CameraList [count].gameObject.SetActive(false);
 		}
-		CameraList [activatedCamera].gameObject.SetActive(true);
-		activatedCamera += 1;
+		CameraList [_activatedCamera].gameObject.SetActive(true);
+		_activatedCamera += 1;
 	}
 	private void Switch(){
 		for (int count = 0; count < CameraList.Length; count++) {
-			if (count == activatedCamera)
+			if (count == _activatedCamera)
 				CameraList [count].gameObject.SetActive(true);
 			else
 				CameraList [count].gameObject.SetActive(false);
 		}
-		activatedCamera += 1;
-		if(activatedCamera >= CameraList.Length)
-			activatedCamera = 0;
+		_activatedCamera += 1;
+		if(_activatedCamera >= CameraList.Length)
+			_activatedCamera = 0;
 	}
 	private void Update(){
-		
-		if(allowSwitch){
-			//Debug.Log ("switchCamera onuse");
-			if (Input.GetKey (switchBotton)){
-				//Debug.Log ("switchBotton Pressed");
-				Switch ();
-			}
+		if (_lastResponseTime < _leastResponseTime) {
+			_lastResponseTime += Time.deltaTime;
 		}
-		//Debug.Log ("activatedCamera" + activatedCamera.ToString ());
+		else {
+			_lastResponseTime = 0f;
+			if(allowSwitch){
+				//Debug.Log ("switchCamera onuse");
+				if (Input.GetKey (switchBotton)){
+					//Debug.Log ("switchBotton Pressed");
+					Switch ();
+				}
+			}
+			//Debug.Log ("_activatedCamera" + _activatedCamera.ToString ());
+		}
 	}
 }
