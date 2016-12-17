@@ -12,8 +12,6 @@ TagManager:
   - Floor
   - Camera
   - PlayerCamera
-  - SettingButton
-  - SettingCanvas
   layers:
   - Default
   - TransparentFX
