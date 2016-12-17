@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12758282, g: 0.13438047, b: 0.12117295, a: 1}
+  m_IndirectSpecularColor: {r: 0.12758318, g: 0.13438082, b: 0.12117301, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1205,22 +1205,22 @@ Prefab:
     - target: {fileID: 224000011255387372, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 330
+      value: 423
       objectReference: {fileID: 0}
     - target: {fileID: 224000011255387372, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 298.5
+      value: 178
       objectReference: {fileID: 0}
     - target: {fileID: 224000011255387372, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 660
+      value: 846
       objectReference: {fileID: 0}
     - target: {fileID: 224000011255387372, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 597
+      value: 356
       objectReference: {fileID: 0}
     - target: {fileID: 224000011255387372, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
@@ -1300,12 +1300,12 @@ Prefab:
     - target: {fileID: 224000011467358120, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224000010799326966, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224000012539287406, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
@@ -1320,7 +1320,7 @@ Prefab:
     - target: {fileID: 224000012693706436, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000012124215896, guid: 648c8f6dabe3f314eac82a4454f5d7bc,
         type: 2}
@@ -1905,22 +1905,22 @@ Prefab:
     - target: {fileID: 224000011958293132, guid: 0edb02bfe3a17f44ab5daeb0214ef0be,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 330
+      value: 423
       objectReference: {fileID: 0}
     - target: {fileID: 224000011958293132, guid: 0edb02bfe3a17f44ab5daeb0214ef0be,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 298.5
+      value: 178
       objectReference: {fileID: 0}
     - target: {fileID: 224000011958293132, guid: 0edb02bfe3a17f44ab5daeb0214ef0be,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 660
+      value: 846
       objectReference: {fileID: 0}
     - target: {fileID: 224000011958293132, guid: 0edb02bfe3a17f44ab5daeb0214ef0be,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 597
+      value: 356
       objectReference: {fileID: 0}
     - target: {fileID: 224000011958293132, guid: 0edb02bfe3a17f44ab5daeb0214ef0be,
         type: 2}
@@ -2029,8 +2029,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 425, y: 178}
-  m_SizeDelta: {x: 850, y: 356}
+  m_AnchoredPosition: {x: 400, y: 168.32}
+  m_SizeDelta: {x: 800, y: 336.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365811655
 MonoBehaviour:
@@ -2584,10 +2584,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1987576104}
-  m_LocalRotation: {x: 0.31291986, y: 0.12629867, z: -0.050479878, w: 0.9399902}
+  m_LocalRotation: {x: 0.37164232, y: 0.05366274, z: 0.012710633, w: 0.9267366}
   m_LocalPosition: {x: -13.289999, y: -10.149999, z: 77.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 36.938004, y: 14.617001, z: -1.1040001}
+  m_LocalEulerAnglesHint: {x: 43.426003, y: 8.397, z: 4.8700004}
   m_Children: []
   m_Father: {fileID: 79796505}
   m_RootOrder: 5
@@ -2630,7 +2630,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 42.8
+  field of view: 66
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -2659,8 +2659,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 2147115198}
   smoothing: 5
+  scrollSpeed: 0
   leftRotate: 111
   rightRotate: 112
+  minScrollFactor: 0.5
+  maxScrollFactor: 2
 --- !u!1 &1997491465
 GameObject:
   m_ObjectHideFlags: 0
