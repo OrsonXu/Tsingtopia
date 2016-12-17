@@ -2,20 +2,16 @@
 
 public class Fading : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
 
-    Animator anim;
-
-    void Awake()
+    private void OnEnable()
     {
-        anim = GetComponent<Animator>();
+        MessageManager.StartListening("PlayerDie", InstanceOver);
     }
 
-    void Update()
+
+    private void InstanceOver()
     {
-        if (playerHealth.CurrentHealth <= 0)
-        {
-            anim.SetTrigger("InstanceOver");
-        }
+        Animator anim = GetComponent<Animator>();
+        anim.SetTrigger("InstanceOver");
     }
 }

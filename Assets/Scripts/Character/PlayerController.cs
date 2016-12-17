@@ -9,13 +9,13 @@ public class PlayerController : Character
     public int HealthRecoverRatePerMin = 10;
     public int MagicRecoverRatePerMin = 20;
 
-    PlayerMovement playerMovement;
-    PlayerShooting playerShooting;
-    PlayerHealth playerHealth;
-    PlayerMagic playerMagic;
-    StateMachine<PlayerController> sm_player;
-    PlayerKillCounter playerKillCounter;
-    Animator anim;
+    PlayerMovement _playerMovement;
+    PlayerShooting _playerShooting;
+    PlayerHealth _playerHealth;
+    PlayerMagic _playerMagic;
+    StateMachine<PlayerController> _sm_player;
+    PlayerKillCounter _playerKillCounter;
+    Animator _anim;
 
     int enemyListSize;
     public void Awake()
@@ -25,14 +25,14 @@ public class PlayerController : Character
     }
     public void PlayerPlusInit()
     {
-        playerMovement = GetComponent<PlayerMovement>();
-        playerMovement.initialSpeed = MoveSpeed;
-        playerMovement.enabled = false;
+        _playerMovement = GetComponent<PlayerMovement>();
+        _playerMovement.initialSpeed = MoveSpeed;
+        _playerMovement.enabled = false;
 
-        sm_player = new StateMachine<PlayerController>(this);
-        sm_player.SetCurrentState(State_Player_Idle.Instantiate());
+        _sm_player = new StateMachine<PlayerController>(this);
+        _sm_player.SetCurrentState(State_Player_Idle.Instantiate());
 
-        anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
 
         if (InWorld)
         {
@@ -40,20 +40,20 @@ public class PlayerController : Character
             return;
         }
 
-        playerShooting = GetComponentInChildren<PlayerShooting>();
-        playerShooting.bulletMagicValue = SkillMagic;
-        playerShooting.enabled = false;
+        _playerShooting = GetComponentInChildren<PlayerShooting>();
+        _playerShooting.bulletMagicValue = SkillMagic;
+        _playerShooting.enabled = false;
         //playerShooting.enabled = true;
 
-        playerHealth = GetComponent<PlayerHealth>();
-        playerHealth.MaxHealth = playerHealth.CurrentHealth = Health;
-        playerHealth.RecoverRate = HealthRecoverRatePerMin;
-        //playerHealth.enabled = true;
+        _playerHealth = GetComponent<PlayerHealth>();
+        _playerHealth.MaxHealth = _playerHealth.CurrentHealth = Health;
+        _playerHealth.RecoverRate = HealthRecoverRatePerMin;
+        _playerHealth.enabled = true;
 
-        playerMagic = GetComponent<PlayerMagic>();
-        playerMagic.MaxMagic = playerMagic.CurrentMagic = Magic;
-        playerMagic.RecoverRate = MagicRecoverRatePerMin;
-        //playerMagic.enabled = true;
+        _playerMagic = GetComponent<PlayerMagic>();
+        _playerMagic.MaxMagic = _playerMagic.CurrentMagic = Magic;
+        _playerMagic.RecoverRate = MagicRecoverRatePerMin;
+        _playerMagic.enabled = true;
 
         //enemyListSize = GameObject.FindGameObjectWithTag("InstanceManager").GetComponent<EnemyManager>().enemies.Length;
 
@@ -62,51 +62,53 @@ public class PlayerController : Character
         //playerKillCounter.enabled = true;
     }
 
+    public void Update()
+    {
+        this.FSMUpdate();
+    }
+    /// <summary>
+    /// Finite state machine update (looply)
+    /// </summary>
+    public void FSMUpdate()
+    {
+        _sm_player.SMUpdate();
+    }
+
     public override void Idle()
     {
-        anim.SetBool("IsWalking", false);
+        _anim.SetBool("IsWalking", false);
     }
 
     public override void Move()
     {
-        anim.SetBool("IsWalking", true);
-        if (!playerMovement.enabled)
-            playerMovement.enabled = true;
+        _anim.SetBool("IsWalking", true);
+        if (!_playerMovement.enabled)
+            _playerMovement.enabled = true;
     }
 
     public void UseSkill()
     {
-        if (playerMagic.CanUseSkill(SkillMagic))
+        if (_playerMagic.CanUseSkill(SkillMagic))
         {
-            if (!playerShooting.enabled)
-                playerShooting.enabled = true;
+            if (!_playerShooting.enabled)
+                _playerShooting.enabled = true;
         }
         else
         {
-            if (playerShooting.enabled)
-                playerShooting.enabled = false;
+            if (_playerShooting.enabled)
+                _playerShooting.enabled = false;
         }
     }
 
     public void Die()
     {
-        anim.SetTrigger("Die");
-        playerShooting.DisableEffects();
-        playerMovement.enabled = false;
-        playerShooting.enabled = false;
         MessageManager.TriggerEvent("PlayerDie");
+        _anim.SetTrigger("Die");
+        _playerShooting.DisableEffects();
+        _playerMovement.enabled = false;
+        _playerShooting.enabled = false;
     }
 
-    public void FSMUpdate()
-    {
-        sm_player.SMUpdate();
-    }
-
-    public void Update()
-    {
-        //if (!InWorld)
-        this.FSMUpdate();
-    }
 
     public int ItemChange()
     {
@@ -115,25 +117,29 @@ public class PlayerController : Character
 
     public StateMachine<PlayerController> GetFSM()
     {
-        return sm_player;
+        return _sm_player;
     }
 
     public bool IsDead()
     {
         if (InWorld) return false;
-        return playerHealth.IsDead();
+        return _playerHealth.IsDead();
     }
 
     public void RecoverAll()
     {
-        playerHealth.CurrentHealth = playerHealth.MaxHealth;
+        _playerHealth.CurrentHealth = _playerHealth.MaxHealth;
+        _playerMagic.CurrentMagic = _playerMagic.MaxMagic;
     }
 
     public void AddCount(int EnemyID)
     {
-        playerKillCounter.AddCount(EnemyID);
+        _playerKillCounter.AddCount(EnemyID);
     }
-
+    /// <summary>
+    /// When player is near any enemy
+    /// </summary>
+    /// <param name="other"></param>
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
@@ -141,7 +147,10 @@ public class PlayerController : Character
             other.GetComponent<EnemyController>().playerInRange = true;
         }
     }
-
+    /// <summary>
+    /// When player leaves some enemy
+    /// </summary>
+    /// <param name="other"></param>
     public void OnTriggerExit(Collider other)
     {
         if (other.tag == "Enemy")

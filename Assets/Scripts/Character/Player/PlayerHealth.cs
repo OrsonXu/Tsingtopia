@@ -21,29 +21,29 @@ public class PlayerHealth : MonoBehaviour
     public float FlashSpeed = 5f;
     public Color FlashColour = new Color(1f, 0f, 0f, 0.1f);
 
-    AudioSource playerAudio;
-    bool isDead;
-    bool damaged;
-    float timeClock = 0;
+    AudioSource _playerAudio;
+    bool _isDead;
+    bool _damaged;
+    float _timeClock = 0;
 
     void Awake ()
     {
-        playerAudio = GetComponent<AudioSource>();
-        playerAudio.clip = HurtClip;
-        playerAudio.volume = 0.4f;
+        _playerAudio = GetComponent<AudioSource>();
+        _playerAudio.clip = HurtClip;
+        _playerAudio.volume = 0.4f;
     }
 
 
     void Update ()
     {
-        timeClock += Time.deltaTime;
-        if (CurrentHealth > 0 && timeClock > ((float)60 / (float)RecoverRate))
+        _timeClock += Time.deltaTime;
+        if (CurrentHealth > 0 && _timeClock > ((float)60 / (float)RecoverRate))
         {
-            timeClock = 0;
+            _timeClock = 0;
             ChangeHealth(1);
         }
 
-        if(damaged)
+        if(_damaged)
         {
             DamageImage.color = FlashColour;
         }
@@ -51,9 +51,9 @@ public class PlayerHealth : MonoBehaviour
         {
             DamageImage.color = Color.Lerp (DamageImage.color, Color.clear, FlashSpeed * Time.deltaTime);
         }
-        damaged = false;
+        _damaged = false;
 
-        if (CurrentHealth <= 0 && !isDead)
+        if (CurrentHealth <= 0 && !_isDead)
         {
             Death();
             Debug.Log("health < 0");
@@ -64,16 +64,16 @@ public class PlayerHealth : MonoBehaviour
 
     public void ChangeHealth (int value)
     {
-        if (!isDead)
+        if (!_isDead)
         {
             if (value < 0)
             {
-                damaged = true;
-                playerAudio.Play();
+                _damaged = true;
+                _playerAudio.Play();
             }
             else
             {
-                damaged = false;
+                _damaged = false;
             }
             CurrentHealth += value;
             if (CurrentHealth > MaxHealth)
@@ -87,16 +87,16 @@ public class PlayerHealth : MonoBehaviour
 
     void Death ()
     {
-        isDead = true;
+        _isDead = true;
 
-        playerAudio.clip = DeathClip;
-        playerAudio.volume = 0.8f;
-        playerAudio.Play ();
+        _playerAudio.clip = DeathClip;
+        _playerAudio.volume = 0.8f;
+        _playerAudio.Play ();
     }
 
     public bool IsDead()
     {
-        return isDead;
+        return _isDead;
     }
 
 }

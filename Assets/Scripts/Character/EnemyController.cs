@@ -9,42 +9,53 @@ public class EnemyController : Character {
     public float ContinueAttackRange = 20f;
 
     public Transform[] MovePoints;
-    int movePointIndex;
+    private int movePointIndex;
     public float alertThreshold = 2f;
 
-    MeshRenderer meshRenderer;
-    int enemyID;
-    float alertTimer = 0f;
-    EnemyMovement enemyMovement;
-    EnemyHealth enemyHealth;
-    EnemyAttack enemyAttack;
-    StateMachine<EnemyController> sm_enemy;
-    Animator anim;
+    private MeshRenderer _meshRenderer;
+    private int _enemyID;
+    private float _alertTimer = 0f;
+    private EnemyMovement _enemyMovement;
+    private EnemyHealth _enemyHealth;
+    private EnemyAttack _enemyAttack;
+    private StateMachine<EnemyController> _sm_enemy;
+    private Animator _anim;
+    bool _playerDead;
 
     GameObject player;
     PlayerController playerController;
 
+    private void OnEnable()
+    {
+        MessageManager.StartListening("PlayerDie", PlayerDie);
+    }
+
+    private void OnDisable()
+    {
+        MessageManager.StopListening("PlayerDie", PlayerDie);
+    }
+
     public void EnemyPlusInit(int enemyID)
     {
-        this.enemyID = enemyID;
-        sm_enemy = new StateMachine<EnemyController>(this);
-        sm_enemy.SetCurrentState(State_Enemy_Move.Instantiate());
+        this._enemyID = enemyID;
+        _sm_enemy = new StateMachine<EnemyController>(this);
+        _sm_enemy.SetCurrentState(State_Enemy_Move.Instantiate());
 
-        enemyMovement = GetComponent<EnemyMovement>();
-        enemyMovement.Speed = MoveSpeed;
+        _enemyMovement = GetComponent<EnemyMovement>();
+        _enemyMovement.Speed = MoveSpeed;
 
-        enemyHealth = GetComponent<EnemyHealth>();
-        enemyHealth.MaxHealth = enemyHealth.CurrentHealth = Health;
-        enemyHealth.enabled = true;
+        _enemyHealth = GetComponent<EnemyHealth>();
+        _enemyHealth.MaxHealth = _enemyHealth.CurrentHealth = Health;
+        _enemyHealth.enabled = true;
 
-        enemyAttack = GetComponent<EnemyAttack>();
+        _enemyAttack = GetComponent<EnemyAttack>();
 
-        anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
 
         player =  GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
 
-        meshRenderer = transform.FindChild("Cube").GetComponent<MeshRenderer>();
+        _meshRenderer = transform.FindChild("Cube").GetComponent<MeshRenderer>();
 
         //MovePoints = new Transform[GameObject.Find("Movepoints").transform.childCount];
         //for (int i = 0; i < MovePoints.Length ; ++i)
@@ -52,86 +63,92 @@ public class EnemyController : Character {
         //    MovePoints[i] = GameObject.Find("Movepoints").transform.FindChild("Movepoint" + (i + 1).ToString());
         //}
         movePointIndex = 0;
+        _playerDead = false;
     }
 
     public override void Idle()
     {
-        meshRenderer.material.color = Color.green;
-        anim.SetBool("IsWalking", false);
-        if (enemyMovement.enabled)
+        _meshRenderer.material.color = Color.green;
+        _anim.SetBool("IsWalking", false);
+        if (_enemyMovement.enabled)
         {
-            enemyMovement.enabled = false;
+            _enemyMovement.enabled = false;
         }
-        if (enemyAttack.enabled)
+        if (_enemyAttack.enabled)
         {
-            enemyAttack.enabled = false;
+            _enemyAttack.enabled = false;
         }
     }
 
     public void Alert()
     {
-        meshRenderer.material.color = Color.yellow;
+        _meshRenderer.material.color = Color.yellow;
         transform.Rotate(0, searchingTurnSpeed * Time.deltaTime, 0);
-        alertTimer += Time.deltaTime;
-        if (enemyMovement.enabled)
+        _alertTimer += Time.deltaTime;
+        if (_enemyMovement.enabled)
         {
-            enemyMovement.enabled = false;
+            _enemyMovement.enabled = false;
         }
-        if (enemyAttack.enabled)
+        if (_enemyAttack.enabled)
         {
-            enemyAttack.enabled = false;
+            _enemyAttack.enabled = false;
         }
     }
 
 
     public override void Move()
     {
-        meshRenderer.material.color = Color.green;
-        alertTimer = 0;
-        anim.SetBool("IsWalking", true);
-        if (!enemyMovement.enabled)
+        _meshRenderer.material.color = Color.green;
+        _alertTimer = 0;
+        _anim.SetBool("IsWalking", true);
+        if (!_enemyMovement.enabled)
         {
-            enemyMovement.enabled = true;
+            _enemyMovement.enabled = true;
             //movePointIndex = (movePointIndex + 1) % MovePoints.Length;
-            enemyMovement.SetDestination(MovePoints[movePointIndex].position);
+            _enemyMovement.SetDestination(MovePoints[movePointIndex].position);
         }
         else
         {
-            if (enemyMovement.CloseEnough())
+            if (_enemyMovement.CloseEnough())
             {
                 movePointIndex = (movePointIndex + 1) % MovePoints.Length;
-                enemyMovement.SetDestination(MovePoints[movePointIndex].position);
+                _enemyMovement.SetDestination(MovePoints[movePointIndex].position);
             }
         }
-        if (enemyAttack.enabled)
+        if (_enemyAttack.enabled)
         {
-            enemyAttack.enabled = false;
+            _enemyAttack.enabled = false;
         }
     }
 
     public void UseSkill()
     {
-        meshRenderer.material.color = Color.red;
-        alertTimer = 0;
-        enemyMovement.enabled = true;
-        enemyMovement.SetDestination(player.transform.position);
-        if (!enemyAttack.enabled)
+        _meshRenderer.material.color = Color.red;
+        _alertTimer = 0;
+        _enemyMovement.enabled = true;
+        _enemyMovement.SetDestination(player.transform.position);
+        if (!_enemyAttack.enabled)
         {
-            enemyAttack.enabled = true;
+            _enemyAttack.enabled = true;
         }
     }
 
     public void Die()
     {
-        anim.SetTrigger("Die");
-        enemyMovement.enabled = false;
-        enemyAttack.enabled = false;
-        playerController.AddCount(enemyID);
+        _anim.SetTrigger("Die");
+        _enemyMovement.enabled = false;
+        _enemyAttack.enabled = false;
+        playerController.AddCount(_enemyID);
+    }
+
+    private void PlayerDie()
+    {
+        _playerDead = true;
     }
 
     public bool IsDead()
     {
-        return enemyHealth.IsDead();
+        return _enemyHealth.IsDead();
     }
 
     /// <summary>
@@ -140,7 +157,8 @@ public class EnemyController : Character {
     /// <returns></returns>
     public bool CanMove()
     {
-        return !(playerController.IsDead());
+        //return !(playerController.IsDead());
+        return !_playerDead;
     }
 
     public bool CanAlerted()
@@ -150,7 +168,7 @@ public class EnemyController : Character {
 
     public bool CanContinueAlerted()
     {
-        return (alertTimer < alertThreshold);
+        return (_alertTimer < alertThreshold);
     }
 
     public bool CanAttack()
@@ -182,11 +200,11 @@ public class EnemyController : Character {
 
     public void Update()
     {
-        sm_enemy.SMUpdate();
+        _sm_enemy.SMUpdate();
     }
     public StateMachine<EnemyController> GetFSM()
     {
-        return sm_enemy;
+        return _sm_enemy;
     }
 
 }
