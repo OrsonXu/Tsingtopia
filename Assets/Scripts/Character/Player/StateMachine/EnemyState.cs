@@ -26,12 +26,9 @@ public class State_Enemy_Idle : State<EnemyController>
         {
             obj.GetFSM().ChangeState(State_Enemy_Die.Instantiate());
         }
-        else
+        if (obj.CanMove())
         {
-            if (obj.CanMove())
-            {
-                obj.GetFSM().ChangeState(State_Enemy_Move.Instantiate());
-            }
+            obj.GetFSM().ChangeState(State_Enemy_Move.Instantiate());
         }
     }
 
@@ -68,12 +65,13 @@ public class State_Enemy_Move : State<EnemyController>
         {
             obj.GetFSM().ChangeState(State_Enemy_Die.Instantiate());
         }
-        else 
+        if (!obj.CanMove())
         {
-            if (!obj.CanMove())
-            {
-                obj.GetFSM().ChangeState(State_Enemy_Idle.Instantiate());
-            }
+            obj.GetFSM().ChangeState(State_Enemy_Idle.Instantiate());
+        }
+        if (obj.CanAlerted())
+        {
+            obj.GetFSM().ChangeState(State_Enemy_Alert.Instantiate());
         }
     }
 
@@ -93,18 +91,30 @@ public class State_Enemy_UseSkill : State<EnemyController>
         {
             instance = new State_Enemy_UseSkill();
         }
-
         return instance;
     }
 
     public override void Enter(EnemyController obj)
     {
+        count = 0;
         // Nothing is done here
     }
-
+    public int count = 0;
     public override void Execute(EnemyController obj)
     {
-        // Nothing is done here.
+        obj.UseSkill();
+        if (obj.IsDead())
+        {
+            obj.GetFSM().ChangeState(State_Enemy_Die.Instantiate());
+        }
+        if (!obj.CanMove())
+        {
+            obj.GetFSM().ChangeState(State_Enemy_Idle.Instantiate());
+        }
+        if (!obj.CanContinueAttack())
+        {
+            obj.GetFSM().ChangeState(State_Enemy_Alert.Instantiate());
+        }
     }
 
     public override void Exit(EnemyController obj)
@@ -135,6 +145,52 @@ public class State_Enemy_Die : State<EnemyController>
     public override void Execute(EnemyController obj)
     {
         // Nothing is done here
+    }
+
+    public override void Exit(EnemyController obj)
+    {
+        // Nothing is done here
+    }
+}
+
+public class State_Enemy_Alert : State<EnemyController>
+{
+    public static State_Enemy_Alert instance;
+
+    public static State_Enemy_Alert Instantiate()
+    {
+        if (instance == null)
+        {
+            instance = new State_Enemy_Alert();
+        }
+
+        return instance;
+    }
+
+    public override void Enter(EnemyController obj)
+    {
+        
+    }
+
+    public override void Execute(EnemyController obj)
+    {
+        obj.Alert();
+        if (obj.IsDead())
+        {
+            obj.GetFSM().ChangeState(State_Enemy_Die.Instantiate());
+        }
+        if (!obj.CanMove())
+        {
+            obj.GetFSM().ChangeState(State_Enemy_Idle.Instantiate());
+        }
+        if (obj.CanAttack())
+        {
+            obj.GetFSM().ChangeState(State_Enemy_UseSkill.Instantiate());
+        }
+        if (!obj.CanContinueAlerted())
+        {
+            obj.GetFSM().ChangeState(State_Enemy_Move.Instantiate());
+        }
     }
 
     public override void Exit(EnemyController obj)

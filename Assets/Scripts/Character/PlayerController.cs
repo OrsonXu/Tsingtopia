@@ -18,14 +18,16 @@ public class PlayerController : Character
     Animator anim;
 
     int enemyListSize;
-	public void Awake(){
-		PlayerPlusInit ();
-	}
+    public void Awake()
+    {
+        MessageManager.StartListening("PlayerInit", PlayerPlusInit);
+        InWorld = false;
+    }
     public void PlayerPlusInit()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        playerMovement.maxSpeed = MoveSpeed;
-        playerMovement.enabled = true;
+        playerMovement.initialSpeed = MoveSpeed;
+        playerMovement.enabled = false;
 
         sm_player = new StateMachine<PlayerController>(this);
         sm_player.SetCurrentState(State_Player_Idle.Instantiate());
@@ -40,23 +42,24 @@ public class PlayerController : Character
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
         playerShooting.bulletMagicValue = SkillMagic;
+        playerShooting.enabled = false;
         //playerShooting.enabled = true;
 
         playerHealth = GetComponent<PlayerHealth>();
         playerHealth.MaxHealth = playerHealth.CurrentHealth = Health;
         playerHealth.RecoverRate = HealthRecoverRatePerMin;
-        playerHealth.enabled = true;
+        //playerHealth.enabled = true;
 
         playerMagic = GetComponent<PlayerMagic>();
         playerMagic.MaxMagic = playerMagic.CurrentMagic = Magic;
         playerMagic.RecoverRate = MagicRecoverRatePerMin;
         //playerMagic.enabled = true;
 
-        enemyListSize = GameObject.FindGameObjectWithTag("InstanceManager").GetComponent<EnemyManager>().enemies.Length;
+        //enemyListSize = GameObject.FindGameObjectWithTag("InstanceManager").GetComponent<EnemyManager>().enemies.Length;
 
-        playerKillCounter = GetComponent<PlayerKillCounter>();
-        playerKillCounter.length = enemyListSize;
-        playerKillCounter.enabled = true;
+        //playerKillCounter = GetComponent<PlayerKillCounter>();
+        //playerKillCounter.length = enemyListSize;
+        //playerKillCounter.enabled = true;
     }
 
     public override void Idle()
@@ -91,6 +94,7 @@ public class PlayerController : Character
         playerShooting.DisableEffects();
         playerMovement.enabled = false;
         playerShooting.enabled = false;
+        MessageManager.TriggerEvent("PlayerDie");
     }
 
     public void FSMUpdate()
@@ -128,6 +132,22 @@ public class PlayerController : Character
     public void AddCount(int EnemyID)
     {
         playerKillCounter.AddCount(EnemyID);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemyController>().playerInRange = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemyController>().playerInRange = false;
+        }
     }
 
 }

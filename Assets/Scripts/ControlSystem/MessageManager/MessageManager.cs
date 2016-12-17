@@ -41,6 +41,7 @@ public class MessageManager : BaseManager {
 	// Start listener
 	public static void StartListening (string eventName, UnityAction listener){
 		UnityEvent thisEvent = null;
+        Debug.Log("MessageManager adds " + eventName);
 		// Try get value a eventName and add listener to it
 		if (instance.eventDictionary.TryGetValue (eventName, out thisEvent)){
 			thisEvent.AddListener (listener);
@@ -62,10 +63,11 @@ public class MessageManager : BaseManager {
 	}
 
 	public static void TriggerEvent (string eventName){
-		Debug.Log ("MessageManager tries to trigger");
+		Debug.Log ("MessageManager tries to trigger " + eventName);
 		UnityEvent thisEvent = null;
 		if (instance.eventDictionary.TryGetValue (eventName, out thisEvent)){
 			thisEvent.Invoke ();
+            Debug.Log("MessageManager successfully triggers " + eventName);
 		}
 	}
 }

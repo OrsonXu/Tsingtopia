@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private Ray _camRay;
 	private RaycastHit _floorHit;
-	private float _camRayLength = 100f;
+	private float _camRayLength = 1000f;
 	private int _floorMask;
 
 	private Vector3 _playerToMouse;
@@ -35,17 +35,18 @@ public class PlayerMovement : MonoBehaviour
 
 	private Camera _playerCamera;
 
-	Vector3 moveDirection;
-	Vector3 rightMouseTarget;
-	bool rightMouseActive;
-	RaycastHit rightMouseRay = new RaycastHit();
+    private Vector3 moveDirection;
+    private Vector3 rightMouseTarget;
+    private bool rightMouseActive;
+    private RaycastHit rightMouseRay = new RaycastHit();
 
-	void OnEnable(){
+	private void OnEnable(){
 		MessageManager.StartListening("PlayerEnableMovement", AllowMovement);
 		MessageManager.StartListening("PlayerDisableMovement", DisableMovement);
 	}
 
-	void OnDisable(){
+    private void OnDisable()
+    {
 		MessageManager.StopListening("PlayerEnableMovement", AllowMovement);
 		MessageManager.StopListening("PlayerDisableMovement", DisableMovement);
 	}
@@ -111,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 		_camRay = _playerCamera.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(_camRay, out _floorHit, _camRayLength, _floorMask))
 		{
-			Debug.Log("Camera Ray Hit somewhere");
+            //Debug.Log("Camera Ray Hit somewhere");
 			_playerToMouse = _floorHit.point - transform.position;
 
 			// Create a vector from the player to the point on the floor the raycast from the mouse hit.
