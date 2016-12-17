@@ -5,26 +5,37 @@ public class PlayerCamera : MonoBehaviour {
 
     public Transform target;
     public float smoothing;
+	public float scrollSpeed = 30f;
 	public KeyCode leftRotate = KeyCode.O;
 	public KeyCode rightRotate = KeyCode.P;
     
     private Vector3 offset;
     private Vector3 fixedOffset;
+
     private float distance;
     private float fixedDistance;
     private float minDistance;
     private float maxDistance;
-    private float scrollSpeed;
+    
 
 	private float _rotateAngel = 5f;
 
-
+	private float _fixedOffset;
+	private Vector3 _fixedDirection;
+	private float _scrollFactor = 1f;
+	[HideInInspector]
+	public float minScrollFactor = 0.5f;
+	public float maxScrollFactor = 2f;
 
 	private void OnEnable(){
 		MessageManager.TriggerEvent ("PlayerEnableMovement");
 		// Ensure the cursor is not locked and visible
 		Screen.lockCursor = false;
 		Cursor.visible = true;
+
+		// Set offsets
+		fixedOffset = -target.position + transform.position;
+		offset = - target.position + transform.position;
 	}
 
 
@@ -33,11 +44,11 @@ public class PlayerCamera : MonoBehaviour {
 
 	}
     void Start() {
-        // Set offsets
-        fixedOffset = -target.position + transform.position;
-        offset = - target.position + transform.position;
-        // Set scroll speed
-        scrollSpeed = 30f;
+        // Set offsets\
+		Vector3 _offset = -target.position + transform.position;
+		_fixedOffset = _offset.magnitude;
+		_fixedDirection = _offset.normalized;
+        offset = _fixedOffset * _fixedDirection * _scrollFactor;
     }
 
     void FixedUpdate()
@@ -50,14 +61,19 @@ public class PlayerCamera : MonoBehaviour {
 		Rotate ();
 
     }
-
+		
 	private void ScrollView()
 	{
-		fixedDistance = fixedOffset.magnitude;
-		distance = offset.magnitude;
-		distance -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
-		distance = Mathf.Clamp(distance, 0.5f * fixedDistance, 3.0f * fixedDistance);
-		offset = offset.normalized * distance;
+//		fixedDistance = fixedOffset.magnitude;
+//		distance = offset.magnitude;
+//		distance -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+//		distance = Mathf.Clamp(distance, 0.5f * fixedDistance, 3.0f * fixedDistance);
+//		offset = offset.normalized * distance;
+
+		_scrollFactor -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+		_scrollFactor = Mathf.Clamp(_scrollFactor, minScrollFactor, maxScrollFactor);
+		offset = _fixedOffset * _fixedDirection * _scrollFactor;
+
 	}
 
 	private void Rotate(){
@@ -65,8 +81,8 @@ public class PlayerCamera : MonoBehaviour {
 			transform.RotateAround (target.position, Vector3.up, _rotateAngel);
 		if(Input.GetKey(rightRotate))
 			transform.RotateAround (target.position, Vector3.up, -1f * _rotateAngel);
-		fixedOffset = -target.position + transform.position;
-        //offset = - target.position + transform.position;
+		_fixedDirection = (-target.position + transform.position).normalized;
+		offset = _fixedOffset * _fixedDirection * _scrollFactor;
 	}
     //void Turning()
     //{
