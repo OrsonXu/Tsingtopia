@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 	//[HideInInspector]
 	public float initialSpeed = 10f;
 	public float increaseSpeed = 1.25f;
-	public float maxSpeed = 10f;
+	public float maxSpeed = 0f;
 
 	// Allow move FLAG
 	public bool allowMovement = true;
@@ -83,15 +83,18 @@ public class PlayerMovement : MonoBehaviour
 			_currentSpeed += increaseSpeed * Time.deltaTime;
 		_moving = false;
 
-		CheckMove(forwardButton, ref deltaPosition, transform.forward);
-		CheckMove(backwardButton, ref deltaPosition, -transform.forward);
-		CheckMove(rightButton, ref deltaPosition, transform.right);
-		CheckMove(leftButton, ref deltaPosition, -transform.right);
+		CheckMove(forwardButton, ref deltaPosition, Vector3.forward);
+        CheckMove(backwardButton, ref deltaPosition, -Vector3.forward);
+        CheckMove(rightButton, ref deltaPosition, Vector3.right);
+        CheckMove(leftButton, ref deltaPosition, -Vector3.right);
 
 		if (_moving){  
 			if (_moving != lastMoving)
 				_currentSpeed = initialSpeed;
-			transform.position += deltaPosition * _currentSpeed * Time.deltaTime;
+            //transform.position += deltaPosition * _currentSpeed * Time.deltaTime;
+            Vector3 movement = deltaPosition.normalized * _currentSpeed * Time.deltaTime;
+            //movement = movement.normalized;
+            _playerRigidbody.MovePosition(transform.position + movement);
 		}
 		else _currentSpeed = 0f;         
 	}

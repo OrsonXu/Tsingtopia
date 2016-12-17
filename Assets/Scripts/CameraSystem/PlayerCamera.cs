@@ -37,7 +37,7 @@ public class PlayerCamera : MonoBehaviour {
         fixedOffset = -target.position + transform.position;
         offset = - target.position + transform.position;
         // Set scroll speed
-        scrollSpeed = 7f;
+        scrollSpeed = 30f;
     }
 
     void FixedUpdate()
@@ -66,7 +66,7 @@ public class PlayerCamera : MonoBehaviour {
 		if(Input.GetKey(rightRotate))
 			transform.RotateAround (target.position, Vector3.up, -1f * _rotateAngel);
 		fixedOffset = -target.position + transform.position;
-		offset = - target.position + transform.position;
+        //offset = - target.position + transform.position;
 	}
     //void Turning()
     //{
