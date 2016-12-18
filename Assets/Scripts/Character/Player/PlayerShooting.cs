@@ -10,32 +10,28 @@ public class PlayerShooting : MonoBehaviour
     public Slider enemyHealthSlider;
     public float range = 100f;
     
-    
-    //[HideInInspector]
     public int bulletMagicValue { get; set; }
     private GameObject enemyHealthObject;
 
-    float timer;
-    Ray shootRay;
-    RaycastHit shootHit;
-    int shootableMask;
-    ParticleSystem gunParticles;
-    LineRenderer gunLine;
-    AudioSource gunAudio;
-    Light gunLight;
-    float effectsDisplayTime = 0.2f;
-    PlayerMagic playerMagic;
+    private float _timer;
+    private Ray _shootRay;
+    private RaycastHit _shootHit;
+    private int _shootableMask;
+    private ParticleSystem _gunParticles;
+    private LineRenderer _gunLine;
+    private AudioSource _gunAudio;
+    private Light _gunLight;
+    private float _effectsDisplayTime = 0.2f;
 
 
-    void Start ()
+    void Awake ()
     {
         // Get components from public
-        shootableMask = LayerMask.GetMask ("Shootable");
-        gunParticles = GetComponent<ParticleSystem> ();
-        gunLine = GetComponent <LineRenderer> ();
-        gunAudio = GetComponent<AudioSource> ();
-        gunLight = GetComponent<Light> ();
-        playerMagic = GetComponentInParent<PlayerMagic>();
+        _shootableMask = LayerMask.GetMask ("Shootable");
+        _gunParticles = GetComponent<ParticleSystem> ();
+        _gunLine = GetComponent <LineRenderer> ();
+        _gunAudio = GetComponent<AudioSource> ();
+        _gunLight = GetComponent<Light> ();
         enemyImage.enabled = false;
         enemyHealthObject = enemyHealthSlider.gameObject;
         enemyHealthObject.SetActive(false);
@@ -45,14 +41,14 @@ public class PlayerShooting : MonoBehaviour
 
     void Update ()
     {
-        timer += Time.deltaTime;
+        _timer += Time.deltaTime;
 
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
+		if(Input.GetButton ("Fire1") && _timer >= timeBetweenBullets && Time.timeScale != 0)
         {
             Shoot ();
         }
 
-        if(timer >= timeBetweenBullets * effectsDisplayTime)
+        if(_timer >= timeBetweenBullets * _effectsDisplayTime)
         {
             DisableEffects ();
         }
@@ -61,35 +57,36 @@ public class PlayerShooting : MonoBehaviour
 
     public void DisableEffects ()
     {
-        gunLine.enabled = false;
-        gunLight.enabled = false;
+        _gunLine.enabled = false;
+        _gunLight.enabled = false;
     }
 
     void Shoot ()
     {
-        playerMagic.ChangeMagic(-bulletMagicValue);
+        MessageManager.TriggerEvent("PlayerChangeMagic", -bulletMagicValue);
 
-        timer = 0f;
+        _timer = 0f;
 
-        gunAudio.Play ();
+        _gunAudio.Play ();
 
-        gunLight.enabled = true;
+        _gunLight.enabled = true;
 
-        gunParticles.Stop ();
-        gunParticles.Play ();
+        _gunParticles.Stop ();
+        _gunParticles.Play ();
 
-        gunLine.enabled = true;
-        gunLine.SetPosition (0, transform.position);
+        _gunLine.enabled = true;
+        _gunLine.SetPosition (0, transform.position);
 
-        shootRay.origin = transform.position;
-        shootRay.direction = transform.forward;
+        _shootRay.origin = transform.position;
+        _shootRay.direction = transform.forward;
 
-        if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
+        // If the bullet shoot something
+        if(Physics.Raycast (_shootRay, out _shootHit, range, _shootableMask))
         {
-            EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+            EnemyHealth enemyHealth = _shootHit.collider.GetComponent <EnemyHealth> ();
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                enemyHealth.TakeDamage(damagePerShot, _shootHit.point);
                 enemyImage.enabled = true;
                 enemyImage.sprite = enemyHealth.icon;
                 enemyHealthObject.SetActive(true);
@@ -100,11 +97,11 @@ public class PlayerShooting : MonoBehaviour
                 enemyImage.enabled = false;
                 enemyHealthObject.SetActive(false);
             }
-            gunLine.SetPosition (1, shootHit.point);
+            _gunLine.SetPosition (1, _shootHit.point);
         }
         else
         {
-            gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
+            _gunLine.SetPosition (1, _shootRay.origin + _shootRay.direction * range);
         }
     }
 

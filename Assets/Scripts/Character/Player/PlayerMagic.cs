@@ -12,7 +12,16 @@ public class PlayerMagic : MonoBehaviour {
     public int RecoverRate { get; set; }
     public Slider AmmoSlider;
 
-    float timeClock = 0;
+    private float _timeClock = 0;
+
+    private void OnEnable()
+    {
+        MessageManager.StartListening("PlayerChangeMagic", ChangeMagic);
+    }
+    private void OnDisable()
+    {
+        MessageManager.StopListening("PlayerChangeMagic", ChangeMagic);
+    }
 
     public void ChangeMagic(int value)
     {
@@ -21,6 +30,10 @@ public class PlayerMagic : MonoBehaviour {
         if (CurrentMagic > MaxMagic)
         {
             CurrentMagic = MaxMagic;
+        }
+        if (CurrentMagic < 0)
+        {
+            CurrentMagic = 0;
         }
     }
 
@@ -38,10 +51,10 @@ public class PlayerMagic : MonoBehaviour {
 
     public void Update()
     {
-        timeClock += Time.deltaTime;
-        if (timeClock > ((float)60 / (float)RecoverRate))
+        _timeClock += Time.deltaTime;
+        if (_timeClock > ((float)60 / (float)RecoverRate))
         {
-            timeClock = 0;
+            _timeClock = 0;
             ChangeMagic(1);
         }
         

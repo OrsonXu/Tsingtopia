@@ -26,6 +26,15 @@ public class PlayerHealth : MonoBehaviour
     bool _damaged;
     float _timeClock = 0;
 
+    private void OnEnable()
+    {
+        MessageManager.StartListening("PlayerChangeHealth", ChangeHealth);
+    }
+    private void OnDisable()
+    {
+        MessageManager.StopListening("PlayerChangeHealth", ChangeHealth);
+    }
+
     void Awake ()
     {
         _playerAudio = GetComponent<AudioSource>();
@@ -37,6 +46,8 @@ public class PlayerHealth : MonoBehaviour
     void Update ()
     {
         _timeClock += Time.deltaTime;
+        
+        // Recover HP automatically
         if (CurrentHealth > 0 && _timeClock > ((float)60 / (float)RecoverRate))
         {
             _timeClock = 0;
@@ -53,11 +64,11 @@ public class PlayerHealth : MonoBehaviour
         }
         _damaged = false;
 
-        if (CurrentHealth <= 0 && !_isDead)
-        {
-            Death();
-            Debug.Log("health < 0");
-        }
+        //if (CurrentHealth <= 0 && !_isDead)
+        //{
+        //    Death();
+        //    Debug.Log("health < 0"); 
+        //}
         
     }
 
@@ -79,6 +90,11 @@ public class PlayerHealth : MonoBehaviour
             if (CurrentHealth > MaxHealth)
             {
                 CurrentHealth = MaxHealth;
+            }
+            if (CurrentHealth <= 0)
+            {
+                Death();
+                Debug.Log("health < 0");
             }
             HealthSlider.value = CurrentHealth;
         }

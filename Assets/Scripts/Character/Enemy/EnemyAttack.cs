@@ -6,26 +6,20 @@ public class EnemyAttack : MonoBehaviour
     public float timeBetweenAttacks = 0.5f;
     public int attackDamage = 10;
 
-    GameObject player;
-    PlayerHealth playerHealth;
-    EnemyHealth enemyHealth;
-    bool InRange;
-    float timer;
-
+    private EnemyHealth _enemyHealth;
+    private bool _InRange;
+    private float _timer;
 
     void Awake ()
     {
-        player = GameObject.FindGameObjectWithTag ("Player");
-        playerHealth = player.GetComponent <PlayerHealth> ();
-        enemyHealth = GetComponent<EnemyHealth>();
+        _enemyHealth = GetComponent<EnemyHealth>();
     }
-
 
     void OnTriggerEnter (Collider other)
     {
         if(other.tag == "Player" && !other.isTrigger)
         {
-            InRange = true;
+            _InRange = true;
         }
     }
 
@@ -34,30 +28,21 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.tag == "Player" && !other.isTrigger)
         {
-            InRange = false;
+            _InRange = false;
         }
     }
     
 
     void Update ()
     {
-        timer += Time.deltaTime;
+        _timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && InRange && enemyHealth.CurrentHealth > 0)
+        if(_timer >= timeBetweenAttacks && _InRange && _enemyHealth.CurrentHealth > 0)
         {
-            Attack ();
+            MessageManager.TriggerEvent("PlayerChangeHealth", -attackDamage);
+            _timer = 0;
         }
 
     }
 
-
-    void Attack ()
-    {
-        timer = 0f;
-
-        if(playerHealth.CurrentHealth > 0)
-        {
-            playerHealth.ChangeHealth (-attackDamage);
-        }
-    }
 }

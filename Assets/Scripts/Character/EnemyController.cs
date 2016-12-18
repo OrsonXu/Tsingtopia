@@ -20,10 +20,9 @@ public class EnemyController : Character {
     private EnemyAttack _enemyAttack;
     private StateMachine<EnemyController> _sm_enemy;
     private Animator _anim;
-    bool _playerDead;
+    private bool _playerDead;
 
-    GameObject player;
-    PlayerController playerController;
+    private GameObject _player;
 
     private void OnEnable()
     {
@@ -52,18 +51,16 @@ public class EnemyController : Character {
 
         _anim = GetComponent<Animator>();
 
-        player =  GameObject.FindGameObjectWithTag("Player");
-        playerController = player.GetComponent<PlayerController>();
+        _player =  GameObject.FindGameObjectWithTag("Player");
 
         _meshRenderer = transform.FindChild("Cube").GetComponent<MeshRenderer>();
 
-        //MovePoints = new Transform[GameObject.Find("Movepoints").transform.childCount];
-        //for (int i = 0; i < MovePoints.Length ; ++i)
-        //{
-        //    MovePoints[i] = GameObject.Find("Movepoints").transform.FindChild("Movepoint" + (i + 1).ToString());
-        //}
         movePointIndex = 0;
         _playerDead = false;
+    }
+    public void Update()
+    {
+        _sm_enemy.SMUpdate();
     }
 
     public override void Idle()
@@ -126,7 +123,7 @@ public class EnemyController : Character {
         _meshRenderer.material.color = Color.red;
         _alertTimer = 0;
         _enemyMovement.enabled = true;
-        _enemyMovement.SetDestination(player.transform.position);
+        _enemyMovement.SetDestination(_player.transform.position);
         if (!_enemyAttack.enabled)
         {
             _enemyAttack.enabled = true;
@@ -138,7 +135,7 @@ public class EnemyController : Character {
         _anim.SetTrigger("Die");
         _enemyMovement.enabled = false;
         _enemyAttack.enabled = false;
-        playerController.AddCount(_enemyID);
+        MessageManager.TriggerEvent("EnemyDieWithID", _enemyID);
     }
 
     private void PlayerDie()
@@ -186,11 +183,10 @@ public class EnemyController : Character {
 
     public bool CanContinueAttack()
     {
-        float dist = Mathf.Sqrt((transform.position - player.transform.position).sqrMagnitude);
+        float dist = Mathf.Sqrt((transform.position - _player.transform.position).sqrMagnitude);
         if (dist < ContinueAttackRange)
         {
             return true;
-
         }
         else
         {
@@ -198,10 +194,7 @@ public class EnemyController : Character {
         }
     }
 
-    public void Update()
-    {
-        _sm_enemy.SMUpdate();
-    }
+
     public StateMachine<EnemyController> GetFSM()
     {
         return _sm_enemy;
