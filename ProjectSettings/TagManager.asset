@@ -12,6 +12,8 @@ TagManager:
   - Floor
   - Camera
   - PlayerCamera
+  - SettingButton
+  - Task
   layers:
   - Default
   - TransparentFX

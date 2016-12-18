@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12758318, g: 0.13438082, b: 0.12117301, a: 1}
+  m_IndirectSpecularColor: {r: 0.12758282, g: 0.13438047, b: 0.12117295, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2515,6 +2515,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1431420359}
   m_RootOrder: 1
+--- !u!1 &1869281617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1869281619}
+  - 114: {fileID: 1869281618}
+  m_Layer: 0
+  m_Name: TaskFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1869281618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1869281617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc56b2c3a80eae4eac090a7e6a5c703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskObj: {fileID: 1000012168729890, guid: 8f15bde61943aa3428316212b2b651d8, type: 2}
+--- !u!4 &1869281619
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1869281617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 123.24253, y: 177.3693, z: 0.625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1001 &1952838212
 Prefab:
   m_ObjectHideFlags: 0

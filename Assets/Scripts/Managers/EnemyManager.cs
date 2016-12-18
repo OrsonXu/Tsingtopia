@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     public Transform[] spawnPoints;
     public Transform[] movePoints;
 
-    void Awake()
+    void OnEnable()
     {
         MessageManager.StartListening("EnemyManagerBegin", StartSpawn);
         MessageManager.StartListening("PlayerDie", StopSpawn);

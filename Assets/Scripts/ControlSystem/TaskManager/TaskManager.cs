@@ -44,8 +44,6 @@ public class TaskManager : BaseManager {
 		}
 
 	}
-
-
 		
 	public static void RegisterTask(int taskID, string taskName){
 		string thisTaskName = null;

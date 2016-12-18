@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class Task : MonoBehaviour {
+public class Task_old : MonoBehaviour {
 
 	private int _taskID;
 	private string _taskName;
@@ -21,8 +21,6 @@ public class Task : MonoBehaviour {
 		_taskName = taskname;
 		_taskStatus = status;
 		_taskDescription = description;
-        TaskManager.StartListening("Task" + _taskID.ToString(), TaskAction);
-        TaskManager.RegisterTask(_taskID, _taskName);
 	}
 	public void setRelations(int[] parent, int[] child){
 		parentTasks = new int[parent.Length];
@@ -34,10 +32,10 @@ public class Task : MonoBehaviour {
 			childTasks [i] = child [i];
 		}
 	}
-    //void OnEnable(){
-    //    TaskManager.StartListening ("Task" + _taskID.ToString(), TaskAction);
-    //    TaskManager.RegisterTask (_taskID, _taskName);
-    //}
+	void OnEnable(){
+		TaskManager.StartListening ("Task" + _taskID.ToString(), TaskAction);
+		TaskManager.RegisterTask (_taskID, _taskName);
+	}
 	void OnDisable(){
 		TaskManager.StopListening ("Task" + _taskID.ToString(), TaskAction);
 		TaskManager.UnregisterTask (_taskID, _taskName);
