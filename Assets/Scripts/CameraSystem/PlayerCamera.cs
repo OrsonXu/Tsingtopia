@@ -5,7 +5,7 @@ public class PlayerCamera : MonoBehaviour {
 
     public Transform target;
     public float smoothing;
-	public float scrollSpeed = 30f;
+	public float scrollSpeed = 0.5f;
 	public KeyCode leftRotate = KeyCode.O;
 	public KeyCode rightRotate = KeyCode.P;
     
@@ -22,7 +22,7 @@ public class PlayerCamera : MonoBehaviour {
 
 	private float _fixedOffset;
 	private Vector3 _fixedDirection;
-	private float _scrollFactor = 1f;
+	private float _scrollFactor;
 	[HideInInspector]
 	public float minScrollFactor = 0.5f;
 	public float maxScrollFactor = 2f;
@@ -48,6 +48,7 @@ public class PlayerCamera : MonoBehaviour {
 		Vector3 _offset = -target.position + transform.position;
 		_fixedOffset = _offset.magnitude;
 		_fixedDirection = _offset.normalized;
+		_scrollFactor = 1f;
         offset = _fixedOffset * _fixedDirection * _scrollFactor;
     }
 
@@ -56,6 +57,7 @@ public class PlayerCamera : MonoBehaviour {
         // Zoom view using mouse 
         ScrollView();
         //Camera = getComponents<Camera>();
+
         Vector3 Camposition = target.position + offset;
         transform.position = Vector3.Lerp(transform.position, Camposition, smoothing * Time.deltaTime);  
 		Rotate ();
@@ -70,19 +72,23 @@ public class PlayerCamera : MonoBehaviour {
 //		distance = Mathf.Clamp(distance, 0.5f * fixedDistance, 3.0f * fixedDistance);
 //		offset = offset.normalized * distance;
 
-		_scrollFactor -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
-		_scrollFactor = Mathf.Clamp(_scrollFactor, minScrollFactor, maxScrollFactor);
+		float _scrollInput = (float)Input.GetAxis ("Mouse ScrollWheel");
+		_scrollFactor = _scrollFactor - _scrollInput * scrollSpeed;
+		_scrollFactor = Mathf.Clamp(_scrollFactor, 0.5f, 2f);
 		offset = _fixedOffset * _fixedDirection * _scrollFactor;
 
 	}
 
 	private void Rotate(){
-		if(Input.GetKey(leftRotate))
-			transform.RotateAround (target.position, Vector3.up, _rotateAngel);
-		if(Input.GetKey(rightRotate))
-			transform.RotateAround (target.position, Vector3.up, -1f * _rotateAngel);
-		_fixedDirection = (-target.position + transform.position).normalized;
-		offset = _fixedOffset * _fixedDirection * _scrollFactor;
+		if (Input.GetKey (leftRotate) || Input.GetKey (rightRotate)) {
+			if (Input.GetKey (leftRotate))
+				transform.RotateAround (target.position, Vector3.up, _rotateAngel);
+			if (Input.GetKey (rightRotate))
+				transform.RotateAround (target.position, Vector3.up, -1f * _rotateAngel);
+			_fixedDirection = (-target.position + transform.position).normalized;
+			offset = _fixedOffset * _fixedDirection * _scrollFactor;
+		}
+
 	}
     //void Turning()
     //{
