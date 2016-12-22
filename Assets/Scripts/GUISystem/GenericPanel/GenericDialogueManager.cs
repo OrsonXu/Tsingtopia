@@ -6,12 +6,13 @@ public class GenericDialogueManager : BaseManager
 {
 
     public Text displayText;
+	public GameObject modalPanelObj;
     public float displayTime;
     public float fadeTime;
 
     private IEnumerator fadeAlpha;
-
     private static GenericDialogueManager gdManager;
+
 
     public static GenericDialogueManager Instance()
     {
@@ -28,34 +29,38 @@ public class GenericDialogueManager : BaseManager
     public void DisplayMessage(string message)
     {
         displayText.text = message;
-        SetAlpha();
+		modalPanelObj.SetActive (true);
+//        SetAlpha();
     }
 
-    void SetAlpha()
-    {
-        if (fadeAlpha != null)
-        {
-            StopCoroutine(fadeAlpha);
-        }
-        fadeAlpha = FadeAlpha();
-        StartCoroutine(fadeAlpha);
-    }
-
-    IEnumerator FadeAlpha()
-    {
-        Color resetColor = displayText.color;
-        resetColor.a = 1;
-        displayText.color = resetColor;
-
-        yield return new WaitForSeconds(displayTime);
-
-        while (displayText.color.a > 0)
-        {
-            Color displayColor = displayText.color;
-            displayColor.a -= Time.deltaTime / fadeTime;
-            displayText.color = displayColor;
-            yield return null;
-        }
-        yield return null;
-    }
+	private void Awake(){
+		
+	}
+//    void SetAlpha()
+//    {
+//        if (fadeAlpha != null)
+//        {
+//            StopCoroutine(fadeAlpha);
+//        }
+//        fadeAlpha = FadeAlpha();
+//        StartCoroutine(fadeAlpha);
+//    }
+//
+//    IEnumerator FadeAlpha()
+//    {
+//        Color resetColor = displayText.color;
+//        resetColor.a = 1;
+//        displayText.color = resetColor;
+//
+//        yield return new WaitForSeconds(displayTime);
+//
+//        while (displayText.color.a > 0)
+//        {
+//            Color displayColor = displayText.color;
+//            displayColor.a -= Time.deltaTime / fadeTime;
+//            displayText.color = displayColor;
+//            yield return null;
+//        }
+//        yield return null;
+//    }
 }

@@ -113,6 +113,7 @@ public class Task : MonoBehaviour {
 				foreach (int i in childTasks)
 					TaskManager.TriggerTask ("Task" + i.ToString () + "TryDiscover");
 			}
+			GenericDialogueManager.Instance().DisplayMessage (_taskDescription);
 		}
 	}
 
