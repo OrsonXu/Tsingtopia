@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class State_Enemy_Idle : State<EnemyController>
+public class State_Enemy_Idle : State<EnemyManager>
 {
     public static State_Enemy_Idle instance;
 
@@ -13,12 +13,12 @@ public class State_Enemy_Idle : State<EnemyController>
         }
         return instance;
     }
-    public override void Enter(EnemyController obj)
+    public override void Enter(EnemyManager obj)
     {
         // Nothing is done here
     }
 
-    public override void Execute(EnemyController obj)
+    public override void Execute(EnemyManager obj)
     {
         obj.Idle();
 
@@ -32,13 +32,13 @@ public class State_Enemy_Idle : State<EnemyController>
         }
     }
 
-    public override void Exit(EnemyController obj)
+    public override void Exit(EnemyManager obj)
     {
         // Nothing is done here
     }
 }
 
-public class State_Enemy_Move : State<EnemyController>
+public class State_Enemy_Move : State<EnemyManager>
 {
     public static State_Enemy_Move instance;
 
@@ -52,12 +52,12 @@ public class State_Enemy_Move : State<EnemyController>
         return instance;
     }
 
-    public override void Enter(EnemyController obj)
+    public override void Enter(EnemyManager obj)
     {
         // Nothing is done here
     }
 
-    public override void Execute(EnemyController obj)
+    public override void Execute(EnemyManager obj)
     {
         obj.Move();
 
@@ -75,13 +75,13 @@ public class State_Enemy_Move : State<EnemyController>
         }
     }
 
-    public override void Exit(EnemyController obj)
+    public override void Exit(EnemyManager obj)
     {
         // Nothing is done here
     }
 }
 
-public class State_Enemy_UseSkill : State<EnemyController>
+public class State_Enemy_UseSkill : State<EnemyManager>
 {
     public static State_Enemy_UseSkill instance;
 
@@ -94,13 +94,13 @@ public class State_Enemy_UseSkill : State<EnemyController>
         return instance;
     }
 
-    public override void Enter(EnemyController obj)
+    public override void Enter(EnemyManager obj)
     {
         count = 0;
         // Nothing is done here
     }
     public int count = 0;
-    public override void Execute(EnemyController obj)
+    public override void Execute(EnemyManager obj)
     {
         obj.UseSkill();
         if (obj.IsDead())
@@ -117,13 +117,13 @@ public class State_Enemy_UseSkill : State<EnemyController>
         }
     }
 
-    public override void Exit(EnemyController obj)
+    public override void Exit(EnemyManager obj)
     {
         // Nothing is done here
     }
 }
 
-public class State_Enemy_Die : State<EnemyController>
+public class State_Enemy_Die : State<EnemyManager>
 {
     public static State_Enemy_Die instance;
 
@@ -137,23 +137,23 @@ public class State_Enemy_Die : State<EnemyController>
         return instance;
     }
 
-    public override void Enter(EnemyController obj)
+    public override void Enter(EnemyManager obj)
     {
         obj.Die();
     }
 
-    public override void Execute(EnemyController obj)
+    public override void Execute(EnemyManager obj)
     {
         // Nothing is done here
     }
 
-    public override void Exit(EnemyController obj)
+    public override void Exit(EnemyManager obj)
     {
         // Nothing is done here
     }
 }
 
-public class State_Enemy_Alert : State<EnemyController>
+public class State_Enemy_Alert : State<EnemyManager>
 {
     public static State_Enemy_Alert instance;
 
@@ -167,12 +167,12 @@ public class State_Enemy_Alert : State<EnemyController>
         return instance;
     }
 
-    public override void Enter(EnemyController obj)
+    public override void Enter(EnemyManager obj)
     {
         
     }
 
-    public override void Execute(EnemyController obj)
+    public override void Execute(EnemyManager obj)
     {
         obj.Alert();
         if (obj.IsDead())
@@ -193,7 +193,7 @@ public class State_Enemy_Alert : State<EnemyController>
         }
     }
 
-    public override void Exit(EnemyController obj)
+    public override void Exit(EnemyManager obj)
     {
         // Nothing is done here
     }
