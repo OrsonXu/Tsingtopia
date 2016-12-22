@@ -13,12 +13,11 @@ public class TaskFactory : MonoBehaviour {
 
     void Awake()
     {
-        
-		_taskID = new List<int>();
-		_taskName = new List<string> ();
-		_taskDescription = new List<string> ();
+        //Test();
+        _taskID = new List<int>();
+        _taskName = new List<string>();
+        _taskDescription = new List<string>();
 
-		Test();
         _taskNumberCounter = 0;
         InitTasks();
         ConstructTaskGraph();
@@ -29,6 +28,12 @@ public class TaskFactory : MonoBehaviour {
     {
         string name;
         string description;
+        // Zero
+        name = "";
+        description = "";
+        _taskID.Add(0);
+        _taskName.Add(name);
+        _taskDescription.Add(description);
         // First one
 
         name = "开始游戏";
@@ -77,11 +82,13 @@ public class TaskFactory : MonoBehaviour {
             int[] c = {i + 1};
             if (i == 1)
             {
+                Debug.Log(_taskName[i]);
                 InstantiateTask(_taskID[i], _taskName[i], TaskStatus.DISCOVERED,
                     _taskDescription[i], p, c);
             }
             else
             {
+                Debug.Log(_taskName[i]);
                 InstantiateTask(_taskID[i], _taskName[i], TaskStatus.UNDISCOVERED,
                     _taskDescription[i], p, c);
             }
