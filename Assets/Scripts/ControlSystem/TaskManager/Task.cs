@@ -91,14 +91,15 @@ public class Task : MonoBehaviour {
 	}
 	private void TaskAction(){
 		// Task change status according to 
-		Debug.Log("Task Operation");
-		this.setStatus (TaskStatus.FINISHED);
-		TaskManager.activeListAdd (this._taskID);
-		if (childTasks.Count != 0) {
-			foreach(int i in childTasks)
-				TaskManager.TriggerTask ("Task"+i.ToString()+"TryDiscover");
+		if (this._taskStatus == TaskStatus.DISCOVERED) {
+			Debug.Log ("Task ID: " + _taskID.ToString () + "Task Operation");
+			this.setStatus (TaskStatus.FINISHED);
+			TaskManager.activeListRemove (this._taskID);
+			if (childTasks.Count != 0) {
+				foreach (int i in childTasks)
+					TaskManager.TriggerTask ("Task" + i.ToString () + "TryDiscover");
+			}
 		}
-
 	}
 
 }
