@@ -19,8 +19,8 @@ public class PlayerManager : CharacterManager
     PlayerKillCounter _playerKillCounter;
     SphereCollider _sphereCollider;
     Animator _anim;
+    int _enemyListSize;
 
-    int enemyListSize;
     public void Awake()
     {
         MessageManager.StartListening("PlayerInit", PlayerPlusInit);
@@ -62,11 +62,10 @@ public class PlayerManager : CharacterManager
         //_playerShooting.enabled = false;
         //_playerShooting.enabled = true;
 
-        //enemyListSize = GameObject.FindGameObjectWithTag("InstanceManager").GetComponent<EnemyManager>().enemies.Length;
-
-        //_playerKillCounter = GetComponent<PlayerKillCounter>();
-        //_playerKillCounter.Length = enemyListSize;
-        //_playerKillCounter.enabled = true;
+        _enemyListSize = GameObject.FindGameObjectWithTag("InstanceManager").GetComponent<EnemySpawnManager>().enemies.Length;
+        _playerKillCounter = GetComponent<PlayerKillCounter>();
+        _playerKillCounter.Length = _enemyListSize;
+        _playerKillCounter.enabled = true;
     }
 
     public void Update()
