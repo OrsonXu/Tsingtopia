@@ -92,7 +92,7 @@ public class Task : MonoBehaviour {
 	private void TaskAction(){
 		// Task change status according to 
 		if (this._taskStatus == TaskStatus.DISCOVERED) {
-			Debug.Log ("Task ID: " + _taskid.ToString () + "Task Operation");
+			Debug.Log ("Task ID: " + _taskID.ToString () + "Task Operation");
 			this.setStatus (TaskStatus.FINISHED);
 			TaskManager.activeListRemove (this._taskID);
 			if (childTasks.Count != 0) {
