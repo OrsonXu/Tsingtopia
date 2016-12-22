@@ -62,8 +62,6 @@ public class Task : MonoBehaviour {
 
 	}
 
-
-
 	private void updateDiscovered(){
 		int unfinishedParent = 0;
 		if (parentTasks != null) {
