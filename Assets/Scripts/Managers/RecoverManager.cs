@@ -15,12 +15,14 @@ public class RecoverManager : MonoBehaviour {
     private void Awake()
     {
         MessageManager.StartListening("RecoverManagerBegin", StartSpawn);
+        MessageManager.StartListening("InstanceFinish", StopSpawn);
         MessageManager.StartListening("PlayerDie", StopSpawn);
     }
 
     private void OnDisable()
     {
         MessageManager.StopListening("RecoverManagerBegin", StartSpawn);
+        MessageManager.StopListening("InstanceFinish", StopSpawn);
         MessageManager.StopListening("PlayerDie", StopSpawn);
     }
 
