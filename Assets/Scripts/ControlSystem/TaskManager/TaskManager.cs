@@ -16,6 +16,8 @@ public class TaskManager : BaseManager {
 
 
 	public override void Awake(){
+		Init ();
+
 		Debug.Log("TaskManager.Awake");
 	}
 
@@ -98,7 +100,17 @@ public class TaskManager : BaseManager {
 			Debug.Log ("Failed to trigger " + taskName + ", cannot find this task in taskDictionary");
 
 	}
+	public Task GetTaskById(int taskid){
+		GameObject[] gos = GameObject.FindGameObjectsWithTag ("TaskObj");
+		Task rtnTask = null;
+		foreach(GameObject go in gos){
+			Task goTask = go.GetComponent<Task> ();
+			if (goTask.getId () == taskid)
+				rtnTask = goTask;
+		}
+		return rtnTask;
 
+	}
 	// Initialize taskManager
 	void Init (){
 		if (taskDictionary == null){
@@ -109,6 +121,7 @@ public class TaskManager : BaseManager {
 		}
 		if (activeTaskList == null) {
 			activeTaskList = new List<int> ();
+
 		}
 			
 	}
@@ -119,9 +132,12 @@ public class TaskManager : BaseManager {
 				Debug.Log ("Key = "+ kvp.Key.ToString() +" " + "Value = " + kvp.Value.ToString());
 			}
 			Debug.Log("Now activated tasks are :");
-			foreach (int taskid in activeTaskList) {
-				Debug.Log("task with id" + taskid.ToString());
+			if (activeTaskList.Count != 0) {
+				foreach (int taskid in activeTaskList) {
+					Debug.Log ("task with id" + taskid.ToString ());
+				}
 			}
+			else Debug.Log ("Active task is null");
 		} else
 			Debug.Log ("The taskList is null.");
 	}

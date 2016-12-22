@@ -15,6 +15,7 @@ TagManager:
   - SettingButton
   - Task
   - TaskObj
+  - TaskPanel
   layers:
   - Default
   - TransparentFX

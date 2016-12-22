@@ -11,6 +11,18 @@ public class Task : MonoBehaviour {
 	private List<int> parentTasks;
 	private List<int> childTasks;
 
+	public string getName(){
+		return _taskName;
+	}
+	public string getDescription(){
+		return _taskDescription;
+	}
+	public int getId(){
+		return _taskID;
+	}
+	public TaskStatus getStatus(){
+		return _taskStatus;
+	}
 	public void setTaskProperty(int taskid, string taskname, TaskStatus status, string description){
 		_taskID = taskid;
 		_taskName = taskname;
@@ -49,12 +61,8 @@ public class Task : MonoBehaviour {
 		this._taskStatus = ts;
 
 	}
-	private int getId(){
-		return this._taskID;
-	}
-	private TaskStatus getStatus(){
-		return this._taskStatus;
-	}
+
+
 
 	private void updateDiscovered(){
 		int unfinishedParent = 0;
