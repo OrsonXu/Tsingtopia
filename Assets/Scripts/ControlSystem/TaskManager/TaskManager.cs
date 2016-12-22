@@ -121,7 +121,6 @@ public class TaskManager : BaseManager {
 		}
 		if (activeTaskList == null) {
 			activeTaskList = new List<int> ();
-
 		}
 			
 	}
