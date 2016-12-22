@@ -17,16 +17,18 @@ public class PlayerController : Character
     PlayerMagic _playerMagic;
     StateMachine<PlayerController> _sm_player;
     PlayerKillCounter _playerKillCounter;
+    SphereCollider _sphereCollider;
     Animator _anim;
 
     int enemyListSize;
     public void Awake()
     {
         MessageManager.StartListening("PlayerInit", PlayerPlusInit);
-        InWorld = false;
     }
-    public void PlayerPlusInit()
+    public void PlayerPlusInit(bool inWorld)
     {
+
+        InWorld = inWorld;
         _playerMovement = GetComponent<PlayerMovement>();
         _playerMovement.initialSpeed = MoveSpeed;
         _playerMovement.enabled = false;
@@ -34,18 +36,16 @@ public class PlayerController : Character
         _sm_player = new StateMachine<PlayerController>(this);
         _sm_player.SetCurrentState(State_Player_Idle.Instantiate());
 
+        _sphereCollider = GetComponent<SphereCollider>();
+        _sphereCollider.enabled = true;
         _anim = GetComponent<Animator>();
 
         if (InWorld)
         {
+            _sphereCollider.enabled = false;
             Debug.Log("Inworld.");
             return;
         }
-
-        _playerShooting = GetComponentInChildren<PlayerShooting>();
-        _playerShooting.bulletMagicValue = SkillMagic;
-        _playerShooting.enabled = false;
-        //playerShooting.enabled = true;
 
         _playerHealth = GetComponent<PlayerHealth>();
         _playerHealth.MaxHealth = _playerHealth.CurrentHealth = Health;
@@ -53,10 +53,14 @@ public class PlayerController : Character
         _playerHealth.enabled = true;
 
         _playerMagic = GetComponent<PlayerMagic>();
-        //_playerMagic = new PlayerMagic();
         _playerMagic.MaxMagic = _playerMagic.CurrentMagic = Magic;
         _playerMagic.RecoverRate = MagicRecoverRatePerMin;
         _playerMagic.enabled = true;
+
+        _playerShooting = GetComponentInChildren<PlayerShooting>();
+        _playerShooting.bulletMagicValue = SkillMagic;
+        //_playerShooting.enabled = false;
+        //_playerShooting.enabled = true;
 
         //enemyListSize = GameObject.FindGameObjectWithTag("InstanceManager").GetComponent<EnemyManager>().enemies.Length;
 
