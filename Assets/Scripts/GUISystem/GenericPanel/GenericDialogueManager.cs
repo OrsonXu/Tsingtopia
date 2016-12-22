@@ -33,6 +33,11 @@ public class GenericDialogueManager : BaseManager
 //        SetAlpha();
     }
 
+    public void SetDisactive()
+    {
+        modalPanelObj.SetActive(false);
+    }
+
 	private void Awake(){
 		
 	}

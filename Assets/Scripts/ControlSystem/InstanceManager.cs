@@ -47,4 +47,10 @@ public class InstanceManager : BaseManager {
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("WorldScene");
     }
+
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("x");
+        PlayerPrefs.DeleteKey("z");
+    }
 }
