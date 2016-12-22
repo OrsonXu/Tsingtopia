@@ -2,21 +2,15 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class InstanceManager : MonoBehaviour {
+public class InstanceManager : BaseManager {
 
-    PlayerController _playerController;
+    PlayerManager _playerController;
     EnemyManager _enemyManager;
     RecoverManager _recoverManager;
 
-    void Awake()
+    public override void Awake()
     {
-        //_playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        //_playerController.Init(new Vector3(0f, 0f, 0f), new Vector3(0f, 90f, 0f));
-        //_playerController.PlayerPlusInit();
-        //_playerController.InWorld = false;
-        //InitEnv();
-        //InitEnemy();
-        //InitRecover();
+		Debug.Log("InstanceManager.Awake");
 
     }
 
@@ -29,26 +23,12 @@ public class InstanceManager : MonoBehaviour {
 
 
 
-    private void OnDisable()
-    {
-        
-    }
-
-    void InitEnv()
-    {
-
-    }
-
     void InitEnemy()
     {
         _enemyManager = GetComponent<EnemyManager>();
         _enemyManager.enabled = true;
     }
-
-    //void Update()
-    //{
-    //    _playerController.FSMUpdate();
-    //}
+		
 
     void InitRecover()
     {

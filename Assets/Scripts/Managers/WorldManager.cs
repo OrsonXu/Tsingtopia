@@ -4,12 +4,12 @@ using System.Collections;
 public class WorldManager : MonoBehaviour {
 
     GameObject player;
-    PlayerController playerController;
+    PlayerManager playerController;
 
     void Awake()
     {
         //player = GameObject.FindGameObjectWithTag("Player");
-        //playerController = player.GetComponent<PlayerController>();
+        //playerController = player.GetComponent<PlayerManager>();
         //playerController.Init(new Vector3(0f, 0f, 0f), new Vector3(0f, 90f, 0f));
         //playerController.InWorld = true;
         //playerController.PlayerPlusInit();

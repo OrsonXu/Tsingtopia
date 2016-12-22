@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController : Character {
+public class EnemyController : CharacterManager {
 
     public bool playerInRange { get; set; }
     public float searchingTurnSpeed = 120f;

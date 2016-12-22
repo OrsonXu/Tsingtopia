@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class State_Player_Idle : State<PlayerController>
+public class State_Player_Idle : State<PlayerManager>
 {
     public static State_Player_Idle instance;
 
@@ -14,12 +14,12 @@ public class State_Player_Idle : State<PlayerController>
         return instance;
     }
 
-    public override void Enter(PlayerController obj)
+    public override void Enter(PlayerManager obj)
     {
         // Nothing is done here
     }
 
-    public override void Execute(PlayerController obj)
+    public override void Execute(PlayerManager obj)
     {
 
         if (obj.IsDead())
@@ -44,13 +44,13 @@ public class State_Player_Idle : State<PlayerController>
         }
     }
 
-    public override void Exit(PlayerController obj)
+    public override void Exit(PlayerManager obj)
     {
         // Nothing is done here
     }
 }
 
-public class State_Player_Move : State<PlayerController>
+public class State_Player_Move : State<PlayerManager>
 {
     public static State_Player_Move instance;
 
@@ -64,12 +64,12 @@ public class State_Player_Move : State<PlayerController>
         return instance;
     }
 
-    public override void Enter(PlayerController obj)
+    public override void Enter(PlayerManager obj)
     {
 
     }
 
-    public override void Execute(PlayerController obj)
+    public override void Execute(PlayerManager obj)
     {
         if (obj.IsDead())
         {
@@ -90,13 +90,13 @@ public class State_Player_Move : State<PlayerController>
         }
     }
 
-    public override void Exit(PlayerController obj)
+    public override void Exit(PlayerManager obj)
     {
         // Nothing is done here
     }
 }
 
-public class State_Player_UseSkill : State<PlayerController>
+public class State_Player_UseSkill : State<PlayerManager>
 {
     public static State_Player_UseSkill instance;
 
@@ -110,12 +110,12 @@ public class State_Player_UseSkill : State<PlayerController>
         return instance;
     }
 
-    public override void Enter(PlayerController obj)
+    public override void Enter(PlayerManager obj)
     {
 
     }
 
-    public override void Execute(PlayerController obj)
+    public override void Execute(PlayerManager obj)
     {
         if (obj.IsDead())
         {
@@ -136,13 +136,13 @@ public class State_Player_UseSkill : State<PlayerController>
         
     }
 
-    public override void Exit(PlayerController obj)
+    public override void Exit(PlayerManager obj)
     {
         // Nothing is done here
     }
 }
 
-public class State_Player_Die : State<PlayerController>
+public class State_Player_Die : State<PlayerManager>
 {
     public static State_Player_Die instance;
 
@@ -156,17 +156,17 @@ public class State_Player_Die : State<PlayerController>
         return instance;
     }
 
-    public override void Enter(PlayerController obj)
+    public override void Enter(PlayerManager obj)
     {
         obj.Die();
     }
 
-    public override void Execute(PlayerController obj)
+    public override void Execute(PlayerManager obj)
     {
         // Nothing is done here
     }
 
-    public override void Exit(PlayerController obj)
+    public override void Exit(PlayerManager obj)
     {
         // Nothing is done here
     }

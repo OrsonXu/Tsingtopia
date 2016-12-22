@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 
-public class PlayerController : Character
+public class PlayerManager : CharacterManager
 {
     public bool InWorld { get; set; }
     public int Magic = 100;
@@ -15,7 +15,7 @@ public class PlayerController : Character
     PlayerShooting _playerShooting;
     PlayerHealth _playerHealth;
     PlayerMagic _playerMagic;
-    StateMachine<PlayerController> _sm_player;
+    StateMachine<PlayerManager> _sm_player;
     PlayerKillCounter _playerKillCounter;
     SphereCollider _sphereCollider;
     Animator _anim;
@@ -33,7 +33,7 @@ public class PlayerController : Character
         _playerMovement.initialSpeed = MoveSpeed;
         _playerMovement.enabled = false;
 
-        _sm_player = new StateMachine<PlayerController>(this);
+        _sm_player = new StateMachine<PlayerManager>(this);
         _sm_player.SetCurrentState(State_Player_Idle.Instantiate());
 
         _sphereCollider = GetComponent<SphereCollider>();
@@ -122,7 +122,7 @@ public class PlayerController : Character
         return 0;
     }
 
-    public StateMachine<PlayerController> GetFSM()
+    public StateMachine<PlayerManager> GetFSM()
     {
         return _sm_player;
     }

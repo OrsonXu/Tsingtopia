@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-abstract public class Character : MonoBehaviour {
+abstract public class CharacterManager : BaseManager{
 
     /// <summary>
     /// The health value of the character

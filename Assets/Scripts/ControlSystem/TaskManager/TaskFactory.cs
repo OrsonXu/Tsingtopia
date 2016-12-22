@@ -13,10 +13,16 @@ public class TaskFactory : MonoBehaviour {
 
     void Awake()
     {
-        Test();
+        
+		_taskID = new List<int>();
+		_taskName = new List<string> ();
+		_taskDescription = new List<string> ();
+
+		Test();
         _taskNumberCounter = 0;
         InitTasks();
         ConstructTaskGraph();
+
     }
 
     private void InitTasks()
@@ -24,6 +30,7 @@ public class TaskFactory : MonoBehaviour {
         string name;
         string description;
         // First one
+
         name = "开始游戏";
         description = "";
         _taskID.Add(++_taskNumberCounter);
