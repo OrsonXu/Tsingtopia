@@ -15,6 +15,7 @@ public class WorldManager : MonoBehaviour {
         //playerController.PlayerPlusInit();
 
         MessageManager.TriggerEvent("PlayerInit", true);
+        
 
         //PlayerPrefs.DeleteAll();
         //if (PlayerPrefs.HasKey("x"))
@@ -23,6 +24,11 @@ public class WorldManager : MonoBehaviour {
         //    float z = PlayerPrefs.GetFloat("z");
         //    player.transform.position = new Vector3(x - 1, 0f, z - 1);
         //}
+    }
+
+    void Start()
+    {
+        MessageManager.TriggerEvent("PlayerInit", true);
     }
 
     

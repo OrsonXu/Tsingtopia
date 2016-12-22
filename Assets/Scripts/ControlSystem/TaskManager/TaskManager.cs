@@ -14,9 +14,16 @@ public class TaskManager : BaseManager {
 
 	private static TaskManager taskManager;
 
-
 	public override void Awake(){
 		Init ();
+        if (taskManager != null && taskManager != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            taskManager = this;
+        }
         DontDestroyOnLoad(this.gameObject);
 		Debug.Log("TaskManager.Awake");
 	}
