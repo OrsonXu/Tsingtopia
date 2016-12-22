@@ -10,9 +10,16 @@ public class TaskFactory : MonoBehaviour {
     private List<int> _taskID;
     private List<string> _taskName;
     private List<string> _taskDescription;
-	private string[] names = {"开始游戏","拜访董渊老师","探索二校门", "第一个结论","三教的第一场战斗","进一步探索"};
-	private string[] descriptions = { "","校园里发生了异变，去问问董老师，老师应该知道些什么…","二校门处也许有线索…", 
-		"赶紧把这一发现告诉董老师。","进入三教，消灭敌人，那里应该是异变刚开始的地方。", "返回董老师处报告情况。"};
+	private string[] names =
+    {"开始游戏","拜访董渊老师",
+      "探索二校门", "第一个结论",
+      "探索三教", "第一场战斗",
+      "初战告捷"};
+	private string[] descriptions = 
+    { "","校园里发生了异变，去问问董老师，老师应该知道些什么…",
+      "二校门处也许有线索…", "赶紧把这一发现告诉董老师。",
+      "进入三教，查看设备，那里应该是异变刚开始的地方。", "消灭三种敌人各五个",
+      "返回董老师处报告情况。"};
     void Awake()
     {
         //Test();
@@ -47,7 +54,7 @@ public class TaskFactory : MonoBehaviour {
 		}
 		TaskManager.activeListAdd (1);
 		TaskManager.activeListAdd (2);
-		TaskManager.activeListAdd (3);
+        //TaskManager.activeListAdd (3);
 //		// First one
 //
 //        name = "开始游戏";
@@ -108,12 +115,6 @@ public class TaskFactory : MonoBehaviour {
             }
         }
         
-    }
-
-    private void Test()
-    {
-        InstantiateTask(1, "hhh", TaskStatus.DISCOVERED, "Testing");
-		TaskManager.activeListAdd (1);
     }
 
     public void InstantiateTask(int taskid, string taskname, TaskStatus status, string description)

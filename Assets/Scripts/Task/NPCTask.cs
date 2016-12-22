@@ -7,6 +7,8 @@ public class NPCTask : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            Debug.Log("NPC <-> Player");
+            TaskManager.TriggerTask("Task1" + "Trigger");
             TaskManager.TriggerTask("Task2" + "Trigger");
             TaskManager.TriggerTask("Task4" + "Trigger");
         } 

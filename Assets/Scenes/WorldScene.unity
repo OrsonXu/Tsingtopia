@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12758318, g: 0.13438082, b: 0.12117301, a: 1}
+  m_IndirectSpecularColor: {r: 0.12758397, g: 0.13438086, b: 0.121171996, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2410,7 +2410,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000012677205968, guid: 4f9cbf5b45abd1649b52f15d8fa56a98, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000010816083544, guid: 4f9cbf5b45abd1649b52f15d8fa56a98,
         type: 2}
@@ -3618,8 +3618,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 376, y: 298.5}
+  m_SizeDelta: {x: 752, y: 597}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &73956097
 MonoBehaviour:
@@ -19729,6 +19729,22 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1 &443826437 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013768198488, guid: 3d2802dd8d8cec647923956bebe235d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1966452426}
+--- !u!114 &443826442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 443826437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260fbd45097d1f84eb87aa4ec41b7e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444890331
 GameObject:
   m_ObjectHideFlags: 0
@@ -31809,6 +31825,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010607762876, guid: b7910b40b874c7f4db5000d04726b5bc,
+        type: 2}
+      propertyPath: TaskObj
+      value: 
+      objectReference: {fileID: 1000012168729890, guid: 8f15bde61943aa3428316212b2b651d8,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7910b40b874c7f4db5000d04726b5bc, type: 2}
   m_IsPrefabParent: 0
@@ -46869,6 +46891,7 @@ GameObject:
   - 33: {fileID: 1180364745}
   - 65: {fileID: 1180364744}
   - 23: {fileID: 1180364743}
+  - 114: {fileID: 1180364746}
   m_Layer: 0
   m_Name: Erxiaomeng
   m_TagString: Untagged
@@ -46937,6 +46960,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1180364741}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1180364746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180364741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cef974a8502d904394f11eb6cf02b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1181838962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82325,6 +82359,16 @@ Prefab:
     - target: {fileID: 4000012130601454, guid: 3d2802dd8d8cec647923956bebe235d3, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.5000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 135000012928807502, guid: 3d2802dd8d8cec647923956bebe235d3,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 135000012928807502, guid: 3d2802dd8d8cec647923956bebe235d3,
+        type: 2}
+      propertyPath: m_Radius
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d2802dd8d8cec647923956bebe235d3, type: 2}
