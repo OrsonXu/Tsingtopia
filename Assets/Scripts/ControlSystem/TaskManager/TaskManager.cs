@@ -17,7 +17,7 @@ public class TaskManager : BaseManager {
 
 	public override void Awake(){
 		Init ();
-
+        DontDestroyOnLoad(this.gameObject);
 		Debug.Log("TaskManager.Awake");
 	}
 

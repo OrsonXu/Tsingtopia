@@ -12,14 +12,14 @@ public class EnemySpawnManager : MonoBehaviour
     void OnEnable()
     {
         MessageManager.StartListening("EnemyManagerBegin", StartSpawn);
-        MessageManager.StartListening("InstanceFinish", StopSpawn);
+        MessageManager.StartListening("PlayerFinish", StopSpawn);
         MessageManager.StartListening("PlayerDie", StopSpawn);
     }
 
     void OnDisable()
     {
         MessageManager.StopListening("EnemyManagerBegin", StartSpawn);
-        MessageManager.StopListening("InstanceFinish", StopSpawn);
+        MessageManager.StopListening("PlayerFinish", StopSpawn);
         MessageManager.StopListening("PlayerDie", StopSpawn);
     }
     void StartSpawn ()

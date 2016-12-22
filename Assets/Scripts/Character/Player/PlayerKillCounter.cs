@@ -44,7 +44,7 @@ public class PlayerKillCounter : MonoBehaviour {
         if (!finished && checkFinish())
         {
             Debug.Log("Clear!!!!");
-            MessageManager.TriggerEvent("InstanceFinish");
+            MessageManager.TriggerEvent("PlayerFinish");
             finished = true;
         }
     }
