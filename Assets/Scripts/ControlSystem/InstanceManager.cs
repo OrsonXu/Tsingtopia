@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class InstanceManager : BaseManager {
 
     PlayerManager _playerController;
-    EnemyManager _enemyManager;
+    EnemySpawnManager _enemyManager;
     RecoverManager _recoverManager;
 
     public override void Awake()
@@ -25,7 +25,7 @@ public class InstanceManager : BaseManager {
 
     void InitEnemy()
     {
-        _enemyManager = GetComponent<EnemyManager>();
+        _enemyManager = GetComponent<EnemySpawnManager>();
         _enemyManager.enabled = true;
     }
 		

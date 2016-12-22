@@ -151,7 +151,7 @@ public class PlayerManager : CharacterManager
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponent<EnemyController>().playerInRange = true;
+            other.GetComponent<EnemyManager>().playerInRange = true;
         }
     }
     /// <summary>
@@ -162,7 +162,7 @@ public class PlayerManager : CharacterManager
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponent<EnemyController>().playerInRange = false;
+            other.GetComponent<EnemyManager>().playerInRange = false;
         }
     }
 

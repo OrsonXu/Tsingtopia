@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController : CharacterManager {
+public class EnemyManager : CharacterManager {
 
     public bool playerInRange { get; set; }
     public float searchingTurnSpeed = 120f;
@@ -18,7 +18,7 @@ public class EnemyController : CharacterManager {
     private EnemyMovement _enemyMovement;
     private EnemyHealth _enemyHealth;
     private EnemyAttack _enemyAttack;
-    private StateMachine<EnemyController> _sm_enemy;
+    private StateMachine<EnemyManager> _sm_enemy;
     private Animator _anim;
     private bool _playerDead;
 
@@ -37,7 +37,7 @@ public class EnemyController : CharacterManager {
     public void EnemyPlusInit(int enemyID)
     {
         this._enemyID = enemyID;
-        _sm_enemy = new StateMachine<EnemyController>(this);
+        _sm_enemy = new StateMachine<EnemyManager>(this);
         _sm_enemy.SetCurrentState(State_Enemy_Move.Instantiate());
 
         _enemyMovement = GetComponent<EnemyMovement>();
@@ -195,7 +195,7 @@ public class EnemyController : CharacterManager {
     }
 
 
-    public StateMachine<EnemyController> GetFSM()
+    public StateMachine<EnemyManager> GetFSM()
     {
         return _sm_enemy;
     }
