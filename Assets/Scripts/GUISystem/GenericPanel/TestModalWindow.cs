@@ -7,12 +7,12 @@ using System.Collections;
 public class TestModalWindow : MonoBehaviour
 {
     private ModalPanel modalPanel;
-    private DisplayManager displayManager;
+    private GenericDialogueManager gdManager;
 
     void Awake()
     {
         modalPanel = ModalPanel.Instance();
-        displayManager = DisplayManager.Instance();
+        gdManager = GenericDialogueManager.Instance();
     }
 
     //  Send to the Modal Panel to set up the Buttons and Functions to call
@@ -25,16 +25,16 @@ public class TestModalWindow : MonoBehaviour
     //  Test functions
     void TestYesFunction()
     {
-        displayManager.DisplayMessage("Heck yeah! Yup!");
+        gdManager.DisplayMessage("Heck yeah! Yup!");
     }
 
     void TestNoFunction()
     {
-        displayManager.DisplayMessage("No way, José!");
+        gdManager.DisplayMessage("No way, José!");
     }
 
     void TestCancelFunction()
     {
-        displayManager.DisplayMessage("I give up!");
+        gdManager.DisplayMessage("I give up!");
     }
 }

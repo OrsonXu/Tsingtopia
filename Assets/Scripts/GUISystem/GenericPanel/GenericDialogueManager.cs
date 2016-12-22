@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class DisplayManager : MonoBehaviour
+public class GenericDialogueManager : BaseManager
 {
 
     public Text displayText;
@@ -11,18 +11,18 @@ public class DisplayManager : MonoBehaviour
 
     private IEnumerator fadeAlpha;
 
-    private static DisplayManager displayManager;
+    private static GenericDialogueManager gdManager;
 
-    public static DisplayManager Instance()
+    public static GenericDialogueManager Instance()
     {
-        if (!displayManager)
+        if (!gdManager)
         {
-            displayManager = FindObjectOfType(typeof(DisplayManager)) as DisplayManager;
-            if (!displayManager)
-                Debug.LogError("There needs to be one active DisplayManager script on a GameObject in your scene.");
+            gdManager = FindObjectOfType(typeof(GenericDialogueManager)) as GenericDialogueManager;
+            if (!gdManager)
+                Debug.LogError("There needs to be one active GenericDialogueManager script on a GameObject in your scene.");
         }
 
-        return displayManager;
+        return gdManager;
     }
 
     public void DisplayMessage(string message)

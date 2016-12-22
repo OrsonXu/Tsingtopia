@@ -27,16 +27,14 @@ public class TaskPanelDemo : MonoBehaviour {
 				foreach(int i in TaskManager.activeTaskList){
 					Task activeTask = _taskFactory.GetTaskByID(i);
 					if (activeTask) {
-						demoText += activeTask.getName () + "\n";
+						demoText += "**" + activeTask.getName () + "\n";
 						demoText += activeTask.getDescription () + "\n";
 					}
 				}
 				taskText.text = demoText;
-
 			} else {
 				taskText.text = _noTaskInfo;
 			}
-
 		}
 	}
 }
