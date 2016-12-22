@@ -9,6 +9,7 @@ public class TaskTest : MonoBehaviour {
 		if (Input.GetKey(KeyCode.Space)){
 			Debug.Log ("******Space pressed");
 			TaskManager.TriggerTask("Task1");
+
 		}
 	}
 }
