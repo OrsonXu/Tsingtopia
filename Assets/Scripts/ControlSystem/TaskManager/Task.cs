@@ -10,12 +10,7 @@ public class Task : MonoBehaviour {
 	private string _taskDescription;
 	private List<int> parentTasks;
 	private List<int> childTasks;
-	void Awake(){
-		_taskID = 1;
-		_taskName = "Wow";
-		_taskStatus = 0;
-		_taskDescription = "Seikai heiwa";
-	}
+
 	public void setTaskProperty(int taskid, string taskname, TaskStatus status, string description){
 		_taskID = taskid;
 		_taskName = taskname;

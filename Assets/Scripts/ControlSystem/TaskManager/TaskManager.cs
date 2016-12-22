@@ -107,8 +107,12 @@ public class TaskManager : BaseManager {
 		if (taskList == null){
 			taskList = new Dictionary<int, string>();
 		}
-
+		if (activeTaskList == null) {
+			activeTaskList = new List<int> ();
+		}
+			
 	}
+
 	void print(){
 		if (taskList != null) {
 			foreach (KeyValuePair<int, string> kvp in taskList) {

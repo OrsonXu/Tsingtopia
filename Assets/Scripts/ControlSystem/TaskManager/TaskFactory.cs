@@ -13,6 +13,7 @@ public class TaskFactory : MonoBehaviour {
     private void Test()
     {
         InstantiateTask(1, "hhh", TaskStatus.DISCOVERED, "Testing");
+		TaskManager.activeListAdd (1);
     }
 
     public void InstantiateTask(int taskid, string taskname, TaskStatus status, string description)
