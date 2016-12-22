@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12758356, g: 0.1343807, b: 0.121172264, a: 1}
+  m_IndirectSpecularColor: {r: 0.12758318, g: 0.13438082, b: 0.12117301, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1376,7 +1376,7 @@ GameObject:
   - 114: {fileID: 23993288}
   - 114: {fileID: 23993287}
   m_Layer: 5
-  m_Name: QuestionPanel
+  m_Name: StoryPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8445,7 +8445,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1555554392}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 721837996}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &173716259
@@ -10084,7 +10095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &218444696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14783,10 +14794,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 23993286}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -24.25}
-  m_SizeDelta: {x: 450, y: 48.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315622665
 MonoBehaviour:
@@ -31416,10 +31427,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 23993286}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -77.75}
-  m_SizeDelta: {x: 450, y: 44.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730980302
 MonoBehaviour:
@@ -31453,7 +31464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: to be filled
 --- !u!222 &730980303
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36012,7 +36023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &894289537
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36378,7 +36389,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: testtxt
 --- !u!43 &903283141
 Mesh:
   m_ObjectHideFlags: 0
@@ -52964,7 +52975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1283836375
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56368,7 +56379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCounter: 0
-  displayText: {fileID: 899741645}
+  displayText: {fileID: 730980302}
+  modalPanelObj: {fileID: 721837996}
   displayTime: 3.36
   fadeTime: 1.97
 --- !u!114 &1370311645
@@ -65992,10 +66004,10 @@ RectTransform:
   - {fileID: 1584782773}
   m_Father: {fileID: 936720730}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -47}
-  m_SizeDelta: {x: 350, y: 47}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1555554392
 MonoBehaviour:

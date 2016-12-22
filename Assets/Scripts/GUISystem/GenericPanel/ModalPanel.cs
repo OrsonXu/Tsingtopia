@@ -76,6 +76,7 @@ public class ModalPanel : MonoBehaviour
 
     void ClosePanel()
     {
+		Debug.Log ("panel set closed");
         modalPanelObject.SetActive(false);
     }
 }
