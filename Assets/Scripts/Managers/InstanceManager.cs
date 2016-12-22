@@ -22,7 +22,7 @@ public class InstanceManager : MonoBehaviour {
 
     private void Start()
     {
-        MessageManager.TriggerEvent("PlayerInit");
+        MessageManager.TriggerEvent("PlayerInit", false);
         MessageManager.TriggerEvent("EnemyManagerBegin");
         MessageManager.TriggerEvent("RecoverManagerBegin");
     }

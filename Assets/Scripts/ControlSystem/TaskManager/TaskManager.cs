@@ -71,7 +71,7 @@ public class TaskManager : BaseManager {
 		// Try get value a taskName and add listener to it
 		if (instance.taskDictionary.TryGetValue (taskName, out thisEvent)){
 			thisEvent.AddListener (listener);
-		} 
+		}
 		else{
 			thisEvent = new UnityEvent ();
 			thisEvent.AddListener (listener);

@@ -115,9 +115,6 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("Camera Ray Hit somewhere");
 			_playerToMouse = _floorHit.point - transform.position;
 
-			// Create a vector from the player to the point on the floor the raycast from the mouse hit.
-			_playerToMouse = _floorHit.point - transform.position;
-
 			// Ensure the vector is entirely along the floor plane.
 			_playerToMouse.y = 0f;
 			_newRotation = Quaternion.LookRotation(_playerToMouse);
