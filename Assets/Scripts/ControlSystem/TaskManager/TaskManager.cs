@@ -128,16 +128,29 @@ public class TaskManager : BaseManager {
 
 	void print(){
 		if (taskList != null) {
-			foreach (KeyValuePair<int, string> kvp in taskList) {
-				Debug.Log ("Key = "+ kvp.Key.ToString() +" " + "Value = " + kvp.Value.ToString());
+//			foreach (KeyValuePair<int, string> kvp in taskList) {
+//				Debug.Log ("Key = "+ kvp.Key.ToString() +" " + "Value = " + kvp.Value.ToString());
+//			}
+
+			GameObject[] gos = GameObject.FindGameObjectsWithTag ("Task");
+			string demoList = "";
+			foreach (GameObject go in gos) {
+				Task goTask = go.GetComponent<Task> ();
+				demoList += " -- taskid " + goTask.getId() + " taskstatus" + goTask.getStatusStr() +
+					" taskname "+goTask.getName() + "\n";
+
 			}
+			Debug.Log (demoList);
 			Debug.Log("Now activated tasks are :");
 			if (activeTaskList.Count != 0) {
+				string demoText = "";
 				foreach (int taskid in activeTaskList) {
-					Debug.Log ("task with id" + taskid.ToString ());
+					demoText += " -- task with id" + taskid.ToString () ;
 				}
+				Debug.Log (demoText);
 			}
-			else Debug.Log ("Active task is null");
+			else 
+				Debug.Log ("Active task is null");
 		} else
 			Debug.Log ("The taskList is null.");
 	}

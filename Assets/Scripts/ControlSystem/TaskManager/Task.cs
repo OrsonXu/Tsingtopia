@@ -23,6 +23,22 @@ public class Task : MonoBehaviour {
 	public TaskStatus getStatus(){
 		return _taskStatus;
 	}
+	public string getStatusStr(){
+		switch (_taskStatus) {
+		case TaskStatus.DISCOVERED:
+			return "DISCOVERED";
+			break;
+		case TaskStatus.UNDISCOVERED:
+			return "UNDISCOVERED";
+			break;
+		case TaskStatus.FINISHED:
+			return "FINISHED";
+			break;
+		default:
+			return "none";
+			break;
+		}
+	}
 	public void setTaskProperty(int taskid, string taskname, TaskStatus status, string description){
 		_taskID = taskid;
 		_taskName = taskname;
