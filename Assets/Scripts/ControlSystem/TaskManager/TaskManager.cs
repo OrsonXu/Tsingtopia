@@ -143,9 +143,9 @@ public class TaskManager : BaseManager {
 			foreach (GameObject go in gos) {
 				Task goTask = go.GetComponent<Task> ();
 				demoList += " -- taskid " + goTask.getId() + " taskstatus" + goTask.getStatusStr() +
-					" taskname "+goTask.getName() + "\n" ;
+					" taskname "+goTask.getName() + "  " ;
 				if (goTask.getDialogue () != null) {
-					demoList += "taskdescription" + goTask.getDialogue () [0];
+                    demoList += "taskdescription" + goTask.getDialogue()[0] + "\n";
 				}
 
 			}

@@ -12,6 +12,7 @@ public class TaskPanelDemo : MonoBehaviour {
 	private string _noTaskInfo = "现在没有任务";
 
 	void Awake(){
+        taskFac = GameObject.FindGameObjectWithTag("TaskFac");
 		_taskFactory = taskFac.GetComponent<TaskFactory> ();
 		_lastFrame = 0f;
 	}

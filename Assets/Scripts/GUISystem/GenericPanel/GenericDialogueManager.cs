@@ -64,16 +64,18 @@ public class GenericDialogueManager : BaseManager
 		} else {
 			_lastFrame = 0f;
 			if (isDialogue == true) {
+                if (msgCounter >= dialogueText.Length)
+                {
+                    if (Input.GetKey(KeyCode.N))
+                    {
+                        msgCounter = 0;
+                        displayText.text = "if you this, its an error";
+                        SetDisactive();
+                    }
+                }
 				if (msgCounter < dialogueText.Length) {
-					if (Input.GetKey (KeyCode.Space)) {
+					if (Input.GetKey (KeyCode.N)) {
 						displayText.text = dialogueText [msgCounter++];
-					}
-				}
-				if (msgCounter >= dialogueText.Length) {
-					if (Input.GetKey (KeyCode.Space)) {
-						msgCounter = 0;
-						displayText.text = "if you this, its an error";
-						SetDisactive();
 					}
 				}
 			}

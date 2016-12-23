@@ -30,14 +30,19 @@ public class WorldManager : MonoBehaviour {
     {
         GenericDialogueManager.Instance().SetDisactive();
         MessageManager.TriggerEvent("PlayerInit", true);
-        PlayerPrefs.DeleteKey("x");
-        PlayerPrefs.DeleteKey("z");
+        //PlayerPrefs.DeleteKey("x");
+        //PlayerPrefs.DeleteKey("z");
         if (PlayerPrefs.HasKey("x"))
         {
             float x = PlayerPrefs.GetFloat("x");
             float z = PlayerPrefs.GetFloat("z");
             Debug.Log("X : " + x.ToString() + "Z : " + z.ToString() + "Using the playerPref value");
             GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(x + 10f, 0, z);
+        }
+        else
+        {
+            TaskManager.activeListAdd(1);
+            TaskManager.TriggerTask("Task1Trigger");
         }
     }
 

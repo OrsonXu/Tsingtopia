@@ -30,16 +30,17 @@ public class TaskFactory : MonoBehaviour {
 		"诶！那边好像是董老师！！"
 	};
 	private string[] task2 = {
-		"<b>???</b>",
-		"小清！你怎么在这儿",
-		"<b>小清:</b>",
-		"董老师，发生了什么...我这是...狗血的...穿越了...？？？",
-		"<b>董老师:</b>",
-		"...在几小时前的软工课上，有个叫Tsingtopia的小组在展示的时候，程序出现了bug，直接导致了整个时空秩序的崩坏。我们都被吸入了一个巨大无比的虫洞中，现在这儿...应该是60年后的清华园... 但是现在清华园人迹罕至，我到现在都没有看到什么人...诡异之极啊..		我正在寻找能够回去的办法...",
-		"<b>小清OS</b>",
-		"这...（说到底还是穿越了...",
-		"<b>董老师:</b>",
-		"你可以去二校门查看一下情况吗？我怀疑那栋古老的建筑上可能会有一定的线索"
+        //"<b>???</b>",
+		"董老师:\n小清！你怎么在这儿",
+		"小清:\n董老师，发生了什么...我这是...狗血的...穿越了...？？？",
+		"董老师:\n...在软工课上有个叫Tsingtopia的小组在展示的时候，程序出现了bug...", 
+        "董老师:\n直接导致了整个时空秩序的崩坏。我们都被吸入了一个巨大无比的虫洞中..", 
+        "董老师:\n现在这儿..应该是60年后的清华园..", 
+        "董老师:\n但是现在清华园人迹罕至，一直没有看到什么人...诡异之极啊..",
+        "董老师:\n我也正在寻找能够回去的办法...",
+		"小清:\n这...(说到底还是穿越了...)",
+		"董老师:\n你可以去二校门查看一下情况吗？我怀疑那栋古老的建筑上可能会有一定的线索",
+        "小清:\n...好"
 
 	};
 
@@ -51,66 +52,73 @@ public class TaskFactory : MonoBehaviour {
 		"2057年，清华园重建完成，陆续开放各个院系，重新恢复了全球第一大学的生机与活力。",
 		"2077年，时空虫洞被重新打开，与2017年的虫洞轨迹发生冲突，两个虫洞间出现干扰...",
 		"...",
-		"！！！这二校门到底是何时建造的？！如此新的历史！甚至预言了现在！难道是..未来的人建造的？",
-		"...头又开始痛了...想不清...",
-		"得把这个重大发现告诉董老师！"
+		"小清:\n！！！",
+        "小清:\n这二校门到底是何时建造的？！如此新的历史！甚至预言了现在！",
+        "小清:\n难道是..未来的人建造的？",
+		"小清:\n...头又开始痛了...想不清...",
+		"小清:\n得把这个重大发现告诉董老师！"
 	};
 	private string[] task4 = {
-		"战役提前五百年被打响...",
-		"2037年，经过无数人的辛勤研究，找到了克制来自千年以后的机器人的有效方法，时空虫洞被重新填补，危机暂时缓解。但是清华在这一战役中受到极大波及，整个校园几乎被毁...",
-		"2057年，清华园重建完成，陆续开放各个院系，重新恢复了全球第一大学的生机与活力。",
-		"2077年，时空虫洞被重新打开，与2017年的虫洞轨迹发生冲突，两个虫洞间出现干扰...",
-		"...",
-		"！！！这二校门到底是何时建造的？！如此新的历史！甚至预言了现在！难道是..未来的人建造的？",
-		"...头又开始痛了...想不清...",
-		"得把这个重大发现告诉董老师！"
-	};
-	private string[] task5 = {
-		"教室中有三个黑色的圆球在翻滚，却看不清里面的东西...",
-		"那是...机器人！！！",
-		"他们果然来入侵了！！",
-		"先消灭各5个，看一看他们的能力，再回去告诉董老师！"
+		"小清:\n董老师！二校门上面刻着十分诡异的东西！",
+        "小清:\n@#￥%……&%￥#@！#￥%",
 
+        "董老师:\n......",
+        "董老师:\n是这样了...",
+        "董老师:\n两个虫洞干涉重叠，怕是2017年机器入侵的情况，又要在2077年重演！而且...恐怕是同一批机器人！",
+        "董老师:\n因为他们来自同一个时空，但是却因为虫洞交叉，而被传送到了两个不同的时空！",
+        "董老师:\n而反过来...如果我们能够在2077年阻止他们，那么2017年的敌人也将消失！人类就会免受20年的机器侵扰！清华园也得以保存！",
+        "董老师:\n这是一次60年后的莫大危机，也是莫大的机会...",
+        "董老师:\n既然这样...",
+        "董老师:\n小清！能否麻烦你去查看一下三教的情况，里面可能有六十年前我无意中放的一台设备...",
+        "董老师:\n它也许能够帮助我们对抗机器人！",
+
+        "小清:\n好的！"
 	};
+    private string[] task5 = { 
+        "三教好像有股引力在吸引着我..."
+    };
 	private string[] task6 = {
+        //"教室中有三个黑色的圆球在翻滚，却看不清里面的东西...",
+        //"那是...机器人！！！",
+        //"他们果然来入侵了！！",
+        //"先消灭各5个，看一看他们的能力，再回去告诉董老师！"
+        "这些机器人能力似乎一般，先回去告诉董老师吧！"
+	};
+	private string[] task7 = {
 		"董老师！我消灭了一些机器人，看起来它们似乎不是很厉害。",
 		"但是没有来得及查看线索，就跑出来了...",
-
-
-		"这里人迹罕至，倒是有不少机器人神出鬼没..."
 	};
 
 
-	private List<string[]> taskDialogues = new List<string[]>();
+    private List<string[]> _taskDialogues;
 
     void Awake()
     {
-        //Test();
         _taskID = new List<int>();
         _taskName = new List<string>();
         _taskDescription = new List<string>();
-
+        _taskDialogues = new List<string[]>();
         _taskNumberCounter = 0;
-       
-
     }
+
 	void Start(){
 		InitParam ();
 		ConstructTaskGraph();
 		InitTasks();
-
 	}
 
 	private void InitParam(){
 		string name;
 		string description;
-		taskDialogues.Add(task1);
-		taskDialogues.Add(task1);
-		taskDialogues.Add(task2);
-		taskDialogues.Add(task3);
-		taskDialogues.Add(task4);
-		taskDialogues.Add(task5);
-		taskDialogues.Add(task6);
+		_taskDialogues.Add(task1);
+		_taskDialogues.Add(task1);
+		_taskDialogues.Add(task2);
+		_taskDialogues.Add(task3);
+		_taskDialogues.Add(task4);
+		_taskDialogues.Add(task5);
+		_taskDialogues.Add(task6);
+        _taskDialogues.Add(task7);
+
 
 		// Zero
 		name = "";
@@ -129,17 +137,14 @@ public class TaskFactory : MonoBehaviour {
 	}
     private void InitTasks()
     {
-        
-		TaskManager.activeListAdd (1);
-		TaskManager.TriggerTask ("Task1Trigger");
-
-
+        //TaskManager.activeListAdd (1);
+        //TaskManager.TriggerTask ("Task1Trigger");
     }
 
     private void ConstructTaskGraph()
     {
 		
-        for (int i = 1; i < _taskID.Count; i++)
+        for (int i = 1; i <= _taskID.Count; i++)
         {
             int[] p = {i - 1};
             int[] c = {i + 1};
@@ -147,13 +152,13 @@ public class TaskFactory : MonoBehaviour {
             {
                 Debug.Log(_taskName[i]);
                 InstantiateTask(_taskID[i], _taskName[i], TaskStatus.DISCOVERED,
-                    _taskDescription[i], taskDialogues[i], p, c);
+                    _taskDescription[i], _taskDialogues[i], p, c);
             }
             else
             {
                 Debug.Log(_taskName[i]);
                 InstantiateTask(_taskID[i], _taskName[i], TaskStatus.UNDISCOVERED,
-					_taskDescription[i], taskDialogues[i], p, c);
+					_taskDescription[i], _taskDialogues[i], p, c);
             }
         }
         

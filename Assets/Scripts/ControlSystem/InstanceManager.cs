@@ -17,9 +17,26 @@ public class InstanceManager : BaseManager {
 
     private void Start()
     {
+        // Initiate player in the instance scene
         MessageManager.TriggerEvent("PlayerInit", false);
-        MessageManager.TriggerEvent("EnemyManagerBegin");
-        MessageManager.TriggerEvent("RecoverManagerBegin");
+
+        Task task6 = GameObject.Find("TaskSystem/TaskFactory/task6").GetComponent<Task>();
+        if (task6.getStatus() == TaskStatus.DISCOVERED)
+        {
+            string[] task = {
+		    "教室中有三个黑色的圆球在翻滚，却看不清里面的东西...",
+		    "那是...机器人！！！",
+		    "他们果然来入侵了！！",
+		    "先消灭各5个，看一看他们的能力，再回去告诉董老师！"
+	        };
+            GenericDialogueManager.Instance().DisplayMessage(task);
+            // If the task6 is discoverd, then begin spwan enemy and recover
+            
+            MessageManager.TriggerEvent("EnemyManagerBegin");
+            MessageManager.TriggerEvent("RecoverManagerBegin");
+        }
+
+
     }
 
     public void RestartLevel()
