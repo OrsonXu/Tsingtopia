@@ -44,11 +44,41 @@ public class TaskFactory : MonoBehaviour {
 	};
 
 	private string[] task3 = {
+		"二校门的墙上好像刻着什么东西...",
+		"...",
+		"2017年，时空虫洞无意被打开，3017年的智能机器族野心暴起，大举入侵清华，意图提前机器纪元的到来...人类陷入莫大恐慌...人机战役提前五百年被打响...",
+		"2037年，经过无数人的辛勤研究，找到了克制来自千年以后的机器人的有效方法，时空虫洞被重新填补，危机暂时缓解。但是清华在这一战役中受到极大波及，整个校园几乎被毁...",
+		"2057年，清华园重建完成，陆续开放各个院系，重新恢复了全球第一大学的生机与活力。",
+		"2077年，时空虫洞被重新打开，与2017年的虫洞轨迹发生冲突，两个虫洞间出现干扰...",
+		"...",
+		"！！！这二校门到底是何时建造的？！如此新的历史！甚至预言了现在！难道是..未来的人建造的？",
+		"...头又开始痛了...想不清...",
+		"得把这个重大发现告诉董老师！"
+	};
+	private string[] task4 = {
+		"战役提前五百年被打响...",
+		"2037年，经过无数人的辛勤研究，找到了克制来自千年以后的机器人的有效方法，时空虫洞被重新填补，危机暂时缓解。但是清华在这一战役中受到极大波及，整个校园几乎被毁...",
+		"2057年，清华园重建完成，陆续开放各个院系，重新恢复了全球第一大学的生机与活力。",
+		"2077年，时空虫洞被重新打开，与2017年的虫洞轨迹发生冲突，两个虫洞间出现干扰...",
+		"...",
+		"！！！这二校门到底是何时建造的？！如此新的历史！甚至预言了现在！难道是..未来的人建造的？",
+		"...头又开始痛了...想不清...",
+		"得把这个重大发现告诉董老师！"
+	};
+	private string[] task5 = {
+		"教室中有三个黑色的圆球在翻滚，却看不清里面的东西...",
+		"那是...机器人！！！",
+		"他们果然来入侵了！！",
+		"先消灭各5个，看一看他们的能力，再回去告诉董老师！"
 
 	};
-	private string[] task4 = null;
-	private string[] task5 = null;
-	private string[] task6 = null;
+	private string[] task6 = {
+		"董老师！我消灭了一些机器人，看起来它们似乎不是很厉害。",
+		"但是没有来得及查看线索，就跑出来了...",
+
+
+		"这里人迹罕至，倒是有不少机器人神出鬼没..."
+	};
 
 
 	private List<string[]> taskDialogues = new List<string[]>();
@@ -75,11 +105,12 @@ public class TaskFactory : MonoBehaviour {
 		string name;
 		string description;
 		taskDialogues.Add(task1);
+		taskDialogues.Add(task1);
 		taskDialogues.Add(task2);
-		taskDialogues.Add(task1);
-		taskDialogues.Add(task1);
-		taskDialogues.Add(task1);
-		taskDialogues.Add(task1);
+		taskDialogues.Add(task3);
+		taskDialogues.Add(task4);
+		taskDialogues.Add(task5);
+		taskDialogues.Add(task6);
 
 		// Zero
 		name = "";

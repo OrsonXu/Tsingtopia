@@ -24,6 +24,9 @@ public class Task : MonoBehaviour {
 	public TaskStatus getStatus(){
 		return _taskStatus;
 	}
+	public string[] getDialogue(){
+		return _taskDialogue;
+	}
 	public string getStatusStr(){
 		switch (_taskStatus) {
 		case TaskStatus.DISCOVERED:

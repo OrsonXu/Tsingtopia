@@ -47,9 +47,6 @@ public class GenericDialogueManager : BaseManager
 		modalPanelObj.SetActive (true);
 		//        SetAlpha();
 	}
-	public void ClosePanel(){
-		modalPanelObj.SetActive (false);
-	}
 
 
     public void SetDisactive()
@@ -76,7 +73,7 @@ public class GenericDialogueManager : BaseManager
 					if (Input.GetKey (KeyCode.Space)) {
 						msgCounter = 0;
 						displayText.text = "if you this, its an error";
-						modalPanelObj.SetActive (false);
+						SetDisactive();
 					}
 				}
 			}
