@@ -37,6 +37,7 @@ public class GenericDialogueManager : BaseManager
 		isDialogue = false;
 //        SetAlpha();
     }
+
 	public void DisplayMessage(string[] messages)
 	{
 		isDialogue = true;
@@ -47,8 +48,16 @@ public class GenericDialogueManager : BaseManager
 		//        SetAlpha();
 	}
 	public void ClosePanel(){
-		modalPanelObj.SetActive (true);
+		modalPanelObj.SetActive (false);
 	}
+
+
+    public void SetDisactive()
+    {
+        modalPanelObj.SetActive(false);
+    }
+
+
 	private void Awake(){
 		
 	}
