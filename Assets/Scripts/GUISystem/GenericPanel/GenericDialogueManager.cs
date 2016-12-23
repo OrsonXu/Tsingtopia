@@ -12,8 +12,11 @@ public class GenericDialogueManager : BaseManager
 
     private IEnumerator fadeAlpha;
     private static GenericDialogueManager gdManager;
-
-
+	private string[] dialogueText;
+	private int msgCounter;
+	private bool isDialogue;
+	private float _lastFrame;
+	private float _updateTime = 0.1f;
     public static GenericDialogueManager Instance()
     {
         if (!gdManager)
@@ -30,11 +33,45 @@ public class GenericDialogueManager : BaseManager
     {
         displayText.text = message;
 		modalPanelObj.SetActive (true);
+		msgCounter = 0;
+		isDialogue = false;
 //        SetAlpha();
     }
-
+	public void DisplayMessage(string[] messages)
+	{
+		isDialogue = true;
+		dialogueText = messages;
+		displayText.text = dialogueText [0];
+		msgCounter = 1;
+		modalPanelObj.SetActive (true);
+		//        SetAlpha();
+	}
+	public void ClosePanel(){
+		modalPanelObj.SetActive (true);
+	}
 	private void Awake(){
 		
+	}
+	private void Update(){
+		if (_lastFrame < _updateTime) {
+			_lastFrame += Time.deltaTime;
+		} else {
+			_lastFrame = 0f;
+			if (isDialogue == true) {
+				if (msgCounter < dialogueText.Length) {
+					if (Input.GetKey (KeyCode.Space)) {
+						displayText.text = dialogueText [msgCounter++];
+					}
+				}
+				if (msgCounter >= dialogueText.Length) {
+					if (Input.GetKey (KeyCode.Space)) {
+						msgCounter = 0;
+						displayText.text = "if you this, its an error";
+						modalPanelObj.SetActive (false);
+					}
+				}
+			}
+		}
 	}
 //    void SetAlpha()
 //    {

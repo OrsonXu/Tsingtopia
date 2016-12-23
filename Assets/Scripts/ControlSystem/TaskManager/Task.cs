@@ -8,6 +8,7 @@ public class Task : MonoBehaviour {
 	private string _taskName;
 	private TaskStatus _taskStatus;
 	private string _taskDescription;
+	private string[] _taskDialogue;
 	private List<int> parentTasks;
 	private List<int> childTasks;
 
@@ -57,6 +58,9 @@ public class Task : MonoBehaviour {
 		for (int i = 0; i < child.Length; i++) {
 			childTasks.Add( child [i]);
 		}
+	}
+	public void setDialogues(string[] dia){
+		this._taskDialogue = dia;
 	}
     //void OnEnable(){
     //    TaskManager.StartListening ("Task" + _taskID.ToString(), TaskAction);
@@ -113,7 +117,7 @@ public class Task : MonoBehaviour {
 				foreach (int i in childTasks)
 					TaskManager.TriggerTask ("Task" + i.ToString () + "TryDiscover");
 			}
-			GenericDialogueManager.Instance().DisplayMessage (_taskDescription);
+			GenericDialogueManager.Instance().DisplayMessage (_taskDialogue);
 		}
 	}
 
