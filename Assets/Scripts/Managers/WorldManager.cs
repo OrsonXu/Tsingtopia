@@ -7,7 +7,7 @@ public class WorldManager : MonoBehaviour {
     PlayerManager playerController;
 
     void Awake()
-    {
+    { 
         
         //playerController = player.GetComponent<PlayerManager>();
         //playerController.Init(new Vector3(0f, 0f, 0f), new Vector3(0f, 90f, 0f));
