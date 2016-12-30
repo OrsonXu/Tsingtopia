@@ -9,7 +9,7 @@ public class EnemyManager : CharacterManager {
     public float ContinueAttackRange = 20f;
 
     public Transform[] MovePoints;
-    private int movePointIndex;
+    private int _movePointIndex;
     public float alertThreshold = 2f;
 
     private MeshRenderer _meshRenderer;
@@ -23,17 +23,24 @@ public class EnemyManager : CharacterManager {
     private bool _playerDead;
 
     private GameObject _player;
-
+    /// <summary>
+    /// Override, register a message event
+    /// </summary>
     private void OnEnable()
     {
         MessageManager.StartListening("PlayerDie", PlayerDie);
     }
-
+    /// <summary>
+    /// Override, unregister a message event
+    /// </summary>
     private void OnDisable()
     {
         MessageManager.StopListening("PlayerDie", PlayerDie);
     }
-
+    /// <summary>
+    /// Init the enemy
+    /// </summary>
+    /// <param name="enemyID"></param>
     public void EnemyPlusInit(int enemyID)
     {
         this._enemyID = enemyID;
@@ -55,17 +62,22 @@ public class EnemyManager : CharacterManager {
 
         _meshRenderer = transform.FindChild("Cube").GetComponent<MeshRenderer>();
 
-        movePointIndex = 0;
+        _movePointIndex = 0;
         _playerDead = false;
     }
     public void Update()
     {
+        // Update the FSM state
         _sm_enemy.SMUpdate();
     }
-
+    /// <summary>
+    /// Idle loop function during idle state
+    /// </summary>
     public override void Idle()
     {
+        // Update the cube color
         _meshRenderer.material.color = Color.green;
+        // Trigger the animation
         _anim.SetBool("IsWalking", false);
         if (_enemyMovement.enabled)
         {
@@ -76,9 +88,12 @@ public class EnemyManager : CharacterManager {
             _enemyAttack.enabled = false;
         }
     }
-
+    /// <summary>
+    /// Alert loop function during the alert state
+    /// </summary>
     public void Alert()
     {
+        //Update cube color
         _meshRenderer.material.color = Color.yellow;
         transform.Rotate(0, searchingTurnSpeed * Time.deltaTime, 0);
         _alertTimer += Time.deltaTime;
@@ -92,9 +107,12 @@ public class EnemyManager : CharacterManager {
         }
     }
 
-
+    /// <summary>
+    /// Loop function during the move state
+    /// </summary>
     public override void Move()
     {
+        // Update the cube color
         _meshRenderer.material.color = Color.green;
         _alertTimer = 0;
         _anim.SetBool("IsWalking", true);
@@ -102,14 +120,14 @@ public class EnemyManager : CharacterManager {
         {
             _enemyMovement.enabled = true;
             //movePointIndex = (movePointIndex + 1) % MovePoints.Length;
-            _enemyMovement.SetDestination(MovePoints[movePointIndex].position);
+            _enemyMovement.SetDestination(MovePoints[_movePointIndex].position);
         }
         else
         {
             if (_enemyMovement.CloseEnough())
             {
-                movePointIndex = (movePointIndex + 1) % MovePoints.Length;
-                _enemyMovement.SetDestination(MovePoints[movePointIndex].position);
+                _movePointIndex = (_movePointIndex + 1) % MovePoints.Length;
+                _enemyMovement.SetDestination(MovePoints[_movePointIndex].position);
             }
         }
         if (_enemyAttack.enabled)
@@ -117,7 +135,9 @@ public class EnemyManager : CharacterManager {
             _enemyAttack.enabled = false;
         }
     }
-
+    /// <summary>
+    /// Useskill loop funciotn during the useskill function
+    /// </summary>
     public void UseSkill()
     {
         _meshRenderer.material.color = Color.red;
@@ -129,7 +149,9 @@ public class EnemyManager : CharacterManager {
             _enemyAttack.enabled = true;
         }
     }
-
+    /// <summary>
+    /// Funtion when the enemy die
+    /// </summary>
     public void Die()
     {
         _anim.SetTrigger("Die");
@@ -137,12 +159,17 @@ public class EnemyManager : CharacterManager {
         _enemyAttack.enabled = false;
         MessageManager.TriggerEvent("EnemyDieWithID", _enemyID);
     }
-
+    /// <summary>
+    /// Function when the player dies, 
+    /// </summary>
     private void PlayerDie()
     {
         _playerDead = true;
     }
-
+    /// <summary>
+    /// Public flag for whether the enemy is dead
+    /// </summary>
+    /// <returns></returns>
     public bool IsDead()
     {
         return _enemyHealth.IsDead();
@@ -157,17 +184,26 @@ public class EnemyManager : CharacterManager {
         //return !(playerController.IsDead());
         return !_playerDead;
     }
-
+    /// <summary>
+    /// Flag for whether the player is in the alert range
+    /// </summary>
+    /// <returns></returns>
     public bool CanAlerted()
     {
         return playerInRange;
     }
-
+    /// <summary>
+    /// Flag for whether the enemy can still stay in the alert state
+    /// </summary>
+    /// <returns></returns>
     public bool CanContinueAlerted()
     {
         return (_alertTimer < alertThreshold);
     }
-
+    /// <summary>
+    /// Flag for whether the enemy can attack the player.
+    /// </summary>
+    /// <returns></returns>
     public bool CanAttack()
     {
         RaycastHit hit;
@@ -180,9 +216,13 @@ public class EnemyManager : CharacterManager {
             return false;
         }
     }
-
+    /// <summary>
+    /// Flag for whether the enemy can continue to attack the player
+    /// </summary>
+    /// <returns></returns>
     public bool CanContinueAttack()
     {
+        // The player is in the attack range
         float dist = Mathf.Sqrt((transform.position - _player.transform.position).sqrMagnitude);
         if (dist < ContinueAttackRange)
         {
@@ -194,7 +234,10 @@ public class EnemyManager : CharacterManager {
         }
     }
 
-
+    /// <summary>
+    /// Return the FSM of the enemy
+    /// </summary>
+    /// <returns></returns>
     public StateMachine<EnemyManager> GetFSM()
     {
         return _sm_enemy;

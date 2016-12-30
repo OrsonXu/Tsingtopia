@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Basic class for CharacterManager
+/// </summary>
 abstract public class CharacterManager : BaseManager{
 
     /// <summary>

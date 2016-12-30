@@ -106,7 +106,9 @@ public class TaskFactory : MonoBehaviour {
 		ConstructTaskGraph();
 		InitTasks();
 	}
-
+    /// <summary>
+    /// Initiate all of the task ID/name/description/dialogue
+    /// </summary>
 	private void InitParam(){
 		string name;
 		string description;
@@ -140,7 +142,9 @@ public class TaskFactory : MonoBehaviour {
         //TaskManager.activeListAdd (1);
         //TaskManager.TriggerTask ("Task1Trigger");
     }
-
+    /// <summary>
+    /// Construct the task graph
+    /// </summary>
     private void ConstructTaskGraph()
     {
 		
@@ -148,6 +152,7 @@ public class TaskFactory : MonoBehaviour {
         {
             int[] p = {i - 1};
             int[] c = {i + 1};
+            // Special instantiate for the first one
             if (i == 1)
             {
                 Debug.Log(_taskName[i]);
@@ -163,7 +168,13 @@ public class TaskFactory : MonoBehaviour {
         }
         
     }
-
+    /// <summary>
+    /// Initiate by id, taskname, status, description
+    /// </summary>
+    /// <param name="taskid"></param>
+    /// <param name="taskname"></param>
+    /// <param name="status"></param>
+    /// <param name="description"></param>
     public void InstantiateTask(int taskid, string taskname, TaskStatus status, string description)
     {
         GameObject tmpTaskObj = Instantiate(TaskObj) as GameObject;
@@ -172,7 +183,15 @@ public class TaskFactory : MonoBehaviour {
         Task task = tmpTaskObj.GetComponent<Task>();
         task.setTaskProperty(taskid, taskname, status, description);
     }
-
+    /// <summary>
+    /// Initiate by id, taskname, status, description, parent list, children list
+    /// </summary>
+    /// <param name="taskid"></param>
+    /// <param name="taskname"></param>
+    /// <param name="status"></param>
+    /// <param name="description"></param>
+    /// <param name="parent"></param>
+    /// <param name="child"></param>
     public void InstantiateTask(int taskid, string taskname, TaskStatus status, string description,
                                 int[] parent, int[] child)
     {
@@ -183,6 +202,16 @@ public class TaskFactory : MonoBehaviour {
         task.setTaskProperty(taskid, taskname, status, description);
         task.setRelations(parent, child);
     }
+    /// <summary>
+    /// Initiate by id, taskname, status, description, dialogue list, parent list, children list
+    /// </summary>
+    /// <param name="taskid"></param>
+    /// <param name="taskname"></param>
+    /// <param name="status"></param>
+    /// <param name="description"></param>
+    /// <param name="dialogues"></param>
+    /// <param name="parent"></param>
+    /// <param name="child"></param>
 	public void InstantiateTask(int taskid, string taskname, TaskStatus status, string description,string[] dialogues,
 		int[] parent, int[] child)
 	{
@@ -194,6 +223,11 @@ public class TaskFactory : MonoBehaviour {
 		task.setTaskProperty(taskid, taskname, status, description);
 		task.setRelations(parent, child);
 	}
+    /// <summary>
+    /// Get the task by ID
+    /// </summary>
+    /// <param name="taskid"></param>
+    /// <returns></returns>
     public Task GetTaskByID(int taskid)
     {
         GameObject tmpTaskObj = GameObject.Find("TaskFactory/task" + taskid.ToString());

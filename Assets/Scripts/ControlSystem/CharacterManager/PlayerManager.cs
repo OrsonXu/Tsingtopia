@@ -25,6 +25,10 @@ public class PlayerManager : CharacterManager
     {
         MessageManager.StartListening("PlayerInit", PlayerPlusInit);
     }
+    /// <summary>
+    /// Init of the player
+    /// </summary>
+    /// <param name="inWorld"></param>
     public void PlayerPlusInit(bool inWorld)
     {
 
@@ -67,9 +71,10 @@ public class PlayerManager : CharacterManager
         _playerKillCounter.Length = _enemyListSize;
         _playerKillCounter.enabled = true;
     }
-
+    
     public void Update()
     {
+        // Update the player FSM
         this.FSMUpdate();
     }
     /// <summary>
@@ -79,19 +84,25 @@ public class PlayerManager : CharacterManager
     {
         _sm_player.SMUpdate();
     }
-
+    /// <summary>
+    /// idle function during the idle state
+    /// </summary>
     public override void Idle()
     {
         _anim.SetBool("IsWalking", false);
     }
-
+    /// <summary>
+    /// move function during the move state
+    /// </summary>
     public override void Move()
     {
         _anim.SetBool("IsWalking", true);
         if (!_playerMovement.enabled)
             _playerMovement.enabled = true;
     }
-
+    /// <summary>
+    /// Useskill function during the useskill state
+    /// </summary>
     public void UseSkill()
     {
         if (_playerMagic.CanUseSkill(SkillMagic))
@@ -105,7 +116,9 @@ public class PlayerManager : CharacterManager
                 _playerShooting.enabled = false;
         }
     }
-
+    /// <summary>
+    /// Die function when the player is in dead state
+    /// </summary>
     public void Die()
     {
         MessageManager.TriggerEvent("PlayerDie");
@@ -115,23 +128,34 @@ public class PlayerManager : CharacterManager
         _playerShooting.enabled = false;
     }
 
-
+    /// <summary>
+    /// Change some item. (Temporary unavailable)
+    /// </summary>
+    /// <returns></returns>
     public int ItemChange()
     {
         return 0;
     }
-
+    /// <summary>
+    /// Return the FSM of the player
+    /// </summary>
+    /// <returns></returns>
     public StateMachine<PlayerManager> GetFSM()
     {
         return _sm_player;
     }
-
+    /// <summary>
+    /// Flag for whether the player is dead
+    /// </summary>
+    /// <returns></returns>
     public bool IsDead()
     {
         if (InWorld) return false;
         return _playerHealth.IsDead();
     }
-
+    /// <summary>
+    /// Recover the player health and magic to max.
+    /// </summary>
     public void RecoverAll()
     {
         _playerHealth.CurrentHealth = _playerHealth.MaxHealth;

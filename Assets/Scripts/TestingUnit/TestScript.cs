@@ -31,7 +31,9 @@ public class TestScript : MonoBehaviour {
     NativeRECT boundry;
 
     int posx, posy;
-
+    /// <summary>
+    /// boundry of the moving area
+    /// </summary>
     public struct NativeRECT
     {
         public int left;
@@ -54,38 +56,32 @@ public class TestScript : MonoBehaviour {
         StartCoroutine(MovePlayer());
         StartCoroutine(MouseClick());
     }
-
-	// Update is called once per frame
-	void Update () {
-	}
-
+    /// <summary>
+    ///  Move the mouse point
+    /// </summary>
+    /// <returns></returns>
     IEnumerator MouseMove()
     {
         yield return new WaitForSeconds(1f);
         while (true)
         {
-            //MouseSpeed = UnityEngine.Random.Range(3, 8);
-            //int newposx = UnityEngine.Random.Range(boundry.left, boundry.right);
-            //int newposy = UnityEngine.Random.Range(boundry.top, boundry.bottom);
-            //Vector2 lerp = Vector2.Lerp(new Vector2(posx, posy),
-            //new Vector2(newposx, newposy), Time.deltaTime * MouseSpeed);
-            //posx = (int)lerp.x;
-            //posy = (int)lerp.y;
-
             posx = UnityEngine.Random.Range(boundry.left, boundry.right);
             posy = UnityEngine.Random.Range(boundry.top, boundry.bottom);
 
             SetCursorPos(posx, posy);
-            //yield return new WaitForSeconds(2f);
             yield return new WaitForSeconds(0.3f);
         }
     }
-
+    /// <summary>
+    /// Virtual key input
+    /// </summary>
+    /// <returns></returns>
     IEnumerator MovePlayer()
     {
         yield return new WaitForSeconds(0.1f);
         while (true)
         {
+            // Randomly generate the keyboard input
             float pressTime = UnityEngine.Random.Range(0.5f, 1.5f);
             int direction = UnityEngine.Random.Range(1, 9);
             switch (direction)
@@ -143,7 +139,10 @@ public class TestScript : MonoBehaviour {
             }
         }
     }
-
+    /// <summary>
+    /// Virtual mouse click
+    /// </summary>
+    /// <returns></returns>
     IEnumerator MouseClick()
     {
         yield return new WaitForSeconds(1.4f);
