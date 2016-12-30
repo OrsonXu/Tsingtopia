@@ -13,7 +13,7 @@ public class TaskManager : BaseManager {
 
 
 	private static TaskManager taskManager;
-
+	// Singleton model awake, ensure there is only one instancelized taskManager
 	public override void Awake(){
 		Init ();
         if (taskManager != null && taskManager != this)
@@ -43,6 +43,7 @@ public class TaskManager : BaseManager {
 			return taskManager;
 		}
 	}
+	// Register Task
 	public static void RegisterTask(int taskID, string taskName){
 		string thisTaskName = null;
 		Debug.Log("TaskID" + taskID.ToString() + " added " + " name: " + taskName);
@@ -51,6 +52,7 @@ public class TaskManager : BaseManager {
 			instance.taskList.Add (taskID, taskName);
 		}
 	}
+	// Unregister Task
 	public static void UnregisterTask(int taskID, string taskName){
 
 		if (taskManager == null) return;
@@ -60,16 +62,18 @@ public class TaskManager : BaseManager {
 			instance.taskList.Remove (taskID);
 		}
 	}
+	// Return task string when input is task ID
 	public static string GetNameById(int taskID){
 		string thisName = null;
 		if (instance.taskList.TryGetValue (taskID, out thisName))
 			;
 		return thisName;
 	}
-
+	// Add task to actived list
 	public static void activeListAdd(int taskid){
 		activeTaskList.Add (taskid);
 	}
+	// Remove task from actived list
 	public static void activeListRemove(int taskid){
 		activeTaskList.Remove (taskid);
 	}
@@ -88,6 +92,7 @@ public class TaskManager : BaseManager {
 		}
 	}
 
+	// Stop a task listener
 	public static void StopListening (string taskName, UnityAction listener){
 		if (taskManager == null) return;
 		UnityEvent thisEvent = null;
@@ -96,6 +101,8 @@ public class TaskManager : BaseManager {
 			thisEvent.RemoveListener (listener);
 		}
 	}
+
+	// Trigger a task
 	public static void TriggerTask(string taskName){
 
 		//		Debug.Log("TaskManager tries to trigger " + taskName);
@@ -107,6 +114,8 @@ public class TaskManager : BaseManager {
 			Debug.Log ("Failed to trigger " + taskName + ", cannot find this task in taskDictionary");
 
 	}
+
+	// get a task obj by its id
 	public Task GetTaskById(int taskid){
 		GameObject[] gos = GameObject.FindGameObjectsWithTag ("TaskObj");
 		Task rtnTask = null;
@@ -132,6 +141,7 @@ public class TaskManager : BaseManager {
 			
 	}
 
+	// print task manager function, print task info in Unity debug console
 	void print(){
 		if (taskList != null) {
 //			foreach (KeyValuePair<int, string> kvp in taskList) {
@@ -164,7 +174,7 @@ public class TaskManager : BaseManager {
 			Debug.Log ("The taskList is null.");
 	}
 
-
+	// Overwrite, when M pressed, print the debug info
 	void Update(){
 		if (Input.GetKey (KeyCode.M)) {
 			print ();

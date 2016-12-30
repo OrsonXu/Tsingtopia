@@ -13,9 +13,12 @@ public class PauseButton : MonoBehaviour {
 	private float sliderValue2 = 50.0f;
 	private float maxSliderValue = 100.0f;
 
+	// Overwrite when Unity reload
 	void Start(){
 		
 	}
+
+	// Overwrite, when Unity UI Event System is triggered
 	void OnGUI(){
 
 		_textString = GUI.TextArea (new Rect (Screen.width * 0.5f - 200, Screen.height * 0.5f - 150, 100, 50), _textString);
@@ -70,6 +73,7 @@ public class PauseButton : MonoBehaviour {
 
 	}
 
+	// This funciton is aborted *****
 	void WindowFunction (int windowID) {
 		// Draw any Controls inside the window here
 		GUI.Button (new Rect (0, 0, 100, 50), "Pops up");

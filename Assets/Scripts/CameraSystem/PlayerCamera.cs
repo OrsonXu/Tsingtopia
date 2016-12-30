@@ -27,6 +27,7 @@ public class PlayerCamera : MonoBehaviour {
 	public float minScrollFactor = 0.5f;
 	public float maxScrollFactor = 2f;
 
+	// Initial this camera module when it's enabled. set offset and show cursor
 	private void OnEnable(){
 		MessageManager.TriggerEvent ("PlayerEnableMovement");
 		// Ensure the cursor is not locked and visible
@@ -51,7 +52,7 @@ public class PlayerCamera : MonoBehaviour {
 		_scrollFactor = 1f;
         offset = _fixedOffset * _fixedDirection * _scrollFactor;
     }
-
+	// Overwirte the Unity fixed update, response to input in each frame
     void FixedUpdate()
     {
         // Zoom view using mouse 
@@ -63,7 +64,7 @@ public class PlayerCamera : MonoBehaviour {
 		Rotate ();
 
     }
-		
+	// Zoom view wehn scorll mouse scrolls
 	private void ScrollView()
 	{
 //		fixedDistance = fixedOffset.magnitude;
@@ -78,7 +79,7 @@ public class PlayerCamera : MonoBehaviour {
 		offset = _fixedOffset * _fixedDirection * _scrollFactor;
 
 	}
-
+	// Rotate the camera of which the player is center
 	private void Rotate(){
 		if (Input.GetKey (leftRotate) || Input.GetKey (rightRotate)) {
 			if (Input.GetKey (leftRotate))
