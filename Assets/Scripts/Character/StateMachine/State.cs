@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Basic type of the state
+/// </summary>
+/// <typeparam name="enetityType"></typeparam>
 public class State <enetityType>
 {
     public enetityType Target;

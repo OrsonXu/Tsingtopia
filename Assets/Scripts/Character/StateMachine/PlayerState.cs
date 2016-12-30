@@ -21,26 +21,25 @@ public class State_Player_Idle : State<PlayerManager>
 
     public override void Execute(PlayerManager obj)
     {
-
+        // If the player dies
         if (obj.IsDead())
         {
             obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
         }
-
+        // The loop function during the idle
         obj.Idle();
-
+        // If there is any input, change to the move idle
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             obj.GetFSM().ChangeState(State_Player_Move.Instantiate());
         }
+        // If the player is in the worldscene, it cannnot shoot.
         if (!obj.InWorld)
         {
             if (Input.GetButton("Fire1"))
             {
                 obj.GetFSM().ChangeState(State_Player_UseSkill.Instantiate());
             }
-
-
         }
     }
 
@@ -71,16 +70,19 @@ public class State_Player_Move : State<PlayerManager>
 
     public override void Execute(PlayerManager obj)
     {
+        // If the player dies
         if (obj.IsDead())
         {
             obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
         }
-
+        // The loop function during the move state
         obj.Move();
+        // If there is no input detected, change to idle state 
         if (Input.GetAxisRaw("Horizontal") == 0 || Input.GetAxisRaw("Vertical") == 0)
         {
             obj.GetFSM().ChangeState(State_Player_Idle.Instantiate());
         }
+        // Cannot shoot if in the World Scene
         if (!obj.InWorld)
         {
             if (Input.GetButton("Fire1"))
