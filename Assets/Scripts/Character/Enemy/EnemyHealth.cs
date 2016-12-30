@@ -12,42 +12,45 @@ public class EnemyHealth : MonoBehaviour
     public AudioClip HurtClip;
     public Sprite icon;
 
-    AudioSource enemyAudio;
-    ParticleSystem hitParticles;
-    CapsuleCollider capsuleCollider;
-    bool isDead;
-    bool isSinking;
-
+    AudioSource _enemyAudio;
+    ParticleSystem _hitParticles;
+    CapsuleCollider _capsuleCollider;
+    bool _isDead;
+    bool _isSinking;
 
     void Awake ()
     {
-        enemyAudio = GetComponent<AudioSource>();
-        enemyAudio.clip = HurtClip;
-        enemyAudio.volume = 0.1f;
+        _enemyAudio = GetComponent<AudioSource>();
+        _enemyAudio.clip = HurtClip;
+        _enemyAudio.volume = 0.1f;
 
-        hitParticles = GetComponentInChildren <ParticleSystem> ();
-        capsuleCollider = GetComponent <CapsuleCollider> ();
+        _hitParticles = GetComponentInChildren <ParticleSystem> ();
+        _capsuleCollider = GetComponent <CapsuleCollider> ();
     }
 
 
     void Update ()
     {
-        if(isSinking)
+        if(_isSinking)
         {
             transform.Translate (-Vector3.up * SinkSpeed * Time.deltaTime);
         }
     }
 
-
+    /// <summary>
+    /// Change the health of the enemy
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <param name="hitPoint"></param>
     public void TakeDamage (int amount, Vector3 hitPoint)
     {
-        if(isDead)
+        if(_isDead)
             return;
 
-        enemyAudio.Play ();
+        _enemyAudio.Play ();
         CurrentHealth -= amount;
-        hitParticles.transform.position = hitPoint;
-        hitParticles.Play();
+        _hitParticles.transform.position = hitPoint;
+        _hitParticles.Play();
 
         if(CurrentHealth <= 0)
         {
@@ -55,29 +58,36 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// The function when the enemy dies. Change the flag and play the death music
+    /// </summary>
     void Death ()
     {
-        isDead = true;
+        _isDead = true;
 
-        capsuleCollider.isTrigger = true;
+        _capsuleCollider.isTrigger = true;
 
-        enemyAudio.clip = DeathClip;
-        enemyAudio.volume = 0.6f;
-        enemyAudio.Play ();
+        _enemyAudio.clip = DeathClip;
+        _enemyAudio.volume = 0.6f;
+        _enemyAudio.Play ();
     }
 
-
+    /// <summary>
+    /// enemy sink under the floor
+    /// </summary>
     public void StartSinking ()
     {
         GetComponent <NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
-        isSinking = true;
+        _isSinking = true;
         Destroy (gameObject, 2f);
     }
-
+    /// <summary>
+    /// Public flag for whether is enemy is dead
+    /// </summary>
+    /// <returns></returns>
     public bool IsDead()
     {
-        return isDead;
+        return _isDead;
     }
 }

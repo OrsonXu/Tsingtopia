@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Basic class of item
+/// </summary>
 public class Item
 {
     public int ID { get; set; }

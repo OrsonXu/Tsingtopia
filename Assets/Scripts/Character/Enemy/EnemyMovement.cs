@@ -3,39 +3,38 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
-    Transform player;
-    PlayerHealth playerHealth;
-    EnemyHealth enemyHealth;
-    NavMeshAgent nav;
+    NavMeshAgent _nav;
     public float Speed { get; set; }
 
     void Awake ()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        nav = GetComponent <NavMeshAgent> ();
-        nav.speed = Speed;
+        _nav = GetComponent <NavMeshAgent> ();
+        _nav.speed = Speed;
     }
 
     void Update ()
     {
-        nav.speed = Speed;
+        _nav.speed = Speed;
     }
     void OnDisable()
     {
-        nav.enabled = false;
+        _nav.enabled = false;
     }
     void OnEnable()
     {
-        nav.enabled = true;
+        _nav.enabled = true;
     }
     public void SetDestination(Vector3 pos)
     {
-        nav.destination = pos;
+        _nav.destination = pos;
     }
-
+    /// <summary>
+    /// Flag for whether the enemy is close enough to the target
+    /// </summary>
+    /// <returns></returns>
     public bool CloseEnough()
     {
-        if (nav.remainingDistance < nav.stoppingDistance && !nav.pathPending)
+        if (_nav.remainingDistance < _nav.stoppingDistance && !_nav.pathPending)
         {
             return true;
         }

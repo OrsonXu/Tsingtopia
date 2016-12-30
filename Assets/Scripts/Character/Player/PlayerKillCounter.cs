@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerKillCounter : MonoBehaviour {
     public int Length { get; set; }
     private int[] _countList;
-    private bool finished;
+    private bool _finished;
     /// <summary>
     /// Override, register a message event
     /// </summary>
@@ -23,7 +23,7 @@ public class PlayerKillCounter : MonoBehaviour {
 	void Start () {
         // Initiate the count list
         _countList = new int[Length];
-        finished = false;
+        _finished = false;
         for (int i = 0; i < _countList.Length; i++)
         {
             _countList[i] = 0;
@@ -53,12 +53,12 @@ public class PlayerKillCounter : MonoBehaviour {
 
     public void Update()
     {
-        if (!finished && checkFinish())
+        if (!_finished && checkFinish())
         {
             //Debug.Log("Clear!!!!");
             // Trigger a event when the player achieve the requirement
             MessageManager.TriggerEvent("PlayerFinish");
-            finished = true;
+            _finished = true;
         }
     }
 }
