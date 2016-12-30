@@ -24,18 +24,22 @@ public class GameTime : MonoBehaviour {
 	private float _sunBias = 0.0f;
 	private float _moonBias = 180.0f;
 
+	// Overwrite, register time pause event, time scale = 0 == pause
 	private void OnEnable(){
 		MessageManager.StartListening ("TimeScaleChange", TimeScale);
 	}
 
+	// Overwrite, unregister time pause event
 	private void OnDisable(){
 		MessageManager.StopListening ("TimeScaleChange", TimeScale);
 	}
 
+	// Convert the tiem scale
 	public void TimeScale(){
 		Time.timeScale = Time.timeScale == 0 ? 1 : 0;
 	}
 
+	// Initial the sun and moon list
     void Start () {
 		_dayCycleInSeconds = dayCycleInMinutes * MINUTE;
         _sunScript = new Sun[sun.Length];
@@ -60,6 +64,7 @@ public class GameTime : MonoBehaviour {
 			_moonScript[count] = temp;
 		}
         _timeOfDay = 0;
+		// Set moon rotation and sun rotation
         _degreeRotation = DEGREE_PER_SECOND * DAY / _dayCycleInSeconds;
 		for(int count = 0; count < sun.Length; count++)
 			sun[count].Rotate(new Vector3(_sunBias , 0, 0));

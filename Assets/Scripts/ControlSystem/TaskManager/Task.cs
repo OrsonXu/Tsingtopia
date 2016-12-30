@@ -12,6 +12,10 @@ public class Task : MonoBehaviour {
 	private List<int> parentTasks;
 	private List<int> childTasks;
 
+	/// <summary>
+	/// Get and set private pa
+	/// </summary>
+	/// <returns>The name.</returns>
 	public string getName(){
 		return _taskName;
 	}
@@ -52,6 +56,7 @@ public class Task : MonoBehaviour {
 		TaskManager.StartListening("Task" + _taskID.ToString() + "TryDiscover", updateDiscovered);
         TaskManager.RegisterTask(_taskID, _taskName);
 	}
+	// set parent and child relations
 	public void setRelations(int[] parent, int[] child){
 		parentTasks = new List<int>();
 		childTasks = new List<int>();
@@ -62,6 +67,7 @@ public class Task : MonoBehaviour {
 			childTasks.Add( child [i]);
 		}
 	}
+
 	public void setDialogues(string[] dia){
 		this._taskDialogue = dia;
 	}
@@ -69,13 +75,13 @@ public class Task : MonoBehaviour {
     //    TaskManager.StartListening ("Task" + _taskID.ToString(), TaskAction);
     //    TaskManager.RegisterTask (_taskID, _taskName);
     //}
-
+	// Overwrite and unregister
 	private void OnDisable(){
 		TaskManager.StopListening ("Task" + _taskID.ToString() + "Trigger", TaskAction);
 		TaskManager.StopListening ("Task" + _taskID.ToString() + "TryDiscover", updateDiscovered);
 		TaskManager.UnregisterTask (_taskID, _taskName);
 	}
-
+	// Overwrite when this object is destroyed
 	private void OnDestroy(){
 		this.OnDisable ();
 		Destroy (this.gameObject);
@@ -84,7 +90,7 @@ public class Task : MonoBehaviour {
 		this._taskStatus = ts;
 
 	}
-
+	// When this task is discovered and update task relations
 	private void updateDiscovered(){
 		int unfinishedParent = 0;
 		if (parentTasks != null) {
@@ -110,6 +116,8 @@ public class Task : MonoBehaviour {
 		}
 
 	}
+
+	// Function when task is triggered
 	private void TaskAction(){
 		// Task change status according to 
 		if (this._taskStatus == TaskStatus.DISCOVERED) {

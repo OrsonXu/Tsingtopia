@@ -13,6 +13,8 @@ public class SwitchCamera : MonoBehaviour {
 	private float _leastResponseTime = 0.1f;
 	private float _lastResponseTime;
 
+
+	// Initialize the camera switcher 
 	private void Start(){
 		_lastResponseTime = 0f;
 
@@ -22,6 +24,7 @@ public class SwitchCamera : MonoBehaviour {
 		CameraList [_activatedCamera].gameObject.SetActive(true);
 		_activatedCamera += 1;
 	}
+	// Switch camera in camera list
 	private void Switch(){
 		for (int count = 0; count < CameraList.Length; count++) {
 			if (count == _activatedCamera)
@@ -33,6 +36,7 @@ public class SwitchCamera : MonoBehaviour {
 		if(_activatedCamera >= CameraList.Length)
 			_activatedCamera = 0;
 	}
+	// Update the switch if allow switch
 	private void Update(){
 		if (_lastResponseTime < _leastResponseTime) {
 			_lastResponseTime += Time.deltaTime;

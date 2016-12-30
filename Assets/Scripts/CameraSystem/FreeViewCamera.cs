@@ -22,7 +22,7 @@ public class FreeViewCamera : MonoBehaviour{
 	private bool moving = false;
 	private bool togglePressed = false;
 
-
+	// Overwrite Unity function, update when input exist
 	private void Update(){
 		
 		if (allowMovement){
@@ -41,6 +41,8 @@ public class FreeViewCamera : MonoBehaviour{
 			Cursor.visible = false;
 		}
 	}
+
+	// Overwrite Unity funciton, register in Message Manager
 	private void OnEnable(){
 		MessageManager.TriggerEvent ("PlayerDisableMovement");
 		Debug.Log ("Free view Camera Enabled");
@@ -49,12 +51,14 @@ public class FreeViewCamera : MonoBehaviour{
 			Cursor.visible = false;
 		}
 	}
+	// Overwrite the Unity function, unregister event in Message Manager and free the cursor
 	private void OnDisabled(){
 		MessageManager.TriggerEvent ("PlayerEnableMovement");
 		Debug.Log ("Free view Camera Disabled");
 		Screen.lockCursor = false;
 		Cursor.visible = true;
 	}
+	// Response to keyboard input to move the tranform of camera
 	private void Move(){
 		bool lastMoving = moving;
 		Vector3 deltaPosition = Vector3.zero;
@@ -74,12 +78,14 @@ public class FreeViewCamera : MonoBehaviour{
 		}
 		else currentSpeed = 0f;         
 	}
+	// Rotate the camera when mouse moves
 	private void Rotate(){
 		Vector3 eulerAngles = transform.eulerAngles;
 		eulerAngles.x += -Input.GetAxis("Mouse Y") * 359f * cursorSensitivity;
 		eulerAngles.y += Input.GetAxis("Mouse X") * 359f * cursorSensitivity;
 		transform.eulerAngles = eulerAngles;
 	}
+	// if toggled, stop camera movement
 	private void Toggle(){
 
 		if (Input.GetKey(cursorToggleButton)){
@@ -93,6 +99,7 @@ public class FreeViewCamera : MonoBehaviour{
 		}
 		else togglePressed = false;
 	}
+	// checkMove move camera response to a key input
 	private void CheckMove(KeyCode keyCode, ref Vector3 deltaPosition, Vector3 directionVector){
 		if (Input.GetKey(keyCode)){
 			moving = true;
