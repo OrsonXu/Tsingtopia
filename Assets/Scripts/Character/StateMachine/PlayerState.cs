@@ -119,17 +119,19 @@ public class State_Player_UseSkill : State<PlayerManager>
 
     public override void Execute(PlayerManager obj)
     {
+        // If the player die
         if (obj.IsDead())
         {
             obj.GetFSM().ChangeState(State_Player_Die.Instantiate());
         }
-
+        // Loop function during useskill state
         obj.UseSkill();
-
+        // If there is any move input, to move state
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             obj.GetFSM().ChangeState(State_Player_Move.Instantiate());
         }
+        // Else to idle state
         else
         {
             obj.GetFSM().ChangeState(State_Player_Idle.Instantiate());

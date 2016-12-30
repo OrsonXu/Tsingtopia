@@ -23,7 +23,6 @@ public class PlayerShooting : MonoBehaviour
     private Light _gunLight;
     private float _effectsDisplayTime = 0.2f;
 
-
     void Awake ()
     {
         // Get components from public
@@ -42,12 +41,12 @@ public class PlayerShooting : MonoBehaviour
     void Update ()
     {
         _timer += Time.deltaTime;
-
+        // If any input and the shoot frequency meets the requirement
 		if(Input.GetButton ("Fire1") && _timer >= timeBetweenBullets && Time.timeScale != 0)
         {
             Shoot ();
         }
-
+        // If time is longer enough
         if(_timer >= timeBetweenBullets * _effectsDisplayTime)
         {
             DisableEffects ();
@@ -60,17 +59,20 @@ public class PlayerShooting : MonoBehaviour
         _gunLine.enabled = false;
         _gunLight.enabled = false;
     }
-
+    /// <summary>
+    /// The function when player shoots
+    /// </summary>
     void Shoot ()
     {
+        // Trigger the event of the magic change of the player
         MessageManager.TriggerEvent("PlayerChangeMagic", -bulletMagicValue);
-
+        // Set the timestamp to zero
         _timer = 0f;
-
+        // Play the music
         _gunAudio.Play ();
 
         _gunLight.enabled = true;
-
+        // Trigger the particle system
         _gunParticles.Stop ();
         _gunParticles.Play ();
 
@@ -84,14 +86,17 @@ public class PlayerShooting : MonoBehaviour
         if(Physics.Raycast (_shootRay, out _shootHit, range, _shootableMask))
         {
             EnemyHealth enemyHealth = _shootHit.collider.GetComponent <EnemyHealth> ();
+            // If hit the enemy
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(damagePerShot, _shootHit.point);
                 enemyImage.enabled = true;
+                // Update the UI of enemy status
                 enemyImage.sprite = enemyHealth.icon;
                 enemyHealthObject.SetActive(true);
                 enemyHealthSlider.value = ((float)enemyHealth.CurrentHealth / (float)enemyHealth.MaxHealth) * enemyHealthSlider.maxValue;
             }
+            // else update the UI of enenmy state accordingly
             else
             {
                 enemyImage.enabled = false;
@@ -104,7 +109,9 @@ public class PlayerShooting : MonoBehaviour
             _gunLine.SetPosition (1, _shootRay.origin + _shootRay.direction * range);
         }
     }
-
+    /// <summary>
+    /// Override, when the scripts is disabled.
+    /// </summary>
     void OnDisable()
     {
         DisableEffects();

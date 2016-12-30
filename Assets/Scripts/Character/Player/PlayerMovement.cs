@@ -39,12 +39,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 rightMouseTarget;
     private bool rightMouseActive;
     private RaycastHit rightMouseRay = new RaycastHit();
-
+    /// <summary>
+    /// Override, register a message event
+    /// </summary>
 	private void OnEnable(){
 		MessageManager.StartListening("PlayerEnableMovement", AllowMovement);
 		MessageManager.StartListening("PlayerDisableMovement", DisableMovement);
 	}
-
+    /// <summary>
+    /// Override, unregister a message event
+    /// </summary>
     private void OnDisable()
     {
 		MessageManager.StopListening("PlayerEnableMovement", AllowMovement);
@@ -83,12 +87,12 @@ public class PlayerMovement : MonoBehaviour
 		if (_moving && (_currentSpeed <= initialSpeed + maxSpeed))
 			_currentSpeed += increaseSpeed * Time.deltaTime;
 		_moving = false;
-
+        // Check the move input
 		CheckMove(forwardButton, ref deltaPosition, Vector3.forward);
         CheckMove(backwardButton, ref deltaPosition, -Vector3.forward);
         CheckMove(rightButton, ref deltaPosition, Vector3.right);
         CheckMove(leftButton, ref deltaPosition, -Vector3.right);
-
+        // If can move
 		if (_moving){  
 			if (_moving != lastMoving)
 				_currentSpeed = initialSpeed;
@@ -121,52 +125,5 @@ public class PlayerMovement : MonoBehaviour
 			_playerRigidbody.MoveRotation(_newRotation);
 		}
 	}
-
-    
-//	// Move with input from keyboard
-//	void Move(){
-//		_inputH = Input.GetAxisRaw("Horizontal");
-//		_inputH = Input.GetAxisRaw("Vertical");
-//		MoveWithKeyboard(_inputH, _inputH);
-//		rightMouseActive = (bool)Input.GetButton("Fire2");
-//		// Move the player around the scene.
-//		if(_inputH != 0 || _inputH != 0)
-//		{
-//			MoveWithKeyboard(_inputH, _inputV);
-//			rightMouseActive = false;
-//		}
-//	}
-//
-//	// Transform based on direction parameters
-//    void MoveWithKeyboard(float h, float v)
-//    {
-//        _movement.Set(h, 0f, v);
-//        _movement = _movement.normalized * Speed * Time.deltaTime;
-//        _playerRigidbody.MovePosition(transform.position + _movement);
-//    }
-//
-//    
-//
-//    void MoveToward()
-//    {
-//        if (rightMouseActive)
-//        {
-//            if (Input.GetButton("Fire2"))
-//            {
-//                rightMouseTarget = _playerToMouse;
-//            }
-//           
-//        }
-//        moveDirection = rightMouseTarget - transform.position;
-//        moveDirection.y = 0f;
-//        if (moveDirection.magnitude > 10)
-//        {
-//            moveDirection = moveDirection.normalized;
-//            _playerRigidbody.MovePosition(transform.position + moveDirection.normalized * Speed * Time.deltaTime);
-//        }
-//
-//    }
-
-   
 
 }

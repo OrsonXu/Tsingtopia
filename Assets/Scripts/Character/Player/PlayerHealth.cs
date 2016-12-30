@@ -25,11 +25,12 @@ public class PlayerHealth : MonoBehaviour
     bool _isDead;
     bool _damaged;
     float _timeClock = 0;
-
+    // Override, register a message event.
     private void OnEnable()
     {
         MessageManager.StartListening("PlayerChangeHealth", ChangeHealth);
     }
+    // Override, unregister a message event.
     private void OnDisable()
     {
         MessageManager.StopListening("PlayerChangeHealth", ChangeHealth);
@@ -53,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
             _timeClock = 0;
             ChangeHealth(1);
         }
-
+        // If be hurted, flash image in the screeen
         if(_damaged)
         {
             DamageImage.color = FlashColour;
@@ -63,16 +64,12 @@ public class PlayerHealth : MonoBehaviour
             DamageImage.color = Color.Lerp (DamageImage.color, Color.clear, FlashSpeed * Time.deltaTime);
         }
         _damaged = false;
-
-        //if (CurrentHealth <= 0 && !_isDead)
-        //{
-        //    Death();
-        //    Debug.Log("health < 0"); 
-        //}
-        
     }
 
-
+    /// <summary>
+    /// Change the health of the player
+    /// </summary>
+    /// <param name="value">The value of the health change</param>
     public void ChangeHealth (int value)
     {
         if (!_isDead)
@@ -87,10 +84,12 @@ public class PlayerHealth : MonoBehaviour
                 _damaged = false;
             }
             CurrentHealth += value;
+            // Chump back to the max health
             if (CurrentHealth > MaxHealth)
             {
                 CurrentHealth = MaxHealth;
             }
+            // Judge the death
             if (CurrentHealth <= 0)
             {
                 Death();
@@ -100,16 +99,20 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// The function when the player dies, change the flag and play music
+    /// </summary>
     void Death ()
     {
         _isDead = true;
-
         _playerAudio.clip = DeathClip;
         _playerAudio.volume = 0.8f;
         _playerAudio.Play ();
     }
-
+    /// <summary>
+    /// Public flag
+    /// </summary>
+    /// <returns></returns>
     public bool IsDead()
     {
         return _isDead;
