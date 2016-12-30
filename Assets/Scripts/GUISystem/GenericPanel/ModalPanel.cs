@@ -15,7 +15,7 @@ public class ModalPanel : MonoBehaviour
     public GameObject modalPanelObject;
 
     private static ModalPanel modalPanel;
-
+	// Find modal panel isntance
     public static ModalPanel Instance()
     {
         if (!modalPanel)
@@ -53,6 +53,7 @@ public class ModalPanel : MonoBehaviour
         cancelButton.gameObject.SetActive(true);
     }
 
+	// generate choose questions function, this function generate some question
 	public void Choice(string question, UnityAction yesEvent, UnityAction noEvent)
 	{
 		modalPanelObject.SetActive (true);
@@ -73,7 +74,7 @@ public class ModalPanel : MonoBehaviour
 		cancelButton.gameObject.SetActive(false);
 
 	}
-
+	// Close panel
     void ClosePanel()
     {
 		Debug.Log ("panel set closed");
