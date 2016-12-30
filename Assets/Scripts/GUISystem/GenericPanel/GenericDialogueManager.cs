@@ -17,6 +17,7 @@ public class GenericDialogueManager : BaseManager
 	private bool isDialogue;
 	private float _lastFrame;
 	private float _updateTime = 0.1f;
+	// Singleton mode
     public static GenericDialogueManager Instance()
     {
         if (!gdManager)
@@ -28,7 +29,7 @@ public class GenericDialogueManager : BaseManager
 
         return gdManager;
     }
-
+	// Show a message
     public void DisplayMessage(string message)
     {
         displayText.text = message;
@@ -37,7 +38,7 @@ public class GenericDialogueManager : BaseManager
 		isDialogue = false;
 //        SetAlpha();
     }
-
+	// Show a message list
 	public void DisplayMessage(string[] messages)
 	{
 		isDialogue = true;
@@ -48,7 +49,7 @@ public class GenericDialogueManager : BaseManager
 		//        SetAlpha();
 	}
 
-
+	// Set modalPanel disactived
     public void SetDisactive()
     {
         modalPanelObj.SetActive(false);
@@ -58,6 +59,7 @@ public class GenericDialogueManager : BaseManager
 	private void Awake(){
 		
 	}
+	// Overwrite, update in _updateTime to 
 	private void Update(){
 		if (_lastFrame < _updateTime) {
 			_lastFrame += Time.deltaTime;

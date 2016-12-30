@@ -14,7 +14,8 @@ public class SettingMenu : MonoBehaviour {
 		_settingMenuCanvas = GetComponent<Canvas>();
 		_settingMenuCanvas.enabled = false;
 	}
-	
+
+	// Setting response test
 	public void pressedSettingButton(){
 		MessageManager.TriggerEvent ("TimeScaleChange");
 		_settingMenuCanvas.enabled = !_settingMenuCanvas.enabled;
