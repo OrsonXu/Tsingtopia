@@ -11,6 +11,7 @@ public class TaskPanelDemo : MonoBehaviour {
 	private const float _updateTime = 0.05f;
 	private string _noTaskInfo = "现在没有任务";
 
+	// Initialize this panel parameter 
 	void Awake(){
         taskFac = GameObject.FindGameObjectWithTag("TaskFac");
 		_taskFactory = taskFac.GetComponent<TaskFactory> ();
