@@ -18,6 +18,12 @@ public class SettingMenu : MonoBehaviour {
 	// Setting response test
 	public void pressedSettingButton(){
 		MessageManager.TriggerEvent ("TimeScaleChange");
+        _settingMenuCanvas = GetComponent<Canvas>();
+        if (_settingMenuCanvas == null)
+        {
+            Debug.Log("Is null!!");
+            return;
+        }
 		_settingMenuCanvas.enabled = !_settingMenuCanvas.enabled;
 	}
 	public void pressedResumeButton(){
