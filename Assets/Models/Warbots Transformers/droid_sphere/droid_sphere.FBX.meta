@@ -1,0 +1,606 @@
+fileFormatVersion: 2
+guid: 859fdb9a98e04e04b9328610bec2d459
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: droid_sphere
+    100004: left_backt_01
+    100006: left_backt_02
+    100008: left_backt_03
+    100010: left_backt_Chain
+    100012: left_backt_Nub
+    100014: left_front_01
+    100016: left_front_02
+    100018: left_front_03
+    100020: left_front_Chain
+    100022: left_front_Nub
+    100024: left_top_01
+    100026: left_top_02
+    100028: left_top_Nub
+    100030: right_back_01
+    100032: right_back_02
+    100034: right_back_03
+    100036: right_back_Chain
+    100038: right_back_Nub
+    100040: right_front_01
+    100042: right_front_02
+    100044: right_front_03
+    100046: right_front_Chain
+    100048: right_front_Nub
+    100050: right_top_01
+    100052: right_top_02
+    100054: right_top_Nub
+    100056: Root
+    100058: spine_01
+    100060: spine_02
+    100062: spine_03
+    100064: spine_04
+    100066: spine_05
+    100068: spine_06
+    100070: spine_07
+    100072: spine_08
+    100074: spine_09
+    100076: spine_Chain_01
+    100078: spine_Chain_02
+    100080: spine_Nub
+    400000: //RootNode
+    400002: droid_sphere
+    400004: left_backt_01
+    400006: left_backt_02
+    400008: left_backt_03
+    400010: left_backt_Chain
+    400012: left_backt_Nub
+    400014: left_front_01
+    400016: left_front_02
+    400018: left_front_03
+    400020: left_front_Chain
+    400022: left_front_Nub
+    400024: left_top_01
+    400026: left_top_02
+    400028: left_top_Nub
+    400030: right_back_01
+    400032: right_back_02
+    400034: right_back_03
+    400036: right_back_Chain
+    400038: right_back_Nub
+    400040: right_front_01
+    400042: right_front_02
+    400044: right_front_03
+    400046: right_front_Chain
+    400048: right_front_Nub
+    400050: right_top_01
+    400052: right_top_02
+    400054: right_top_Nub
+    400056: Root
+    400058: spine_01
+    400060: spine_02
+    400062: spine_03
+    400064: spine_04
+    400066: spine_05
+    400068: spine_06
+    400070: spine_07
+    400072: spine_08
+    400074: spine_09
+    400076: spine_Chain_01
+    400078: spine_Chain_02
+    400080: spine_Nub
+    4300000: droid_sphere
+    7400000: Take 001
+    7400002: run
+    7400004: idle1
+    7400006: death1
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: droid_sphere
+  materials:
+    importMaterials: 1
+    materialName: 3
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 921
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: droid_sphere
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/left_backt_Chain
+        weight: 1
+      - path: Root/left_front_Chain
+        weight: 1
+      - path: Root/right_back_Chain
+        weight: 1
+      - path: Root/right_front_Chain
+        weight: 1
+      - path: Root/spine_01
+        weight: 1
+      - path: Root/spine_01/spine_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01/left_top_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01/left_top_02/left_top_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01/right_top_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01/right_top_02/right_top_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02/left_backt_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02/left_backt_03/left_backt_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02/left_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02/left_front_03/left_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02/right_back_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02/right_back_03/right_back_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02/right_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02/right_front_03/right_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08/spine_09
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08/spine_09/spine_Nub
+        weight: 1
+      - path: spine_Chain_01
+        weight: 1
+      - path: spine_Chain_01/spine_Chain_02
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: run
+      takeName: Take 001
+      firstFrame: 165
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: droid_sphere
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/left_backt_Chain
+        weight: 1
+      - path: Root/left_front_Chain
+        weight: 1
+      - path: Root/right_back_Chain
+        weight: 1
+      - path: Root/right_front_Chain
+        weight: 1
+      - path: Root/spine_01
+        weight: 1
+      - path: Root/spine_01/spine_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01/left_top_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01/left_top_02/left_top_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01/right_top_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01/right_top_02/right_top_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02/left_backt_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02/left_backt_03/left_backt_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02/left_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02/left_front_03/left_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02/right_back_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02/right_back_03/right_back_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02/right_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02/right_front_03/right_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08/spine_09
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08/spine_09/spine_Nub
+        weight: 1
+      - path: spine_Chain_01
+        weight: 1
+      - path: spine_Chain_01/spine_Chain_02
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idle1
+      takeName: Take 001
+      firstFrame: 525
+      lastFrame: 725
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: droid_sphere
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/left_backt_Chain
+        weight: 1
+      - path: Root/left_front_Chain
+        weight: 1
+      - path: Root/right_back_Chain
+        weight: 1
+      - path: Root/right_front_Chain
+        weight: 1
+      - path: Root/spine_01
+        weight: 1
+      - path: Root/spine_01/spine_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01/left_top_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01/left_top_02/left_top_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01/right_top_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01/right_top_02/right_top_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02/left_backt_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02/left_backt_03/left_backt_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02/left_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02/left_front_03/left_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02/right_back_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02/right_back_03/right_back_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02/right_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02/right_front_03/right_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08/spine_09
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08/spine_09/spine_Nub
+        weight: 1
+      - path: spine_Chain_01
+        weight: 1
+      - path: spine_Chain_01/spine_Chain_02
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: death1
+      takeName: Take 001
+      firstFrame: 400
+      lastFrame: 460
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.25089607
+        functionName: StartSinking
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: droid_sphere
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/left_backt_Chain
+        weight: 1
+      - path: Root/left_front_Chain
+        weight: 1
+      - path: Root/right_back_Chain
+        weight: 1
+      - path: Root/right_front_Chain
+        weight: 1
+      - path: Root/spine_01
+        weight: 1
+      - path: Root/spine_01/spine_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01/left_top_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/left_top_01/left_top_02/left_top_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01/right_top_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_04/spine_05/right_top_01/right_top_02/right_top_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02/left_backt_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_backt_01/left_backt_02/left_backt_03/left_backt_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02/left_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/left_front_01/left_front_02/left_front_03/left_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02/right_back_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_back_01/right_back_02/right_back_03/right_back_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02/right_front_03
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/right_front_01/right_front_02/right_front_03/right_front_Nub
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08/spine_09
+        weight: 1
+      - path: Root/spine_01/spine_02/spine_03/spine_06/spine_07/spine_08/spine_09/spine_Nub
+        weight: 1
+      - path: spine_Chain_01
+        weight: 1
+      - path: spine_Chain_01/spine_Chain_02
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: droid_sphere
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
